@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)file:///C:/Users/steve/Downloads/TheDerrick_CMS_Prototypes_1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Derrick CMS — UI Prototypes</title>
+<link rel="stylesheet" href="./The Derrick CMS — UI Prototypes-CSS_files/tabler-icons.min.css">
+<style>
+  :root {
+    --navy: #1B3A5C;
+    --blue: #2563A8;
+    --blue-lt: #E6F1FB;
+    --amber: #F59E0B;
+    --amber-lt: #FEF3C7;
+    --amber-dk: #854F0B;
+    --green: #059669;
+    --green-lt: #D1FAE5;
+    --red: #DC2626;
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-300: #D1D5DB;
+    --gray-500: #6B7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --white: #FFFFFF;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--sans); background: #0F1923; color: var(--gray-900); min-height: 100vh; }
+
+  /* ── Cover ─────────────────────────────────────────── */
+  .cover {
+    background: var(--navy);
+    padding: 64px 48px 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .cover-eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.45); margin-bottom: 16px;
+  }
+  .cover-title {
+    font-family: var(--serif); font-size: 48px; font-weight: 400;
+    color: #FFFFFF; line-height: 1.1; margin-bottom: 12px;
+  }
+  .cover-title span { color: #7EB8F7; }
+  .cover-sub {
+    font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.6; max-width: 640px;
+    margin-bottom: 40px;
+  }
+  .cover-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+  .cover-pill {
+    font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 20px;
+    background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6);
+    border: 0.5px solid rgba(255,255,255,0.12);
+  }
+
+  /* ── Nav ───────────────────────────────────────────── */
+  .nav {
+    background: #0F1923;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding: 0 48px;
+    display: flex; gap: 0; overflow-x: auto;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-tab {
+    display: flex; align-items: center; gap: 7px;
+    padding: 14px 18px; font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,0.4); cursor: pointer; white-space: nowrap;
+    border-bottom: 2px solid transparent; transition: all .15s;
+    background: none; border-left: none; border-right: none; border-top: none;
+  }
+  .nav-tab:hover { color: rgba(255,255,255,0.75); }
+  .nav-tab.active { color: #7EB8F7; border-bottom-color: #7EB8F7; }
+  .nav-tab i { font-size: 15px; }
+
+  /* ── Sections ──────────────────────────────────────── */
+  .section { display: none; padding: 40px 48px 64px; }
+  .section.active { display: block; }
+  .section-header { margin-bottom: 32px; }
+  .section-num {
+    font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    color: #7EB8F7; margin-bottom: 8px;
+  }
+  .section-title { font-family: var(--serif); font-size: 32px; color: #FFFFFF; margin-bottom: 8px; }
+  .section-desc { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.6; max-width: 680px; }
+
+  /* ── Prototype frame ───────────────────────────────── */
+  .proto-frame {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .proto-chrome {
+    background: #1E2733;
+    padding: 10px 16px;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .chrome-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .cd-red { background: #FF5F57; }
+  .cd-yellow { background: #FFBD2E; }
+  .cd-green { background: #28CA41; }
+  .chrome-url {
+    flex: 1; background: rgba(255,255,255,0.06); border-radius: 6px;
+    padding: 4px 12px; font-size: 12px; color: rgba(255,255,255,0.35);
+    margin: 0 8px;
+  }
+
+  /* ── Annotation cards ──────────────────────────────── */
+  .annotations { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 24px; }
+  .ann-card {
+    background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius); padding: 14px 16px;
+  }
+  .ann-label { font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: #7EB8F7; margin-bottom: 6px; }
+  .ann-text { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.55; }
+
+  /* ══════════════════════════════════════════════════════
+     PROTOTYPE 1 — ARTICLE EDITOR
+  ══════════════════════════════════════════════════════ */
+  .editor-shell { display: flex; height: 780px; background: var(--white); }
+  .ed-sidebar {
+    width: 52px; border-right: 0.5px solid var(--gray-200);
+    display: flex; flex-direction: column; align-items: center;
+    padding: 12px 0; gap: 4px; background: var(--gray-50); flex-shrink: 0;
+  }
+  .ed-sb-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--gray-500); font-size: 18px;
+    border: none; background: transparent;
+  }
+  .ed-sb-icon:hover, .ed-sb-icon.active {
+    background: var(--white); color: var(--gray-900);
+  }
+  .ed-sb-icon.active { border: 0.5px solid var(--gray-300); }
+  .ed-sb-div { width: 28px; height: 0.5px; background: var(--gray-200); margin: 4px 0; }
+  .ed-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  .ed-topbar {
+    height: 48px; border-bottom: 0.5px solid var(--gray-200);
+    display: flex; align-items: center; padding: 0 16px; gap: 8px; flex-shrink: 0;
+  }
+  .ed-topbar-title { font-size: 13px; color: var(--gray-500); flex: 1; }
+  .state-pill {
+    font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px;
+    cursor: pointer; border: none; transition: all .15s;
+  }
+  .sp-draft { background: #FEF3C7; color: #854F0B; }
+  .sp-copyedit { background: var(--blue-lt); color: #0C447C; }
+  .sp-layout { background: #EEEDFE; color: #3C3489; }
+  .sp-ready { background: #E1F5EE; color: #085041; }
+  .sp-published { background: #EAF3DE; color: #27500A; }
+  .tb-btn {
+    height: 28px; padding: 0 10px; font-size: 12px;
+    border: 0.5px solid var(--gray-300); border-radius: 8px;
+    background: transparent; cursor: pointer; color: var(--gray-500);
+    display: flex; align-items: center; gap: 5px; white-space: nowrap;
+  }
+  .tb-btn:hover { background: var(--gray-100); }
+  .tb-btn.primary { background: var(--gray-900); color: var(--white); border-color: transparent; }
+  .tb-btn.primary:hover { opacity: .85; }
+  .ed-canvas { flex: 1; overflow-y: auto; padding: 32px 48px; }
+  .ed-section-tag {
+    font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 8px;
+  }
+  .ed-title {
+    font-family: var(--serif); font-size: 26px; font-weight: 400;
+    color: var(--gray-900); border: none; background: transparent;
+    width: 100%; outline: none; line-height: 1.3; resize: none; padding: 0;
+  }
+  .ed-title::placeholder { color: var(--gray-300); }
+  .ed-dek {
+    font-size: 16px; color: var(--gray-500); border: none; background: transparent;
+    width: 100%; outline: none; line-height: 1.5; resize: none; padding: 0; margin-top: 8px;
+  }
+  .ed-dek::placeholder { color: var(--gray-300); }
+  .ed-byline {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 12px; padding-top: 12px; border-top: 0.5px solid var(--gray-200);
+  }
+  .ed-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--blue-lt); display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 600; color: var(--blue); flex-shrink: 0;
+  }
+  .ed-byline-name { font-size: 13px; font-weight: 500; color: var(--gray-900); }
+  .ed-byline-date { font-size: 12px; color: var(--gray-500); margin-left: auto; }
+  .ed-blocks { display: flex; flex-direction: column; gap: 2px; margin-top: 20px; }
+  .ed-block { padding: 6px 0; }
+  .ed-block textarea, .ed-block input {
+    border: none; background: transparent; width: 100%;
+    outline: none; resize: none; font-family: var(--sans); color: var(--gray-900);
+  }
+  .ed-block.lead textarea { font-size: 17px; line-height: 1.65; }
+  .ed-block.para textarea { font-size: 16px; line-height: 1.75; }
+  .ed-block.subhed input { font-size: 20px; font-weight: 600; padding: 4px 0; }
+  .ed-block.pullquote {
+    border-left: 3px solid var(--blue); padding-left: 16px; margin: 4px 0;
+  }
+  .ed-block.pullquote textarea {
+    font-size: 18px; font-style: italic; line-height: 1.6; color: var(--gray-900);
+  }
+  .ed-block.legal {
+    background: var(--amber-lt); border: 0.5px solid var(--amber);
+    border-radius: 8px; padding: 12px 14px; margin: 4px 0;
+  }
+  .ed-block.legal .legal-label {
+    font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--amber-dk); margin-bottom: 6px;
+  }
+  .ed-block.legal textarea { font-size: 14px; line-height: 1.6; color: #412402; background: transparent; }
+  .add-row {
+    display: flex; align-items: center; gap: 8px; margin-top: 16px;
+  }
+  .add-plus {
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 0.5px solid var(--gray-300); background: transparent;
+    cursor: pointer; color: var(--gray-500); font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .add-plus:hover { background: var(--gray-100); color: var(--gray-900); }
+  .block-menu { display: flex; gap: 4px; flex-wrap: wrap; }
+  .bm-btn {
+    font-size: 11px; padding: 3px 8px; border: 0.5px solid var(--gray-200);
+    border-radius: 8px; background: transparent; cursor: pointer; color: var(--gray-500);
+  }
+  .bm-btn:hover { background: var(--gray-100); color: var(--gray-900); }
+  .ed-panel {
+    width: 230px; border-left: 0.5px solid var(--gray-200);
+    overflow-y: auto; background: var(--gray-50); flex-shrink: 0;
+  }
+  .panel-sec { padding: 12px 14px; border-bottom: 0.5px solid var(--gray-200); }
+  .panel-lbl {
+    font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--gray-500); margin-bottom: 8px;
+  }
+  .panel-field label { font-size: 12px; color: var(--gray-500); display: block; margin-bottom: 3px; }
+  .panel-field input, .panel-field select, .panel-field textarea {
+    font-size: 12px; width: 100%; border: 0.5px solid var(--gray-300);
+    border-radius: 8px; padding: 5px 8px; background: var(--white);
+    color: var(--gray-900); margin-bottom: 8px; font-family: var(--sans);
+  }
+  .toggle-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .toggle-row span { font-size: 12px; color: var(--gray-500); }
+  .tog { position: relative; width: 30px; height: 17px; }
+  .tog input { opacity: 0; width: 0; height: 0; position: absolute; }
+  .tog-track {
+    display: block; width: 30px; height: 17px; border-radius: 9px;
+    background: var(--gray-300); cursor: pointer; transition: background .2s;
+  }
+  .tog input:checked + .tog-track { background: var(--green); }
+  .tog-thumb {
+    position: absolute; top: 2px; left: 2px; width: 13px; height: 13px;
+    border-radius: 50%; background: var(--white); transition: transform .2s; pointer-events: none;
+  }
+  .tog input:checked ~ .tog-thumb { transform: translateX(13px); }
+  .wc { font-size: 11px; color: var(--gray-500); text-align: right; padding: 6px 14px; }
+
+  /* ══════════════════════════════════════════════════════
+     PROTOTYPE 2 — HOMEPAGE COMPOSER
+  ══════════════════════════════════════════════════════ */
+  .hp-shell { display: flex; height: 780px; background: var(--white); }
+  .hp-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  .hp-canvas { flex: 1; overflow-y: auto; padding: 18px; background: var(--gray-100); }
+  .hp-canvas-label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 10px; }
+  .hp-zone { background: var(--white); border: 0.5px solid var(--gray-200); border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+  .hp-zone-hdr { padding: 9px 14px; border-bottom: 0.5px solid var(--gray-200); display: flex; align-items: center; gap: 8px; background: var(--gray-50); }
+  .hp-zone-name { font-size: 11px; font-weight: 600; color: var(--gray-500); flex: 1; }
+  .hp-auto-badge { font-size: 10px; padding: 2px 6px; border-radius: 4px; background: var(--blue-lt); color: var(--blue); font-weight: 500; }
+  .hp-zone-body { padding: 10px; }
+  .hp-slot {
+    display: flex; align-items: flex-start; gap: 10px; padding: 8px;
+    border-radius: 8px; border: 0.5px solid var(--gray-200);
+    margin-bottom: 6px; cursor: grab; background: var(--white);
+    transition: border-color .15s;
+  }
+  .hp-slot:hover { border-color: var(--gray-300); }
+  .hp-slot:last-child { margin-bottom: 0; }
+  .hp-thumb {
+    width: 48px; height: 38px; border-radius: 6px; background: var(--gray-100);
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 18px; color: var(--gray-500);
+  }
+  .hp-slot-info { flex: 1; min-width: 0; }
+  .hp-slot-hed { font-size: 13px; font-weight: 500; color: var(--gray-900); line-height: 1.3; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hp-slot-meta { font-size: 11px; color: var(--gray-500); display: flex; gap: 8px; }
+  .hp-slot-actions { display: flex; gap: 4px; align-items: center; }
+  .hp-slot-btn { width: 22px; height: 22px; border: none; background: transparent; cursor: pointer; color: var(--gray-500); font-size: 14px; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+  .hp-slot-btn:hover { background: var(--gray-100); color: var(--gray-900); }
+  .hp-empty { border: 0.5px dashed var(--gray-300); border-radius: 8px; padding: 14px; text-align: center; font-size: 12px; color: var(--gray-500); cursor: pointer; }
+  .hp-empty:hover { background: var(--gray-50); }
+  .hp-add-zone { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 14px; font-size: 12px; color: var(--gray-500); cursor: pointer; border: 0.5px dashed var(--gray-300); border-radius: 12px; background: transparent; width: 100%; }
+  .hp-add-zone:hover { background: var(--gray-50); }
+  .hp-panel { width: 220px; border-left: 0.5px solid var(--gray-200); overflow-y: auto; background: var(--gray-50); flex-shrink: 0; }
+  .hp-queued { padding: 7px 8px; border-radius: 8px; border: 0.5px solid var(--gray-200); margin-bottom: 5px; background: var(--white); cursor: grab; font-size: 12px; }
+  .hp-queued:hover { border-color: var(--gray-300); }
+  .hp-q-hed { font-weight: 500; color: var(--gray-900); margin-bottom: 2px; line-height: 1.3; }
+  .hp-q-meta { font-size: 11px; color: var(--gray-500); display: flex; gap: 6px; }
+  .hp-break { background: #FCEBEB; border: 0.5px solid #F09595; border-radius: 8px; padding: 8px 10px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .hp-break-lbl { font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #A32D2D; flex-shrink: 0; }
+  .hp-break input { font-size: 12px; color: #501313; border: none; background: transparent; outline: none; flex: 1; }
+  .hp-pub-status { display: flex; align-items: center; gap: 6px; padding: 8px 12px; font-size: 12px; color: var(--gray-500); }
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+
+  /* ══════════════════════════════════════════════════════
+     PROTOTYPE 3 — ARTICLE PAGE / PAYWALL
+  ══════════════════════════════════════════════════════ */
+  .art-frame { background: var(--white); overflow-y: auto; max-height: 780px; }
+  .art-header { height: 52px; border-bottom: 0.5px solid var(--gray-200); display: flex; align-items: center; padding: 0 24px; gap: 16px; }
+  .art-logo { font-family: var(--serif); font-size: 18px; color: var(--gray-900); letter-spacing: -.3px; }
+  .art-nav { display: flex; gap: 16px; margin-left: 16px; }
+  .art-nav span { font-size: 13px; color: var(--gray-500); cursor: pointer; }
+  .art-nav span:hover { color: var(--gray-900); }
+  .art-hdr-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .art-hdr-btn { font-size: 12px; padding: 5px 12px; border-radius: 8px; cursor: pointer; border: 0.5px solid var(--gray-300); background: transparent; color: var(--gray-500); }
+  .art-hdr-btn.cta { background: var(--gray-900); color: var(--white); border-color: transparent; }
+  .mission-strip { background: #EAF3DE; border-bottom: 0.5px solid #97C459; padding: 8px 24px; display: flex; align-items: center; gap: 12px; font-size: 12px; }
+  .ms-text { color: #27500A; flex: 1; }
+  .ms-cta { font-size: 12px; font-weight: 500; color: #3B6D11; cursor: pointer; white-space: nowrap; padding: 4px 10px; border: 0.5px solid #97C459; border-radius: 6px; }
+  .mode-switcher { display: flex; gap: 6px; padding: 10px 24px; border-bottom: 0.5px solid var(--gray-200); background: var(--gray-50); }
+  .mode-label { font-size: 11px; color: var(--gray-500); margin-right: 4px; display: flex; align-items: center; }
+  .mode-btn { font-size: 11px; padding: 4px 10px; border-radius: 20px; border: 0.5px solid var(--gray-300); background: transparent; cursor: pointer; color: var(--gray-500); }
+  .mode-btn.active { background: var(--gray-900); color: var(--white); border-color: transparent; }
+  .art-body { max-width: 640px; margin: 0 auto; padding: 32px 24px; }
+  .art-section-tag { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  .art-title { font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--gray-900); line-height: 1.25; margin-bottom: 10px; }
+  .art-dek { font-size: 17px; color: var(--gray-500); line-height: 1.5; margin-bottom: 16px; }
+  .art-byline { display: flex; align-items: center; gap: 10px; padding-bottom: 16px; border-bottom: 0.5px solid var(--gray-200); margin-bottom: 20px; }
+  .art-av { width: 30px; height: 30px; border-radius: 50%; background: var(--blue-lt); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--blue); flex-shrink: 0; }
+  .art-byname { font-size: 13px; font-weight: 500; color: var(--gray-900); }
+  .art-bydate { font-size: 12px; color: var(--gray-500); }
+  .art-share { margin-left: auto; display: flex; gap: 6px; }
+  .art-share button { border: none; background: transparent; cursor: pointer; color: var(--gray-500); font-size: 16px; }
+  .meter-bar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--gray-100); border-radius: 8px; margin-bottom: 20px; font-size: 12px; color: var(--gray-500); }
+  .meter-dots { display: flex; gap: 3px; }
+  .meter-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gray-300); }
+  .meter-dot.used { background: var(--amber); }
+  .meter-link { font-size: 12px; color: var(--blue); cursor: pointer; margin-left: auto; }
+  .art-lead { font-size: 18px; line-height: 1.7; color: var(--gray-900); margin-bottom: 20px; }
+  .art-para { font-size: 16px; line-height: 1.8; color: var(--gray-900); margin-bottom: 16px; }
+  .art-fade { -webkit-mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 100%); mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 100%); }
+  .paywall { border: 0.5px solid var(--gray-200); border-radius: 12px; padding: 28px 24px; text-align: center; margin-top: 8px; }
+  .pw-tag { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 10px; }
+  .pw-title { font-family: var(--serif); font-size: 20px; color: var(--gray-900); margin-bottom: 6px; line-height: 1.3; }
+  .pw-sub { font-size: 14px; color: var(--gray-500); margin-bottom: 20px; line-height: 1.5; }
+  .plan-row { display: flex; gap: 8px; margin-bottom: 16px; justify-content: center; }
+  .plan-card { flex: 1; max-width: 155px; border: 0.5px solid var(--gray-200); border-radius: 10px; padding: 12px 10px; text-align: center; cursor: pointer; }
+  .plan-card:hover, .plan-card.sel { border-color: var(--blue); background: var(--blue-lt); }
+  .plan-price { font-size: 20px; font-weight: 600; color: var(--gray-900); margin-bottom: 2px; }
+  .plan-name { font-size: 12px; color: var(--gray-500); margin-bottom: 4px; }
+  .plan-detail { font-size: 11px; color: var(--gray-500); }
+  .pw-cta { display: block; width: 100%; padding: 11px; background: var(--gray-900); color: var(--white); border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; margin-bottom: 10px; font-family: var(--sans); }
+  .pw-cta:hover { opacity: .85; }
+  .pw-donate { font-size: 12px; color: var(--gray-500); cursor: pointer; }
+  .pw-donate a { color: var(--blue); }
+  .inline-donate { background: #EAF3DE; border-radius: 8px; padding: 10px 12px; margin: 16px 0; display: flex; align-items: center; gap: 10px; font-size: 13px; color: #27500A; }
+  .inline-donate button { font-size: 12px; padding: 5px 12px; border: 0.5px solid #97C459; border-radius: 6px; background: transparent; cursor: pointer; color: #3B6D11; white-space: nowrap; }
+  .author-card { border: 0.5px solid var(--gray-200); border-radius: 10px; padding: 14px; margin: 24px 0; display: flex; gap: 12px; }
+  .author-av { width: 40px; height: 40px; border-radius: 50%; background: var(--blue-lt); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: var(--blue); flex-shrink: 0; }
+  .author-name { font-size: 14px; font-weight: 500; color: var(--gray-900); margin-bottom: 2px; }
+  .author-bio { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
+  .sticky-btm { border-top: 0.5px solid var(--gray-200); padding: 10px 24px; display: flex; align-items: center; gap: 12px; background: var(--white); }
+  .sticky-msg { font-size: 13px; color: var(--gray-500); flex: 1; }
+  .sticky-cta { font-size: 13px; font-weight: 500; padding: 7px 16px; background: var(--gray-900); color: var(--white); border: none; border-radius: 8px; cursor: pointer; }
+
+  /* ══════════════════════════════════════════════════════
+     PROTOTYPE 4 — ANALYTICS DASHBOARD
+  ══════════════════════════════════════════════════════ */
+  .dash-shell { display: flex; height: 780px; background: var(--white); }
+  .dash-main { flex: 1; display: flex; flex-direction: column; min-width: 0; overflow: hidden; }
+  .dash-scroll { flex: 1; overflow-y: auto; padding: 18px 20px; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 18px; }
+  .metric-card { background: var(--gray-100); border-radius: 8px; padding: 14px 14px 12px; }
+  .metric-lbl { font-size: 11px; color: var(--gray-500); margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+  .metric-val { font-size: 22px; font-weight: 600; color: var(--gray-900); line-height: 1; }
+  .metric-delta { font-size: 11px; margin-top: 4px; }
+  .delta-up { color: var(--green); }
+  .delta-dn { color: var(--red); }
+  .dash-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .dash-card { background: var(--white); border: 0.5px solid var(--gray-200); border-radius: 12px; padding: 16px; overflow: hidden; }
+  .dash-card-title { font-size: 13px; font-weight: 500; color: var(--gray-900); margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
+  .dash-card-sub { font-size: 11px; color: var(--gray-500); font-weight: 400; }
+  .chart-wrap { position: relative; height: 150px; }
+  .tr-row { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 0.5px solid var(--gray-200); font-size: 12px; }
+  .tr-row:last-child { border-bottom: none; }
+  .tr-rank { width: 18px; color: var(--gray-500); flex-shrink: 0; text-align: center; }
+  .tr-title { flex: 1; color: var(--gray-900); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tr-bar-wrap { width: 80px; flex-shrink: 0; }
+  .tr-bar { height: 5px; border-radius: 3px; background: var(--blue); }
+  .tr-val { width: 36px; text-align: right; color: var(--gray-500); flex-shrink: 0; }
+  .funnel-step { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 12px; }
+  .funnel-lbl { width: 120px; color: var(--gray-500); flex-shrink: 0; }
+  .funnel-bar-wrap { flex: 1; height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden; }
+  .funnel-bar { height: 100%; border-radius: 4px; }
+  .funnel-val { width: 40px; text-align: right; color: var(--gray-900); font-weight: 500; flex-shrink: 0; }
+  .gps-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 0.5px solid var(--gray-200); font-size: 12px; }
+  .gps-row:last-child { border-bottom: none; }
+  .gps-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .range-btn { font-size: 11px; padding: 3px 9px; border-radius: 20px; border: 0.5px solid var(--gray-300); background: transparent; cursor: pointer; color: var(--gray-500); }
+  .range-btn.active { background: var(--gray-900); color: var(--white); border-color: transparent; }
+
+  /* ══════════════════════════════════════════════════════
+     PROTOTYPE 5 — ISSUE BUILDER
+  ══════════════════════════════════════════════════════ */
+  .ib-shell { display: flex; height: 780px; background: var(--white); }
+  .ib-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  .ib-builder { flex: 1; display: flex; min-height: 0; }
+  .ib-pages { width: 80px; border-right: 0.5px solid var(--gray-200); overflow-y: auto; background: var(--gray-50); flex-shrink: 0; padding: 10px 6px; display: flex; flex-direction: column; gap: 6px; }
+  .ib-thumb { border-radius: 6px; border: 1.5px solid transparent; cursor: pointer; overflow: hidden; aspect-ratio: 8.5/11; background: var(--white); display: flex; flex-direction: column; padding: 4px; gap: 2px; }
+  .ib-thumb.active { border-color: var(--blue); }
+  .ib-thumb:hover:not(.active) { border-color: var(--gray-300); }
+  .ib-pt-num { font-size: 9px; color: var(--gray-500); text-align: center; margin-bottom: 2px; }
+  .ib-pt-blk { border-radius: 2px; background: var(--gray-200); }
+  .ib-pt-ad { background: var(--amber-lt); border: 0.5px solid var(--amber); }
+  .ib-pt-legal { background: var(--blue-lt); border: 0.5px solid #85B7EB; }
+  .ib-add-page { border: 0.5px dashed var(--gray-300); border-radius: 6px; padding: 8px 4px; text-align: center; font-size: 10px; color: var(--gray-500); cursor: pointer; background: transparent; }
+  .ib-canvas-wrap { flex: 1; overflow: auto; background: var(--gray-100); display: flex; align-items: flex-start; justify-content: center; padding: 20px; }
+  .ib-page { background: var(--white); width: 340px; min-height: 440px; border: 0.5px solid var(--gray-300); border-radius: 4px; padding: 14px; display: grid; gap: 6px; }
+  .ib-placement { border-radius: 4px; border: 0.5px dashed var(--gray-300); cursor: pointer; display: flex; flex-direction: column; padding: 6px 8px; position: relative; background: var(--white); min-height: 60px; }
+  .ib-placement:hover { border-color: var(--gray-400); border-style: solid; }
+  .ib-placement.filled { border-style: solid; border-color: var(--gray-200); }
+  .ib-placement.ad-slot { background: var(--amber-lt); border-color: var(--amber); border-style: solid; }
+  .ib-placement.legal-slot { background: var(--blue-lt); border-color: #85B7EB; border-style: solid; }
+  .ib-slot-lbl { font-size: 9px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 3px; }
+  .ib-slot-hed { font-size: 11px; font-weight: 500; color: var(--gray-900); line-height: 1.3; margin-bottom: 2px; }
+  .ib-slot-by { font-size: 9px; color: var(--gray-500); }
+  .ib-slot-rm { position: absolute; top: 4px; right: 4px; background: transparent; border: none; cursor: pointer; color: var(--gray-500); font-size: 12px; line-height: 1; border-radius: 3px; padding: 1px 3px; }
+  .ib-slot-rm:hover { background: var(--gray-100); }
+  .ib-empty-lbl { font-size: 11px; color: var(--gray-500); text-align: center; margin: auto; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .ib-panel { width: 205px; border-left: 0.5px solid var(--gray-200); overflow-y: auto; background: var(--gray-50); flex-shrink: 0; }
+  .ib-story-item { padding: 6px 7px; border-radius: 6px; border: 0.5px solid var(--gray-200); margin-bottom: 5px; background: var(--white); cursor: grab; font-size: 11px; }
+  .ib-story-item:hover { border-color: var(--gray-300); }
+  .ib-si-hed { font-weight: 500; color: var(--gray-900); margin-bottom: 2px; line-height: 1.3; }
+  .ib-si-meta { font-size: 10px; color: var(--gray-500); display: flex; gap: 6px; }
+  .ib-ad-item { padding: 6px 7px; border-radius: 6px; border: 0.5px solid var(--amber); background: var(--amber-lt); margin-bottom: 5px; cursor: grab; font-size: 11px; }
+  .ib-legal-item { padding: 6px 7px; border-radius: 6px; border: 0.5px solid #85B7EB; background: var(--blue-lt); margin-bottom: 5px; cursor: grab; font-size: 11px; }
+  .ib-prog { display: flex; align-items: center; justify-content: space-between; font-size: 12px; margin-bottom: 5px; }
+  .ib-prog-bar { height: 5px; background: var(--gray-200); border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .ib-prog-fill { height: 100%; border-radius: 3px; }
+
+  /* ── Shared sidebar (reused across all 5) ─── */
+  .proto-sidebar {
+    width: 52px; border-right: 0.5px solid var(--gray-200);
+    display: flex; flex-direction: column; align-items: center;
+    padding: 12px 0; gap: 4px; background: var(--gray-50); flex-shrink: 0;
+  }
+  .proto-topbar {
+    height: 48px; border-bottom: 0.5px solid var(--gray-200);
+    display: flex; align-items: center; padding: 0 16px; gap: 8px; flex-shrink: 0;
+  }
+  .proto-topbar-title { font-size: 13px; color: var(--gray-500); flex: 1; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-eyebrow">TheDerrick.com — Headless CMS</div>
+  <div class="cover-title">UI <span>Prototype</span> Showcase</div>
+  <div class="cover-sub">Five interactive prototypes covering every staff-facing surface of the Derrick CMS platform. Design language: Substack editorial warmth applied to a full newsroom toolset. Functional baseline: BLOX NXT modernized.</div>
+  <div class="cover-pills">
+    <span class="cover-pill">01 Article Editor</span>
+    <span class="cover-pill">02 Homepage Composer</span>
+    <span class="cover-pill">03 Article Page + Paywall</span>
+    <span class="cover-pill">04 Analytics Dashboard</span>
+    <span class="cover-pill">05 Issue Builder</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <button class="nav-tab active" onclick="showSection(&#39;editor&#39;,this)"><i class="ti ti-file-text"></i>Article editor</button>
+  <button class="nav-tab" onclick="showSection(&#39;homepage&#39;,this)"><i class="ti ti-layout"></i>Homepage composer</button>
+  <button class="nav-tab" onclick="showSection(&#39;article&#39;,this)"><i class="ti ti-eye"></i>Article page + paywall</button>
+  <button class="nav-tab" onclick="showSection(&#39;analytics&#39;,this)"><i class="ti ti-chart-bar"></i>Analytics dashboard</button>
+  <button class="nav-tab" onclick="showSection(&#39;issuebuilder&#39;,this)"><i class="ti ti-printer"></i>Issue Builder</button>
+</nav>
+
+<!-- ═══════════════ SECTION 1: ARTICLE EDITOR ═══════════════ -->
+<div class="section active" id="s-editor">
+  <div class="section-header">
+    <div class="section-num">Prototype 01</div>
+    <div class="section-title">Article editor</div>
+    <div class="section-desc">Substack-inspired editorial surface. Reporters and editors author, review, and publish articles through structured blocks. Click the state pill to advance workflow. Use the + button to add blocks including legal notices.</div>
+  </div>
+  <div class="proto-frame">
+    <div class="proto-chrome">
+      <div class="chrome-dot cd-red"></div><div class="chrome-dot cd-yellow"></div><div class="chrome-dot cd-green"></div>
+      <div class="chrome-url">cms.thederrick.com/editor/new</div>
+    </div>
+    <div class="editor-shell">
+      <div class="proto-sidebar">
+        <button class="ed-sb-icon active"><i class="ti ti-file-text"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-photo"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-clipboard-list"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon"><i class="ti ti-printer"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-calendar-event"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon"><i class="ti ti-users"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-chart-bar"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon" style="margin-top:auto"><i class="ti ti-settings"></i></button>
+        <div class="ed-avatar" style="margin-bottom:4px">LM</div>
+      </div>
+      <div class="ed-main">
+        <div class="proto-topbar">
+          <span class="proto-topbar-title">Articles / <span style="color:#111827">New article</span></span>
+          <button class="state-pill sp-draft" id="stateBtn" onclick="cycleEditorState()"><i class="ti ti-circle-dot" style="font-size:12px;margin-right:3px"></i><span id="stateLbl">Draft</span></button>
+          <button class="tb-btn" onclick="toggleEditorPreview()"><i class="ti ti-eye" style="font-size:13px"></i> Preview</button>
+          <button class="tb-btn" onclick="addEditorBlock(&#39;legal&#39;)"><i class="ti ti-gavel" style="font-size:13px"></i> Legal notice</button>
+          <button class="tb-btn primary" id="edPublishBtn">Save draft</button>
+        </div>
+        <div class="ed-canvas" id="edCanvas">
+          <div class="ed-section-tag" contenteditable="true">Local News</div>
+          <textarea class="ed-title" id="edTitle" rows="2" placeholder="Article headline…" oninput="updateWC()">Venango County commissioners approve $2.4M bridge repair contract</textarea>
+          <textarea class="ed-dek" rows="2" placeholder="A brief summary…" oninput="updateWC()">The county's oldest steel truss bridge will undergo structural reinforcement this fall, with completion expected before winter.</textarea>
+          <div class="ed-byline">
+            <div class="ed-avatar">LM</div>
+            <span class="ed-byline-name">Luka Muller</span>
+            <span class="ed-byline-date">Jun 10, 2026 · autosaved 3m ago</span>
+          </div>
+          <div class="ed-blocks" id="edBlocks"><div class="ed-block lead"><textarea rows="3" placeholder="Opening paragraph…" style="font-size: 17px; line-height: 1.65; height: 84px;"></textarea></div><div class="ed-block para"><textarea rows="4" placeholder="Body text…" style="font-size: 16px; line-height: 1.75; height: 112px;"></textarea></div></div>
+          <div class="add-row" style="margin-top:16px">
+            <button class="add-plus" id="addPlusBtn" onclick="toggleEditorMenu()">+</button>
+            <div class="block-menu" id="edBlockMenu" style="display:none">
+              <button class="bm-btn" onclick="addEditorBlock(&#39;lead&#39;)">Lead</button>
+              <button class="bm-btn" onclick="addEditorBlock(&#39;para&#39;)">Paragraph</button>
+              <button class="bm-btn" onclick="addEditorBlock(&#39;subhed&#39;)">Subheading</button>
+              <button class="bm-btn" onclick="addEditorBlock(&#39;pullquote&#39;)">Pull quote</button>
+              <button class="bm-btn" onclick="addEditorBlock(&#39;image&#39;)">Image</button>
+              <button class="bm-btn" onclick="addEditorBlock(&#39;legal&#39;)">Legal notice</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ed-panel">
+        <div class="panel-sec">
+          <div class="panel-lbl">Metadata</div>
+          <div class="panel-field"><label>Slug</label><input type="text" value="venango-bridge-repair"></div>
+          <div class="panel-field"><label>Section</label><select><option>Local News</option><option>Government</option><option>Sports</option><option>Community</option><option>Legal Notices</option></select></div>
+          <div class="panel-field"><label>Tags</label><input type="text" value="county, infrastructure, budget"></div>
+        </div>
+        <div class="panel-sec">
+          <div class="panel-lbl">Print settings</div>
+          <div class="panel-field"><label>Preferred page</label><select><option>Front page</option><option>A2</option><option>B1</option></select></div>
+          <div class="panel-field"><label>Priority</label><select><option>High</option><option>Normal</option><option>Low</option></select></div>
+          <div class="toggle-row"><span>Legal notice</span><label class="tog"><input type="checkbox" id="legalTog" onchange="if(this.checked)addEditorBlock(&#39;legal&#39;)"><span class="tog-track"></span><span class="tog-thumb"></span></label></div>
+          <div class="toggle-row"><span>Print preview</span><label class="tog"><input type="checkbox"><span class="tog-track"></span><span class="tog-thumb"></span></label></div>
+        </div>
+        <div class="panel-sec">
+          <div class="panel-lbl">Paywall</div>
+          <div class="toggle-row"><span>Meter exempt</span><label class="tog"><input type="checkbox"><span class="tog-track"></span><span class="tog-thumb"></span></label></div>
+          <div class="panel-field"><label>Preview blocks</label><select><option>2 blocks free</option><option>Full article free</option><option>Subscriber only</option></select></div>
+        </div>
+        <div class="panel-sec">
+          <div class="panel-lbl">SEO preview</div>
+          <div style="font-size:12px;color:#185FA5;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Venango County commissioners approve…</div>
+          <div style="font-size:11px;color:#059669;margin-bottom:4px">thederrick.com › local-news</div>
+          <div style="font-size:11px;color:#6B7280;line-height:1.5">The county's oldest steel truss bridge will undergo structural reinforcement…</div>
+        </div>
+        <div class="wc" id="edWC">8 words</div>
+      </div>
+    </div>
+  </div>
+  <div class="annotations">
+    <div class="ann-card"><div class="ann-label">Substack DNA</div><div class="ann-text">Serif headline input, minimal chrome, writing surface dominant. The content canvas — not the toolbar — is the product.</div></div>
+    <div class="ann-card"><div class="ann-label">Legal notice block</div><div class="ann-text">Amber treatment with Title 45 Pa.C.S.A. label distinguishes legally significant content from editorial. Replaces SCS/Track workflow.</div></div>
+    <div class="ann-card"><div class="ann-label">Workflow state</div><div class="ann-text">Click the Draft pill to cycle: Draft → Copy edit → Layout → Ready to print → Published. Role permissions enforced server-side.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 2: HOMEPAGE COMPOSER ═══════════════ -->
+<div class="section" id="s-homepage">
+  <div class="section-header">
+    <div class="section-num">Prototype 02</div>
+    <div class="section-title">Homepage composer</div>
+    <div class="section-desc">Drag stories from the queue into layout zones. Auto-feed zones self-populate from the latest section articles. Toggle the breaking news bar. Publish with one click.</div>
+  </div>
+  <div class="proto-frame">
+    <div class="proto-chrome">
+      <div class="chrome-dot cd-red"></div><div class="chrome-dot cd-yellow"></div><div class="chrome-dot cd-green"></div>
+      <div class="chrome-url">cms.thederrick.com/homepage</div>
+    </div>
+    <div class="hp-shell">
+      <div class="proto-sidebar">
+        <button class="ed-sb-icon"><i class="ti ti-file-text"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-photo"></i></button>
+        <button class="ed-sb-icon active"><i class="ti ti-layout"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon"><i class="ti ti-printer"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-calendar-event"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon"><i class="ti ti-users"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-chart-bar"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon" style="margin-top:auto"><i class="ti ti-settings"></i></button>
+        <div class="ed-avatar" style="margin-bottom:4px">LM</div>
+      </div>
+      <div class="hp-main">
+        <div class="proto-topbar">
+          <span class="proto-topbar-title">Homepage composer</span>
+          <div class="hp-pub-status"><span class="status-dot"></span>Live · last published 12m ago</div>
+          <button class="tb-btn" onclick="addHPZone()"><i class="ti ti-plus" style="font-size:13px"></i> Add zone</button>
+          <button class="tb-btn" id="hpBreakBtn" onclick="toggleHPBreaking()"><i class="ti ti-alert-triangle" style="font-size:13px"></i> Breaking</button>
+          <button class="tb-btn primary" onclick="publishHP()"><i class="ti ti-world-upload" style="font-size:13px"></i> Publish homepage</button>
+        </div>
+        <div style="display:flex;flex:1;min-height:0">
+          <div class="hp-canvas" id="hpCanvas">
+            <div class="hp-canvas-label">Homepage layout</div>
+            <div id="hpBreakBar" style="display:none">
+              <div class="hp-break">
+                <span class="hp-break-lbl">Breaking</span>
+                <input id="hpBreakText" value="Route 322 closed near Polk due to multi-vehicle accident — expect delays">
+                <button style="font-size:11px;padding:3px 8px;border:0.5px solid #F09595;border-radius:4px;background:transparent;cursor:pointer;color:#A32D2D" onclick="clearHPBreaking()">Clear</button>
+              </div>
+            </div>
+            <div id="hpZones"><div class="hp-zone"><div class="hp-zone-hdr"><i class="ti ti-grip-vertical" style="font-size:14px;color:#6B7280"></i><span class="hp-zone-name">Top story</span><button class="hp-slot-btn" onclick="removeHPZone(&#39;hz1&#39;)"><i class="ti ti-x"></i></button></div><div class="hp-zone-body" id="hzb-hz1"><div class="hp-slot" draggable="true"><div class="hp-thumb"><i class="ti ti-news"></i></div><div class="hp-slot-info"><div class="hp-slot-hed">Commissioners approve $2.4M bridge contract</div><div class="hp-slot-meta"><span>news</span><span>L. Muller</span><span>2h ago</span></div></div><div class="hp-slot-actions"><button class="hp-slot-btn" onclick="removeHPStory(&#39;hz1&#39;,0)"><i class="ti ti-x"></i></button></div></div><div class="hp-empty"><i class="ti ti-plus"></i> Drag a story here</div></div></div><div class="hp-zone"><div class="hp-zone-hdr"><i class="ti ti-grip-vertical" style="font-size:14px;color:#6B7280"></i><span class="hp-zone-name">Top news</span><button class="hp-slot-btn" onclick="removeHPZone(&#39;hz2&#39;)"><i class="ti ti-x"></i></button></div><div class="hp-zone-body" id="hzb-hz2"><div class="hp-slot" draggable="true"><div class="hp-thumb"><i class="ti ti-news"></i></div><div class="hp-slot-info"><div class="hp-slot-hed">Oil City schools present $18M budget proposal</div><div class="hp-slot-meta"><span>news</span><span>R. Haynes</span><span>3h ago</span></div></div><div class="hp-slot-actions"><button class="hp-slot-btn" onclick="removeHPStory(&#39;hz2&#39;,0)"><i class="ti ti-x"></i></button></div></div><div class="hp-slot" draggable="true"><div class="hp-thumb"><i class="ti ti-news"></i></div><div class="hp-slot-info"><div class="hp-slot-hed">Cranberry Township fire dept. recruiting volunteers</div><div class="hp-slot-meta"><span>news</span><span>L. Muller</span><span>5h ago</span></div></div><div class="hp-slot-actions"><button class="hp-slot-btn" onclick="removeHPStory(&#39;hz2&#39;,1)"><i class="ti ti-x"></i></button></div></div><div class="hp-slot" draggable="true"><div class="hp-thumb"><i class="ti ti-news"></i></div><div class="hp-slot-info"><div class="hp-slot-hed">Falcons secure playoff berth with Friday win</div><div class="hp-slot-meta"><span>sports</span><span>D. Walsh</span><span>1h ago</span></div></div><div class="hp-slot-actions"><button class="hp-slot-btn" onclick="removeHPStory(&#39;hz2&#39;,2)"><i class="ti ti-x"></i></button></div></div><div class="hp-empty"><i class="ti ti-plus"></i> Drag a story here</div></div></div><div class="hp-zone"><div class="hp-zone-hdr"><i class="ti ti-grip-vertical" style="font-size:14px;color:#6B7280"></i><span class="hp-zone-name">Latest news</span><span class="hp-auto-badge">Auto · news</span><button class="hp-slot-btn" onclick="removeHPZone(&#39;hz3&#39;)"><i class="ti ti-x"></i></button></div><div class="hp-zone-body" id="hzb-hz3"><div style="font-size:12px;color:#6B7280;padding:10px 0;text-align:center"><i class="ti ti-refresh" style="font-size:14px;display:block;margin-bottom:4px"></i>Automatically fills with latest news articles</div></div></div></div>
+            <button class="hp-add-zone" onclick="addHPZone()"><i class="ti ti-plus"></i> Add layout zone</button>
+          </div>
+          <div class="hp-panel">
+            <div class="panel-sec">
+              <div class="panel-lbl">Ready to place</div>
+              <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px" id="hpFilterRow">
+                <button style="font-size:11px;padding:2px 7px;border-radius:20px;border:0.5px solid #D1D5DB;background:#111827;color:#fff;cursor:pointer" onclick="filterHPQueue(this,&#39;all&#39;)">All</button>
+                <button style="font-size:11px;padding:2px 7px;border-radius:20px;border:0.5px solid #D1D5DB;background:transparent;color:#6B7280;cursor:pointer" onclick="filterHPQueue(this,&#39;news&#39;)">News</button>
+                <button style="font-size:11px;padding:2px 7px;border-radius:20px;border:0.5px solid #D1D5DB;background:transparent;color:#6B7280;cursor:pointer" onclick="filterHPQueue(this,&#39;sports&#39;)">Sports</button>
+                <button style="font-size:11px;padding:2px 7px;border-radius:20px;border:0.5px solid #D1D5DB;background:transparent;color:#6B7280;cursor:pointer" onclick="filterHPQueue(this,&#39;community&#39;)">Community</button>
+              </div>
+              <div id="hpQueue"><div class="hp-queued" draggable="true"><div class="hp-q-hed">Regional swim meet results — full standings</div><div class="hp-q-meta"><span>sports</span><span>D. Walsh</span><span>4h ago</span></div></div><div class="hp-queued" draggable="true"><div class="hp-q-hed">Franklin Farmers Market opens for season</div><div class="hp-q-meta"><span>community</span><span>M. Reed</span><span>6h ago</span></div></div><div class="hp-queued" draggable="true"><div class="hp-q-hed">Arts council announces summer grant recipients</div><div class="hp-q-meta"><span>community</span><span>M. Reed</span><span>8h ago</span></div></div></div>
+            </div>
+            <div class="panel-sec">
+              <div class="panel-lbl">Auto-feed zones</div>
+              <div style="font-size:12px;color:#6B7280;line-height:1.6">Zones marked <strong style="color:#111827">Auto</strong> fill from the latest published articles in that section. Manual placements always take priority.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="annotations">
+    <div class="ann-card"><div class="ann-label">Zone-based layout</div><div class="ann-text">Named zones (hero, grid, list) replace rigid templates. Staff can add, remove, and rename zones without engineering involvement.</div></div>
+    <div class="ann-card"><div class="ann-label">Auto-feed fallback</div><div class="ann-text">Zones without manual placements auto-populate from the latest published articles in the assigned section — no blank homepage.</div></div>
+    <div class="ann-card"><div class="ann-label">Breaking news bar</div><div class="ann-text">One-click amber banner with editable headline. Replaces the SCS breaking news workflow. Cleared manually or on next publish.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 3: ARTICLE PAGE + PAYWALL ═══════════════ -->
+<div class="section" id="s-article">
+  <div class="section-header">
+    <div class="section-num">Prototype 03</div>
+    <div class="section-title">Article page + paywall</div>
+    <div class="section-desc">Four reader states — switch using the mode buttons below the header. Each state has a distinct UI treatment for the meter, paywall wall, mission strip, and sticky footer.</div>
+  </div>
+  <div class="proto-frame">
+    <div class="proto-chrome">
+      <div class="chrome-dot cd-red"></div><div class="chrome-dot cd-yellow"></div><div class="chrome-dot cd-green"></div>
+      <div class="chrome-url">thederrick.com/local-news/venango-bridge-repair-contract</div>
+    </div>
+    <div class="art-frame">
+      <div class="art-header">
+        <span class="art-logo">The Derrick</span>
+        <nav class="art-nav"><span>News</span><span>Sports</span><span>Community</span><span>e-Edition</span></nav>
+        <div class="art-hdr-right">
+          <span id="artMeterCount" style="font-size:12px;color:#6B7280">2 of 5 free articles used</span>
+          <button class="art-hdr-btn" id="artSignIn" onclick="setArtMode(&#39;subscriber&#39;)">Sign in</button>
+          <button class="art-hdr-btn cta" onclick="setArtMode(&#39;upgrade&#39;)">Subscribe</button>
+        </div>
+      </div>
+      <div class="mission-strip" id="artMission">
+        <span class="ms-text">Independent local journalism covering Venango County since 1859. No paywalls on public safety news.</span>
+        <span class="ms-cta" onclick="setArtMode(&#39;upgrade&#39;)">Support The Derrick</span>
+      </div>
+      <div class="mode-switcher">
+        <span class="mode-label">Preview as:</span>
+        <button class="mode-btn active" onclick="setArtMode(&#39;anonymous&#39;)">Anonymous reader</button>
+        <button class="mode-btn" onclick="setArtMode(&#39;registered&#39;)">Registered (free)</button>
+        <button class="mode-btn" onclick="setArtMode(&#39;subscriber&#39;)">Subscriber</button>
+        <button class="mode-btn" onclick="setArtMode(&#39;upgrade&#39;)">At meter limit</button>
+      </div>
+      <div id="artScroll" style="overflow-y:auto;max-height:540px">
+        <div class="art-body">
+          <div class="art-section-tag">Local Government</div>
+          <div class="art-title">Venango County commissioners approve $2.4M bridge repair contract</div>
+          <div class="art-dek">The county's oldest steel truss bridge will undergo structural reinforcement this fall, with completion expected before the first freeze.</div>
+          <div class="art-byline">
+            <div class="art-av">LM</div>
+            <div><div class="art-byname">Luka Muller</div><div class="art-bydate">June 10, 2026 · 4 min read</div></div>
+            <div class="art-share"><button><i class="ti ti-share-2"></i></button><button><i class="ti ti-bookmark"></i></button></div>
+          </div>
+          <div id="artMeterBar" class="meter-bar">
+            <div class="meter-dots">
+              <div class="meter-dot used"></div><div class="meter-dot used"></div>
+              <div class="meter-dot"></div><div class="meter-dot"></div><div class="meter-dot"></div>
+            </div>
+            <span id="artMeterText" style="flex:1">3 free articles remaining this month</span>
+            <span class="meter-link" onclick="setArtMode(&#39;upgrade&#39;)">Subscribe →</span>
+          </div>
+          <p class="art-lead">Venango County commissioners voted 2-1 Tuesday to award a $2.4 million contract to Allegheny Bridge Works for emergency structural repairs on the Kennerdell Road span, the county's last remaining steel truss bridge and a critical connector for roughly 4,200 daily commuters.</p>
+          <p class="art-para">The vote came after months of engineering assessments that found significant corrosion in the bridge's lower chord members — the horizontal beams that bear the primary load — and recommended repairs be completed before winter conditions worsen the deterioration.</p>
+          <div id="artInlineDonate" class="inline-donate" style="display:none">
+            <i class="ti ti-heart" style="font-size:16px;flex-shrink:0"></i>
+            <span>This story took 6 hours to report. Support independent Venango County journalism.</span>
+            <button onclick="setArtMode(&#39;upgrade&#39;)">Donate</button>
+          </div>
+          <div id="artGated">
+            <div id="artFade" class="art-fade">
+              <p class="art-para">Commissioner Sarah Deluca, who cast the dissenting vote, argued the county should have sought additional bids. "We had one qualified respondent," she said. "That's not a competitive process." County engineer Tom Braddock countered that the specialized nature of truss bridge repair limited the contractor pool statewide.</p>
+            </div>
+            <div class="paywall">
+              <div class="pw-tag">Continue reading</div>
+              <div class="pw-title">Local journalism worth supporting</div>
+              <div class="pw-sub">Get full access to every story, the weekly print edition, and our searchable archive of Venango County coverage.</div>
+              <div class="plan-row">
+                <div class="plan-card sel" onclick="selPlan(this)"><div class="plan-price">$8</div><div class="plan-name">Digital</div><div class="plan-detail">per month</div></div>
+                <div class="plan-card" onclick="selPlan(this)"><div class="plan-price">$20</div><div class="plan-name">Print + Digital</div><div class="plan-detail">per month</div></div>
+              </div>
+              <button class="pw-cta" onclick="setArtMode(&#39;subscriber&#39;)">Start subscription →</button>
+              <div class="pw-donate">Already a subscriber? <a onclick="setArtMode(&#39;subscriber&#39;)">Sign in</a> · Or <a onclick="setArtMode(&#39;upgrade&#39;)">make a one-time donation</a></div>
+            </div>
+          </div>
+          <div id="artFull" style="display:none">
+            <p class="art-para">Commissioner Sarah Deluca, who cast the dissenting vote, argued the county should have sought additional bids. "We had one qualified respondent," she said. "That's not a competitive process." County engineer Tom Braddock countered that the specialized nature of truss bridge repair limited the contractor pool statewide.</p>
+            <p class="art-para">Construction is scheduled to begin September 8 and run through November 15, with a two-week contingency window built into the contract. The bridge will remain open to traffic during off-peak hours, with single-lane alternating closures between 9 AM and 3 PM on weekdays.</p>
+            <p class="art-para">The project is funded through a combination of state liquid fuels funds and a federal bridge program grant secured by the county's grants coordinator in March. Local taxpayers will cover approximately $340,000 of the total cost.</p>
+            <div class="author-card"><div class="author-av">LM</div><div><div class="author-name">Luka Muller</div><div class="author-bio">Luka covers local government and infrastructure for The Derrick. He has reported on Venango County since 2019.</div></div></div>
+            <div class="inline-donate" style="margin-top:8px"><i class="ti ti-heart" style="font-size:16px;flex-shrink:0"></i><span>If this story mattered to you, consider supporting The Derrick.</span><button>Donate</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="sticky-btm" id="artSticky">
+        <span class="sticky-msg" id="artStickyMsg">3 free articles left this month.</span>
+        <button class="sticky-cta" onclick="setArtMode(&#39;upgrade&#39;)">Subscribe for full access</button>
+      </div>
+    </div>
+  </div>
+  <div class="annotations">
+    <div class="ann-card"><div class="ann-label">Four reader states</div><div class="ann-text">Anonymous, Registered (free), At meter limit, and Subscriber each render a distinct UI. Switch between them using the mode buttons.</div></div>
+    <div class="ann-card"><div class="ann-label">Mission strip</div><div class="ann-text">Green editorial independence bar modeled on Salt Lake Tribune and Texas Tribune. Hidden entirely for subscribers to preserve the clean reading experience.</div></div>
+    <div class="ann-card"><div class="ann-label">Upgrade wall design</div><div class="ann-text">2–3 plan cards + Stripe Checkout CTA + donate split. Plans are configurable in admin without code deploy. No card data touches TheDerrick servers.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 4: ANALYTICS ═══════════════ -->
+<div class="section" id="s-analytics">
+  <div class="section-header">
+    <div class="section-num">Prototype 04</div>
+    <div class="section-title">Analytics dashboard</div>
+    <div class="section-desc">Six-panel revenue and engagement dashboard. Toggle between 7-day and 30-day ranges — subscriber growth chart and headline metrics update live.</div>
+  </div>
+  <div class="proto-frame">
+    <div class="proto-chrome">
+      <div class="chrome-dot cd-red"></div><div class="chrome-dot cd-yellow"></div><div class="chrome-dot cd-green"></div>
+      <div class="chrome-url">cms.thederrick.com/analytics</div>
+    </div>
+    <div class="dash-shell">
+      <div class="proto-sidebar">
+        <button class="ed-sb-icon"><i class="ti ti-file-text"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-photo"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-layout"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon"><i class="ti ti-printer"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-calendar-event"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon"><i class="ti ti-users"></i></button>
+        <button class="ed-sb-icon active"><i class="ti ti-chart-bar"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon" style="margin-top:auto"><i class="ti ti-settings"></i></button>
+        <div class="ed-avatar" style="margin-bottom:4px">LM</div>
+      </div>
+      <div class="dash-main">
+        <div class="proto-topbar">
+          <span class="proto-topbar-title" style="font-weight:500;color:#111827">Analytics &amp; revenue</span>
+          <button class="range-btn" onclick="setDashRange(this,&#39;7d&#39;)">7d</button>
+          <button class="range-btn active" onclick="setDashRange(this,&#39;30d&#39;)">30d</button>
+          <button class="range-btn" onclick="setDashRange(this,&#39;90d&#39;)">90d</button>
+          <button class="range-btn" onclick="setDashRange(this,&#39;1y&#39;)">1y</button>
+          <button class="tb-btn" style="margin-left:4px"><i class="ti ti-download" style="font-size:13px"></i> Export</button>
+        </div>
+        <div class="dash-scroll">
+          <div class="metrics-grid" id="dashMetrics"></div>
+          <div class="dash-row">
+            <div class="dash-card"><div class="dash-card-title">Subscriber growth <span class="dash-card-sub">30 days</span></div><div class="chart-wrap"><canvas id="subChart" aria-label="Subscriber growth chart"></canvas></div></div>
+            <div class="dash-card"><div class="dash-card-title">Revenue breakdown <span class="dash-card-sub">this month</span></div><div class="chart-wrap"><canvas id="revChart" aria-label="Revenue breakdown donut chart"></canvas></div></div>
+          </div>
+          <div class="dash-row">
+            <div class="dash-card"><div class="dash-card-title">Top stories <span class="dash-card-sub">by pageviews</span></div><div id="dashTopStories"></div></div>
+            <div class="dash-card"><div class="dash-card-title">Paywall conversion funnel</div><div id="dashFunnel"></div></div>
+          </div>
+          <div class="dash-row">
+            <div class="dash-card"><div class="dash-card-title">GPS sync status <span class="dash-card-sub">last 24h</span></div><div id="dashGPS"></div></div>
+            <div class="dash-card"><div class="dash-card-title">Print edition metrics <span class="dash-card-sub">issue Jun 6</span></div><div id="dashPrint"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="annotations">
+    <div class="ann-card"><div class="ann-label">Revenue streams</div><div class="ann-text">Donut chart tracks digital subs, print+digital, donations, display ads, and legal notice fees — the five revenue pillars of the TheDerrick model.</div></div>
+    <div class="ann-card"><div class="ann-label">GPS sync panel</div><div class="ann-text">Real-time view of GPS CRM sync health: subscriptions, donations, proofs, and entitlement updates synced in the last 24 hours.</div></div>
+    <div class="ann-card"><div class="ann-label">Print edition panel</div><div class="ann-text">Per-issue metrics: PDF downloads, legal notices published, print subscribers served, proofs approved — all linked to Title 45 Pa.C.S.A. compliance.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 5: ISSUE BUILDER ═══════════════ -->
+<div class="section" id="s-issuebuilder">
+  <div class="section-header">
+    <div class="section-num">Prototype 05</div>
+    <div class="section-title">Issue Builder</div>
+    <div class="section-desc">Browser-native print layout tool. Drag stories, ads, and legal notices from the right panel onto page slots. Navigate pages via thumbnails. Send proofs to advertisers or generate the print-ready PDF with one click.</div>
+  </div>
+  <div class="proto-frame">
+    <div class="proto-chrome">
+      <div class="chrome-dot cd-red"></div><div class="chrome-dot cd-yellow"></div><div class="chrome-dot cd-green"></div>
+      <div class="chrome-url">cms.thederrick.com/print/issues/jun-13-2026</div>
+    </div>
+    <div class="ib-shell">
+      <div class="proto-sidebar">
+        <button class="ed-sb-icon"><i class="ti ti-file-text"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-photo"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-layout"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon active"><i class="ti ti-printer"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-calendar-event"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon"><i class="ti ti-users"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-chart-bar"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon" style="margin-top:auto"><i class="ti ti-settings"></i></button>
+        <div class="ed-avatar" style="margin-bottom:4px">LM</div>
+      </div>
+      <div class="ib-main">
+        <div class="proto-topbar">
+          <span style="font-size:13px;font-weight:500;color:#111827">Issue · Jun 13, 2026</span>
+          <span style="font-size:12px;color:#6B7280;margin-left:4px">(Weekly)</span>
+          <button class="state-pill sp-copyedit" id="ibStatusBtn" onclick="cycleIBStatus()">In layout</button>
+          <div style="flex:1"></div>
+          <button class="tb-btn" onclick="ibExportIDML()"><i class="ti ti-file-export" style="font-size:13px"></i> Export IDML</button>
+          <button class="tb-btn" id="ibProofBtn" onclick="ibSendProofs()" style="background:#FAEEDA;color:#854F0B;border-color:#EF9F27"><i class="ti ti-send" style="font-size:13px"></i> Send proofs</button>
+          <button class="tb-btn primary" id="ibGenBtn" onclick="ibGeneratePDF()"><i class="ti ti-printer" style="font-size:13px"></i> Generate PDF</button>
+        </div>
+        <div class="ib-builder">
+          <div class="ib-pages" id="ibPageTabs"><div class="ib-thumb active" title="A1"><div class="ib-pt-num">A1</div><div class="ib-pt-blk" style="height:38%;width:100%"></div><div style="display:flex;gap:2px;height:18%"><div class="ib-pt-blk" style="flex:1"></div><div class="ib-pt-blk ib-pt-ad" style="flex:1"></div></div><div class="ib-pt-blk ib-pt-legal" style="height:12%;width:100%"></div></div><div class="ib-thumb" title="A2"><div class="ib-pt-num">A2</div><div class="ib-pt-blk" style="height:30%;width:100%"></div><div class="ib-pt-blk" style="height:20%;width:70%"></div><div class="ib-pt-blk ib-pt-ad" style="height:25%;width:100%"></div></div><div class="ib-thumb" title="A3"><div class="ib-pt-num">A3</div><div class="ib-pt-blk" style="height:30%;width:100%"></div><div class="ib-pt-blk" style="height:20%;width:70%"></div><div class="ib-pt-blk ib-pt-ad" style="height:25%;width:100%"></div></div><div class="ib-thumb" title="B1"><div class="ib-pt-num">B1</div><div class="ib-pt-blk" style="height:30%;width:100%"></div><div class="ib-pt-blk" style="height:20%;width:70%"></div><div class="ib-pt-blk ib-pt-ad" style="height:25%;width:100%"></div></div><div class="ib-thumb" title="B2"><div class="ib-pt-num">B2</div><div class="ib-pt-blk" style="height:30%;width:100%"></div><div class="ib-pt-blk" style="height:20%;width:70%"></div><div class="ib-pt-blk ib-pt-ad" style="height:25%;width:100%"></div></div><div class="ib-thumb" title="B3"><div class="ib-pt-num">B3</div><div class="ib-pt-blk" style="height:30%;width:100%"></div><div class="ib-pt-blk" style="height:20%;width:70%"></div><div class="ib-pt-blk ib-pt-ad" style="height:25%;width:100%"></div></div><div class="ib-thumb" title="B4"><div class="ib-pt-num">B4</div><div class="ib-pt-blk" style="height:30%;width:100%"></div><div class="ib-pt-blk" style="height:20%;width:70%"></div><div class="ib-pt-blk ib-pt-ad" style="height:25%;width:100%"></div></div><div class="ib-thumb" title="Back"><div class="ib-pt-num">Back</div><div class="ib-pt-blk" style="height:30%;width:100%"></div><div class="ib-pt-blk" style="height:20%;width:70%"></div><div class="ib-pt-blk ib-pt-ad" style="height:25%;width:100%"></div></div><button class="ib-add-page"><i class="ti ti-plus"></i><span>Page</span></button></div>
+          <div class="ib-canvas-wrap">
+            <div class="ib-page" id="ibPageCanvas" style="grid-template-rows:170px 80px auto;grid-template-columns:1fr 1fr"><div class="ib-placement filled" style="grid-column: 1 / -1;"><div class="ib-slot-lbl">Story</div><div class="ib-slot-hed">County approves $2.4M bridge repair contract</div><div class="ib-slot-by">L. Muller · News</div><button class="ib-slot-rm" onclick="clearIBSlot(&#39;pl1&#39;)">×</button></div><div class="ib-placement"><div class="ib-empty-lbl"><i class="ti ti-drag-drop" style="font-size:18px"></i><span>Second story</span></div></div><div class="ib-placement" style="grid-column: 1 / -1;"><div class="ib-empty-lbl"><i class="ti ti-drag-drop" style="font-size:18px"></i><span>Brief</span></div></div><div class="ib-placement ad-slot"><div class="ib-slot-lbl">Ad slot</div><div class="ib-slot-hed">Cranberry Auto — quarter page</div><div class="ib-slot-by">QP</div><button class="ib-slot-rm" onclick="clearIBSlot(&#39;pl4&#39;)">×</button></div></div>
+          </div>
+          <div class="ib-panel">
+            <div class="panel-sec">
+              <div class="panel-lbl">Issue progress</div>
+              <div class="ib-prog"><span style="color:#6B7280;font-size:12px">Pages placed</span><span style="font-weight:500;color:#111827" id="ibProgLbl">3 / 8</span></div>
+              <div class="ib-prog-bar"><div class="ib-prog-fill" style="width:37.5%;background:#059669" id="ibProgBar"></div></div>
+              <div class="ib-prog"><span style="color:#6B7280;font-size:12px">Ads approved</span><span style="font-weight:500;color:#059669">6 / 6</span></div>
+              <div class="ib-prog-bar"><div class="ib-prog-fill" style="width:100%;background:#059669"></div></div>
+              <div class="ib-prog"><span style="color:#6B7280;font-size:12px">Legal notices</span><span style="font-weight:500;color:#185FA5">4 placed</span></div>
+            </div>
+            <div class="panel-sec">
+              <div class="panel-lbl">Ready to place</div>
+              <div id="ibStoryQ"><div class="ib-story-item" draggable="true"><div class="ib-si-hed">County approves bridge contract</div><div class="ib-si-meta"><span>L. Muller · News</span></div></div><div class="ib-story-item" draggable="true"><div class="ib-si-hed">School board sets $18M budget</div><div class="ib-si-meta"><span>R. Haynes · News</span></div></div><div class="ib-story-item" draggable="true"><div class="ib-si-hed">Falcons in playoffs</div><div class="ib-si-meta"><span>D. Walsh · Sports</span></div></div><div class="ib-story-item" draggable="true"><div class="ib-si-hed">Farmers market opens</div><div class="ib-si-meta"><span>M. Reed · Community</span></div></div></div>
+            </div>
+            <div class="panel-sec">
+              <div class="panel-lbl">Ad slots</div>
+              <div id="ibAdQ"><div class="ib-ad-item" draggable="true"><div class="ib-si-hed" style="color:#412402">Cranberry Auto — quarter page</div><div class="ib-si-meta" style="color:#854F0B"><span>QP</span><span>Approved</span></div></div><div class="ib-ad-item" draggable="true"><div class="ib-si-hed" style="color:#412402">Franklin Savings — half page</div><div class="ib-si-meta" style="color:#854F0B"><span>HP</span><span>Approved</span></div></div></div>
+            </div>
+            <div class="panel-sec">
+              <div class="panel-lbl">Legal notices</div>
+              <div id="ibLegalQ"><div class="ib-legal-item" draggable="true"><div class="ib-si-hed" style="color:#0C447C">Fictitious name — Smith &amp; Sons</div><div class="ib-si-meta" style="color:#185FA5"><span>FN-2026-0441</span></div></div><div class="ib-legal-item" draggable="true"><div class="ib-si-hed" style="color:#0C447C">Sheriff sale — Route 8</div><div class="ib-si-meta" style="color:#185FA5"><span>SS-2026-0118</span></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="annotations">
+    <div class="ann-card"><div class="ann-label">Browser-native layout</div><div class="ann-text">Replaces SCS Layout-8000 desktop client entirely. Drag stories, ads, and legal notices directly onto page slots in the browser — no InDesign required until IDML export.</div></div>
+    <div class="ann-card"><div class="ann-label">Legal notice compliance</div><div class="ann-text">Legal notice slots are distinctly color-coded (blue). Placement triggers a GPS publication confirmation record, satisfying Title 45 Pa.C.S.A. proof of publication requirements.</div></div>
+    <div class="ann-card"><div class="ann-label">One-click proof + PDF</div><div class="ann-text">Send proofs dispatches signed-URL PDFs to all advertisers. Generate PDF triggers the Puppeteer render worker and advances the issue to Approved status.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SCRIPTS ═══════════════════════════ -->
+<script src="./The Derrick CMS — UI Prototypes-CSS_files/chart.umd.js.download"></script>
+<script>
+
+// ── Navigation ─────────────────────────────────────────
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('s-' + id).classList.add('active');
+  btn.classList.add('active');
+  if (id === 'analytics') setTimeout(initCharts, 80);
+}
+
+// ── PROTOTYPE 1: ARTICLE EDITOR ────────────────────────
+const edStates = ['draft','copyedit','layout','ready','published'];
+const edStateLabels = {draft:'Draft',copyedit:'Copy edit',layout:'Layout',ready:'Ready to print',published:'Published'};
+const edStateCls = {draft:'sp-draft',copyedit:'sp-copyedit',layout:'sp-layout',ready:'sp-ready',published:'sp-published'};
+let edStateIdx = 0;
+
+function cycleEditorState() {
+  edStateIdx = (edStateIdx + 1) % edStates.length;
+  const s = edStates[edStateIdx];
+  const btn = document.getElementById('stateBtn');
+  btn.className = 'state-pill ' + edStateCls[s];
+  document.getElementById('stateLbl').textContent = edStateLabels[s];
+  const pb = document.getElementById('edPublishBtn');
+  pb.textContent = s === 'ready' ? 'Send to print' : s === 'published' ? 'Update' : 'Save draft';
+  pb.style.background = s === 'published' ? '#059669' : '';
+}
+
+let edBlockCnt = 0;
+function addEditorBlock(type) {
+  const container = document.getElementById('edBlocks');
+  const div = document.createElement('div');
+  div.className = 'ed-block ' + type;
+  if (type === 'legal') {
+    div.innerHTML = '<div class="legal-label">Legal notice · Title 45 Pa.C.S.A.</div><textarea rows="3" placeholder="Enter legal notice text…" oninput="updateWC()"></textarea>';
+  } else if (type === 'subhed') {
+    div.innerHTML = '<input type="text" placeholder="Section heading…" oninput="updateWC()">';
+  } else {
+    const ta = document.createElement('textarea');
+    ta.rows = type === 'lead' ? 3 : 4;
+    ta.placeholder = type === 'lead' ? 'Opening paragraph…' : type === 'pullquote' ? 'A key quote…' : 'Body text…';
+    ta.style.fontSize = type === 'lead' ? '17px' : '16px';
+    ta.style.lineHeight = type === 'lead' ? '1.65' : '1.75';
+    ta.oninput = updateWC;
+    div.appendChild(ta);
+    setTimeout(() => { ta.style.height = 'auto'; ta.style.height = ta.scrollHeight + 'px'; }, 0);
+  }
+  container.appendChild(div);
+  document.getElementById('edBlockMenu').style.display = 'none';
+  document.getElementById('addPlusBtn').textContent = '+';
+  updateWC();
+  const ta = div.querySelector('textarea,input');
+  if (ta) ta.focus();
+}
+
+function toggleEditorMenu() {
+  const m = document.getElementById('edBlockMenu');
+  const btn = document.getElementById('addPlusBtn');
+  const open = m.style.display === 'flex';
+  m.style.display = open ? 'none' : 'flex';
+  btn.textContent = open ? '+' : '×';
+}
+
+function updateWC() {
+  const texts = [
+    document.getElementById('edTitle').value,
+    ...Array.from(document.querySelectorAll('#edBlocks textarea,#edBlocks input[type=text]')).map(e => e.value)
+  ].join(' ');
+  const words = texts.trim().split(/\s+/).filter(Boolean).length;
+  document.getElementById('edWC').textContent = words + ' words';
+}
+
+function toggleEditorPreview() {
+  alert('Preview mode: renders the article in subscriber view.\n\nIn the live CMS, this opens a full-screen overlay showing the article exactly as a subscriber would see it — including paywall state, blocks, author card, and mission strip.');
+}
+
+addEditorBlock('lead');
+addEditorBlock('para');
+updateWC();
+
+// ── PROTOTYPE 2: HOMEPAGE COMPOSER ─────────────────────
+const hpStories = [
+  {id:'h1',hed:'Commissioners approve $2.4M bridge contract',section:'news',author:'L. Muller',time:'2h ago'},
+  {id:'h2',hed:'Oil City schools present $18M budget proposal',section:'news',author:'R. Haynes',time:'3h ago'},
+  {id:'h3',hed:'Cranberry Township fire dept. recruiting volunteers',section:'news',author:'L. Muller',time:'5h ago'},
+  {id:'h4',hed:'Falcons secure playoff berth with Friday win',section:'sports',author:'D. Walsh',time:'1h ago'},
+  {id:'h5',hed:'Regional swim meet results — full standings',section:'sports',author:'D. Walsh',time:'4h ago'},
+  {id:'h6',hed:'Franklin Farmers Market opens for season',section:'community',author:'M. Reed',time:'6h ago'},
+  {id:'h7',hed:'Arts council announces summer grant recipients',section:'community',author:'M. Reed',time:'8h ago'},
+];
+const hpZoneData = [
+  {id:'hz1',name:'Top story',slots:['h1'],auto:false},
+  {id:'hz2',name:'Top news',slots:['h2','h3','h4'],auto:false},
+  {id:'hz3',name:'Latest news',slots:[],auto:true,autoSection:'news'},
+];
+let hpPlaced = new Set(['h1','h2','h3','h4']);
+let hpBreakVisible = false;
+let hpDragSrc = null;
+
+function renderHPZones() {
+  const c = document.getElementById('hpZones');
+  c.innerHTML = '';
+  hpZoneData.forEach(z => {
+    const div = document.createElement('div');
+    div.className = 'hp-zone';
+    div.innerHTML = `<div class="hp-zone-hdr"><i class="ti ti-grip-vertical" style="font-size:14px;color:#6B7280"></i><span class="hp-zone-name">${z.name}</span>${z.auto ? `<span class="hp-auto-badge">Auto · ${z.autoSection}</span>` : ''}<button class="hp-slot-btn" onclick="removeHPZone('${z.id}')"><i class="ti ti-x"></i></button></div><div class="hp-zone-body" id="hzb-${z.id}"></div>`;
+    c.appendChild(div);
+    renderHPZoneBody(z);
+  });
+}
+
+function renderHPZoneBody(z) {
+  const body = document.getElementById('hzb-' + z.id);
+  if (!body) return;
+  body.innerHTML = '';
+  if (z.auto) {
+    body.innerHTML = `<div style="font-size:12px;color:#6B7280;padding:10px 0;text-align:center"><i class="ti ti-refresh" style="font-size:14px;display:block;margin-bottom:4px"></i>Automatically fills with latest ${z.autoSection} articles</div>`;
+    return;
+  }
+  z.slots.forEach((sid, idx) => {
+    const s = hpStories.find(x => x.id === sid);
+    if (!s) return;
+    const row = document.createElement('div');
+    row.className = 'hp-slot';
+    row.draggable = true;
+    row.innerHTML = `<div class="hp-thumb"><i class="ti ti-news"></i></div><div class="hp-slot-info"><div class="hp-slot-hed">${s.hed}</div><div class="hp-slot-meta"><span>${s.section}</span><span>${s.author}</span><span>${s.time}</span></div></div><div class="hp-slot-actions"><button class="hp-slot-btn" onclick="removeHPStory('${z.id}',${idx})"><i class="ti ti-x"></i></button></div>`;
+    row.addEventListener('dragstart', e => { hpDragSrc = {sid, from:'zone', zid:z.id, idx}; row.style.opacity='.4'; e.dataTransfer.effectAllowed='move'; });
+    row.addEventListener('dragend', () => row.style.opacity='');
+    row.addEventListener('dragover', e => { e.preventDefault(); row.style.background='#E6F1FB'; });
+    row.addEventListener('dragleave', () => row.style.background='');
+    row.addEventListener('drop', e => { e.preventDefault(); row.style.background=''; handleHPDrop(z.id, idx); });
+    body.appendChild(row);
+  });
+  const empty = document.createElement('div');
+  empty.className = 'hp-empty';
+  empty.innerHTML = '<i class="ti ti-plus"></i> Drag a story here';
+  empty.addEventListener('dragover', e => { e.preventDefault(); empty.style.background='#E6F1FB'; });
+  empty.addEventListener('dragleave', () => empty.style.background='');
+  empty.addEventListener('drop', e => { e.preventDefault(); empty.style.background=''; handleHPDrop(z.id, z.slots.length); });
+  body.appendChild(empty);
+}
+
+function handleHPDrop(toZid, toIdx) {
+  if (!hpDragSrc) return;
+  const {sid, from, zid:fromZid, idx:fromIdx} = hpDragSrc;
+  if (from === 'zone') {
+    const fz = hpZoneData.find(z => z.id === fromZid);
+    if (fz) fz.slots.splice(fromIdx, 1);
+  }
+  const tz = hpZoneData.find(z => z.id === toZid);
+  if (tz) toIdx >= tz.slots.length ? tz.slots.push(sid) : tz.slots.splice(toIdx, 0, sid);
+  hpPlaced = new Set(hpZoneData.flatMap(z => z.slots));
+  hpDragSrc = null;
+  renderHPZones(); renderHPQueue();
+}
+
+function removeHPStory(zid, idx) {
+  const z = hpZoneData.find(z => z.id === zid);
+  if (z) { z.slots.splice(idx, 1); hpPlaced = new Set(hpZoneData.flatMap(z => z.slots)); renderHPZones(); renderHPQueue(); }
+}
+
+function removeHPZone(zid) {
+  const z = hpZoneData.find(z => z.id === zid);
+  if (z) z.slots.forEach(s => hpPlaced.delete(s));
+  const i = hpZoneData.findIndex(z => z.id === zid);
+  if (i > -1) hpZoneData.splice(i, 1);
+  renderHPZones(); renderHPQueue();
+}
+
+function addHPZone() {
+  hpZoneData.push({id:'hz'+Date.now(), name:'New zone', slots:[], auto:false});
+  renderHPZones();
+}
+
+function renderHPQueue(filter='all') {
+  const q = document.getElementById('hpQueue');
+  q.innerHTML = '';
+  const filtered = hpStories.filter(s => (filter==='all'||s.section===filter) && !hpPlaced.has(s.id));
+  if (!filtered.length) { q.innerHTML='<div style="font-size:12px;color:#6B7280;text-align:center;padding:16px 0">All published stories placed</div>'; return; }
+  filtered.forEach(s => {
+    const d = document.createElement('div');
+    d.className = 'hp-queued'; d.draggable = true;
+    d.innerHTML = `<div class="hp-q-hed">${s.hed}</div><div class="hp-q-meta"><span>${s.section}</span><span>${s.author}</span><span>${s.time}</span></div>`;
+    d.addEventListener('dragstart', e => { hpDragSrc = {sid:s.id, from:'queue'}; d.style.opacity='.4'; e.dataTransfer.effectAllowed='move'; });
+    d.addEventListener('dragend', () => d.style.opacity='');
+    q.appendChild(d);
+  });
+}
+
+function filterHPQueue(btn, val) {
+  document.querySelectorAll('#hpFilterRow button').forEach(b => { b.style.background='transparent'; b.style.color='#6B7280'; });
+  btn.style.background = '#111827'; btn.style.color = '#fff';
+  renderHPQueue(val);
+}
+
+function toggleHPBreaking() {
+  hpBreakVisible = !hpBreakVisible;
+  document.getElementById('hpBreakBar').style.display = hpBreakVisible ? 'block' : 'none';
+  const btn = document.getElementById('hpBreakBtn');
+  btn.style.background = hpBreakVisible ? '#FCEBEB' : '';
+  btn.style.color = hpBreakVisible ? '#A32D2D' : '';
+  if (hpBreakVisible) document.getElementById('hpBreakText').focus();
+}
+function clearHPBreaking() { hpBreakVisible=false; document.getElementById('hpBreakBar').style.display='none'; const b=document.getElementById('hpBreakBtn'); b.style.background=''; b.style.color=''; }
+
+function publishHP() {
+  const btn = document.querySelector('#s-homepage .tb-btn.primary');
+  btn.innerHTML = '<i class="ti ti-circle-check" style="font-size:13px"></i> Published!';
+  btn.style.background = '#059669';
+  setTimeout(() => { btn.innerHTML='<i class="ti ti-world-upload" style="font-size:13px"></i> Publish homepage'; btn.style.background=''; }, 2000);
+}
+
+document.addEventListener('dragover', e => e.preventDefault());
+renderHPZones(); renderHPQueue();
+
+// ── PROTOTYPE 3: ARTICLE PAGE ──────────────────────────
+function selPlan(el) { document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('sel')); el.classList.add('sel'); }
+
+function setArtMode(mode) {
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  const modeMap = {anonymous:0,registered:1,subscriber:2,upgrade:3};
+  document.querySelectorAll('.mode-btn')[modeMap[mode]||0].classList.add('active');
+  const mb=document.getElementById('artMeterBar'), gated=document.getElementById('artGated'), full=document.getElementById('artFull');
+  const iDonate=document.getElementById('artInlineDonate'), sticky=document.getElementById('artSticky');
+  const sMsg=document.getElementById('artStickyMsg'), mc=document.getElementById('artMeterCount');
+  const si=document.getElementById('artSignIn'), ms=document.getElementById('artMission');
+  const dots = document.getElementById('artMeterBar')?.querySelectorAll('.meter-dot');
+  full.style.display='none'; gated.style.display='block'; mb.style.display='flex'; iDonate.style.display='none';
+  if (mode==='anonymous') {
+    mc.textContent='2 of 5 free articles used'; si.style.display=''; document.querySelector('.art-hdr-btn.cta').textContent='Subscribe';
+    document.getElementById('artMeterText').textContent='3 free articles remaining this month'; sMsg.textContent='3 free articles left this month.'; sticky.style.display='flex'; ms.style.display='flex';
+    dots && dots.forEach((d,i)=>d.classList.toggle('used',i<2));
+  } else if (mode==='registered') {
+    mc.textContent='3 of 5 free articles used'; si.style.display='none'; iDonate.style.display='flex';
+    document.getElementById('artMeterText').textContent='2 free articles remaining this month'; sMsg.textContent='2 free articles left this month.'; sticky.style.display='flex'; ms.style.display='flex';
+    dots && dots.forEach((d,i)=>d.classList.toggle('used',i<3));
+  } else if (mode==='subscriber') {
+    mc.textContent='Subscriber'; si.style.display='none'; document.querySelector('.art-hdr-btn.cta').textContent='Account';
+    mb.style.display='none'; gated.style.display='none'; full.style.display='block'; sticky.style.display='none'; ms.style.display='none';
+  } else if (mode==='upgrade') {
+    mc.textContent='Meter limit reached';
+    document.getElementById('artMeterText').textContent='You\'ve reached your free limit'; document.getElementById('artMeterText').style.color='#F59E0B';
+    dots && dots.forEach(d=>d.classList.add('used')); sticky.style.display='none'; ms.style.display='flex';
+    document.getElementById('artFade').style.display='none';
+  }
+}
+
+// ── PROTOTYPE 4: ANALYTICS ─────────────────────────────
+const dashData = {
+  '30d': {
+    metrics:[{l:'Digital subscribers',i:'ti-users',v:'1,284',d:'+38',up:true},{l:'MRR',i:'ti-currency-dollar',v:'$14,210',d:'+$620',up:true},{l:'Pageviews',i:'ti-eye',v:'84,320',d:'+12%',up:true},{l:'Churn rate',i:'ti-trending-down',v:'2.1%',d:'-0.3%',up:true}],
+    subGrowth:[1190,1198,1205,1214,1222,1230,1240,1248,1255,1262,1266,1269,1271,1274,1276,1278,1280,1281,1282,1283,1284,1284,1284,1284,1284,1284,1284,1284,1284,1284],
+  },
+  '7d': {
+    metrics:[{l:'Digital subscribers',i:'ti-users',v:'1,284',d:'+9',up:true},{l:'MRR',i:'ti-currency-dollar',v:'$14,210',d:'+$140',up:true},{l:'Pageviews',i:'ti-eye',v:'22,100',d:'+4%',up:true},{l:'Churn rate',i:'ti-trending-down',v:'2.1%',d:'—',up:true}],
+    subGrowth:[1276,1278,1280,1281,1282,1283,1284],
+  },
+};
+let currentRange = '30d', subChartInst = null, revChartInst = null;
+
+function renderDashMetrics(d) {
+  document.getElementById('dashMetrics').innerHTML = d.metrics.map(m => `<div class="metric-card"><div class="metric-lbl"><i class="ti ${m.i}" style="font-size:13px"></i>${m.l}</div><div class="metric-val">${m.v}</div><div class="metric-delta ${m.up?'delta-up':'delta-dn'}">${m.d} vs prev period</div></div>`).join('');
+}
+
+function renderSubChart(d) {
+  if (subChartInst) subChartInst.destroy();
+  const ctx = document.getElementById('subChart')?.getContext('2d');
+  if (!ctx) return;
+  const labels = d.subGrowth.map((_,i)=>i===0?'Day 1':i===d.subGrowth.length-1?'Today':'');
+  subChartInst = new Chart(ctx, {type:'line',data:{labels,datasets:[{data:d.subGrowth,borderColor:'#2563A8',borderWidth:2,pointRadius:0,fill:true,backgroundColor:'rgba(37,99,168,0.07)',tension:.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{display:true,grid:{color:'rgba(0,0,0,0.04)'},ticks:{font:{size:10},color:'#6B7280'}}}}});
+}
+
+function renderRevChart() {
+  if (revChartInst) revChartInst.destroy();
+  const ctx = document.getElementById('revChart')?.getContext('2d');
+  if (!ctx) return;
+  revChartInst = new Chart(ctx, {type:'doughnut',data:{labels:['Digital subs','Print+Digital','Donations','Ads','Legal notices'],datasets:[{data:[8200,4100,980,620,310],backgroundColor:['#2563A8','#059669','#F59E0B','#7F77DD','#D85A30'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'right',labels:{font:{size:11},padding:8,boxWidth:10}}}}});
+}
+
+function renderDashTopStories() {
+  const stories = [{t:'Commissioners approve $2.4M bridge contract',v:4820},{t:'Oil City school budget hearing',v:3210},{t:'Falcons secure playoff berth Friday',v:2980},{t:'Cranberry Twp. fire dept. recruiting',v:1840},{t:'Farmers market opens for season',v:1320}];
+  document.getElementById('dashTopStories').innerHTML = stories.map((s,i)=>`<div class="tr-row"><span class="tr-rank">${i+1}</span><span class="tr-title">${s.t}</span><div class="tr-bar-wrap"><div class="tr-bar" style="width:${Math.round(s.v/4820*100)}%"></div></div><span class="tr-val">${s.v.toLocaleString()}</span></div>`).join('');
+}
+
+function renderDashFunnel() {
+  const steps = [{l:'Article pageviews',v:'84,320',pct:100,c:'#2563A8'},{l:'Meter prompt shown',v:'18,640',pct:22,c:'#7F77DD'},{l:'Paywall reached',v:'4,210',pct:5,c:'#F59E0B'},{l:'Checkout started',v:'940',pct:1.1,c:'#D85A30'},{l:'Subscribed',v:'142',pct:0.2,c:'#059669'}];
+  document.getElementById('dashFunnel').innerHTML = steps.map(s=>`<div class="funnel-step"><span class="funnel-lbl">${s.l}</span><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:${Math.max(s.pct,2)}%;background:${s.c}"></div></div><span class="funnel-val">${s.v}</span></div>`).join('');
+}
+
+function renderDashGPS() {
+  const events = [{t:'Subscription synced',n:38,c:'#059669'},{t:'Donation recorded',n:12,c:'#2563A8'},{t:'Proof archived',n:4,c:'#7F77DD'},{t:'Entitlement updated',n:9,c:'#F59E0B'},{t:'Sync errors',n:0,c:'#DC2626'}];
+  document.getElementById('dashGPS').innerHTML = events.map(e=>`<div class="gps-row"><div class="gps-dot" style="background:${e.c}"></div><span style="flex:1;color:#6B7280">${e.t}</span><span style="font-weight:600;color:#111827">${e.n}</span></div>`).join('');
+}
+
+function renderDashPrint() {
+  const items = [{l:'PDF downloads (e-edition)',v:'312'},{l:'Legal notices published',v:'7'},{l:'Print subscribers served',v:'418'},{l:'Advertiser proofs approved',v:'6 / 6'},{l:'Proof archive status',v:'Complete'}];
+  document.getElementById('dashPrint').innerHTML = items.map(i=>`<div class="gps-row"><span style="flex:1;color:#6B7280;font-size:12px">${i.l}</span><span style="font-weight:600;color:#111827;font-size:12px">${i.v}</span></div>`).join('');
+}
+
+function setDashRange(btn, range) {
+  document.querySelectorAll('.range-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); currentRange = range;
+  const d = dashData[range] || dashData['30d'];
+  renderDashMetrics(d); renderSubChart(d);
+}
+
+function initCharts() {
+  const d = dashData[currentRange] || dashData['30d'];
+  renderDashMetrics(d); renderSubChart(d); renderRevChart();
+  renderDashTopStories(); renderDashFunnel(); renderDashGPS(); renderDashPrint();
+}
+
+// ── PROTOTYPE 5: ISSUE BUILDER ─────────────────────────
+const ibPages = [{id:'p1',lbl:'A1'},{id:'p2',lbl:'A2'},{id:'p3',lbl:'A3'},{id:'p4',lbl:'B1'},{id:'p5',lbl:'B2'},{id:'p6',lbl:'B3'},{id:'p7',lbl:'B4'},{id:'p8',lbl:'Back'}];
+const ibQueue = {
+  stories:[{id:'qs1',hed:'County approves bridge contract',by:'L. Muller · News'},{id:'qs2',hed:'School board sets $18M budget',by:'R. Haynes · News'},{id:'qs3',hed:'Falcons in playoffs',by:'D. Walsh · Sports'},{id:'qs4',hed:'Farmers market opens',by:'M. Reed · Community'}],
+  ads:[{id:'qa1',hed:'Cranberry Auto — quarter page',sz:'QP'},{id:'qa2',hed:'Franklin Savings — half page',sz:'HP'}],
+  legal:[{id:'ql1',hed:'Fictitious name — Smith & Sons',ref:'FN-2026-0441'},{id:'ql2',hed:'Sheriff sale — Route 8',ref:'SS-2026-0118'}]
+};
+const ibPlacements = {
+  p1:[
+    {id:'pl1',type:'hero',lbl:'Lead story',content:{id:'qs1',hed:'County approves $2.4M bridge repair contract',by:'L. Muller · News'}},
+    {id:'pl2',type:'sub',lbl:'Second story',content:null},
+    {id:'pl3',type:'brief',lbl:'Brief',content:null},
+    {id:'pl4',type:'ad',lbl:'Ad slot A1-bottom',content:{id:'qa1',hed:'Cranberry Auto — quarter page',type:'ad',sz:'QP'}},
+  ]
+};
+let ibActivePage = 'p1', ibDragSrc = null;
+let ibStatusIdx = 0;
+const ibStatuses = [{cls:'sp-copyedit',lbl:'In layout'},{cls:'sp-layout',lbl:'Proofs sent'},{cls:'sp-ready',lbl:'Approved'}];
+
+function cycleIBStatus() {
+  ibStatusIdx = (ibStatusIdx + 1) % ibStatuses.length;
+  const s = ibStatuses[ibStatusIdx];
+  const btn = document.getElementById('ibStatusBtn');
+  btn.className = 'state-pill ' + s.cls;
+  btn.textContent = s.lbl;
+}
+
+function renderIBPageTabs() {
+  const tabs = document.getElementById('ibPageTabs');
+  tabs.innerHTML = '';
+  ibPages.forEach(pg => {
+    const div = document.createElement('div');
+    div.className = 'ib-thumb' + (pg.id===ibActivePage?' active':'');
+    div.title = pg.lbl;
+    div.onclick = () => { ibActivePage=pg.id; renderIBPageTabs(); renderIBCanvas(); };
+    const isP1 = pg.id==='p1';
+    div.innerHTML = `<div class="ib-pt-num">${pg.lbl}</div>${isP1?`<div class="ib-pt-blk" style="height:38%;width:100%"></div><div style="display:flex;gap:2px;height:18%"><div class="ib-pt-blk" style="flex:1"></div><div class="ib-pt-blk ib-pt-ad" style="flex:1"></div></div><div class="ib-pt-blk ib-pt-legal" style="height:12%;width:100%"></div>`:`<div class="ib-pt-blk" style="height:30%;width:100%"></div><div class="ib-pt-blk" style="height:20%;width:70%"></div><div class="ib-pt-blk ib-pt-ad" style="height:25%;width:100%"></div>`}`;
+    tabs.appendChild(div);
+  });
+  const addBtn = document.createElement('button');
+  addBtn.className = 'ib-add-page'; addBtn.innerHTML = '<i class="ti ti-plus"></i><span>Page</span>';
+  tabs.appendChild(addBtn);
+}
+
+function renderIBCanvas() {
+  const canvas = document.getElementById('ibPageCanvas');
+  const pls = ibPlacements[ibActivePage] || [{id:'pla',type:'hero',lbl:'Main story',content:null},{id:'plb',type:'sub',lbl:'Second story',content:null},{id:'plc',type:'ad',lbl:'Ad slot',content:null}];
+  canvas.innerHTML = '';
+  pls.forEach((pl, i) => {
+    const isAd = pl.type==='ad'||pl.content?.type==='ad';
+    const isLegal = pl.type==='legal';
+    const div = document.createElement('div');
+    div.className = 'ib-placement' + (isAd?' ad-slot':isLegal?' legal-slot':pl.content?' filled':'');
+    if (i===0 || pl.type==='brief') div.style.gridColumn = '1/-1';
+    div.addEventListener('dragover', e => { e.preventDefault(); div.style.outline='2px solid #2563A8'; });
+    div.addEventListener('dragleave', () => div.style.outline='');
+    div.addEventListener('drop', e => {
+      e.preventDefault(); div.style.outline='';
+      if (!ibDragSrc) return;
+      const prev = pls.find(p=>p.content?.id===ibDragSrc.id);
+      if (prev) prev.content=null;
+      pl.content = {...ibDragSrc};
+      removeFromIBQueue(ibDragSrc.id);
+      ibDragSrc=null; renderIBCanvas(); renderIBQueues();
+    });
+    if (pl.content) {
+      const isLN = pl.content.ref;
+      div.innerHTML = `<div class="ib-slot-lbl">${isAd?'Ad slot':isLN?'Legal notice':'Story'}</div><div class="ib-slot-hed">${pl.content.hed}</div><div class="ib-slot-by">${pl.content.by||pl.content.ref||pl.content.sz||''}</div><button class="ib-slot-rm" onclick="clearIBSlot('${pl.id}')">×</button>`;
+    } else {
+      div.innerHTML = `<div class="ib-empty-lbl"><i class="ti ${isAd?'ti-ad-2':isLegal?'ti-gavel':'ti-drag-drop'}" style="font-size:18px"></i><span>${pl.lbl}</span></div>`;
+    }
+    canvas.appendChild(div);
+  });
+}
+
+function clearIBSlot(plid) {
+  const pls = ibPlacements[ibActivePage]||[];
+  const pl = pls.find(p=>p.id===plid);
+  if (pl&&pl.content) {
+    const c=pl.content;
+    if(c.type==='ad') ibQueue.ads.unshift({id:c.id,hed:c.hed,sz:c.sz});
+    else if(c.ref) ibQueue.legal.unshift({id:c.id,hed:c.hed,ref:c.ref});
+    else ibQueue.stories.unshift({id:c.id,hed:c.hed,by:c.by});
+    pl.content=null;
+  }
+  renderIBCanvas(); renderIBQueues();
+}
+
+function removeFromIBQueue(id) {
+  ibQueue.stories = ibQueue.stories.filter(s=>s.id!==id);
+  ibQueue.ads = ibQueue.ads.filter(a=>a.id!==id);
+  ibQueue.legal = ibQueue.legal.filter(l=>l.id!==id);
+}
+
+function makeDraggableIB(div, item) {
+  div.draggable=true;
+  div.addEventListener('dragstart', e => { ibDragSrc=item; div.style.opacity='.4'; e.dataTransfer.effectAllowed='move'; });
+  div.addEventListener('dragend', () => div.style.opacity='');
+}
+
+function renderIBQueues() {
+  const sq=document.getElementById('ibStoryQ'); sq.innerHTML='';
+  ibQueue.stories.forEach(s=>{ const d=document.createElement('div'); d.className='ib-story-item'; d.innerHTML=`<div class="ib-si-hed">${s.hed}</div><div class="ib-si-meta"><span>${s.by}</span></div>`; makeDraggableIB(d,{...s,type:'story'}); sq.appendChild(d); });
+  if(!ibQueue.stories.length) sq.innerHTML='<div style="font-size:11px;color:#6B7280;text-align:center;padding:8px 0">All stories placed</div>';
+  const aq=document.getElementById('ibAdQ'); aq.innerHTML='';
+  ibQueue.ads.forEach(a=>{ const d=document.createElement('div'); d.className='ib-ad-item'; d.innerHTML=`<div class="ib-si-hed" style="color:#412402">${a.hed}</div><div class="ib-si-meta" style="color:#854F0B"><span>${a.sz}</span><span>Approved</span></div>`; makeDraggableIB(d,{...a,type:'ad'}); aq.appendChild(d); });
+  if(!ibQueue.ads.length) aq.innerHTML='<div style="font-size:11px;color:#6B7280;text-align:center;padding:8px 0">All ads placed</div>';
+  const lq=document.getElementById('ibLegalQ'); lq.innerHTML='';
+  ibQueue.legal.forEach(l=>{ const d=document.createElement('div'); d.className='ib-legal-item'; d.innerHTML=`<div class="ib-si-hed" style="color:#0C447C">${l.hed}</div><div class="ib-si-meta" style="color:#185FA5"><span>${l.ref}</span></div>`; makeDraggableIB(d,{...l,type:'legal'}); lq.appendChild(d); });
+  if(!ibQueue.legal.length) lq.innerHTML='<div style="font-size:11px;color:#6B7280;text-align:center;padding:8px 0">All notices placed</div>';
+}
+
+function ibSendProofs() {
+  const btn=document.getElementById('ibProofBtn');
+  btn.innerHTML='<i class="ti ti-circle-check" style="font-size:13px"></i> Proofs sent!';
+  btn.style.background='#EAF3DE'; btn.style.color='#27500A'; btn.style.borderColor='#97C459';
+  setTimeout(()=>{ btn.innerHTML='<i class="ti ti-send" style="font-size:13px"></i> Send proofs'; btn.style.background='#FAEEDA'; btn.style.color='#854F0B'; btn.style.borderColor='#EF9F27'; },2000);
+  if(ibStatusIdx===0) cycleIBStatus();
+}
+
+function ibGeneratePDF() {
+  const btn=document.getElementById('ibGenBtn');
+  btn.innerHTML='<i class="ti ti-loader" style="font-size:13px"></i> Rendering…';
+  setTimeout(()=>{ btn.innerHTML='<i class="ti ti-circle-check" style="font-size:13px"></i> PDF ready'; btn.style.background='#059669'; ibStatusIdx=2; const s=ibStatuses[2]; const sb=document.getElementById('ibStatusBtn'); sb.className='state-pill '+s.cls; sb.textContent=s.lbl; setTimeout(()=>{ btn.innerHTML='<i class="ti ti-printer" style="font-size:13px"></i> Generate PDF'; btn.style.background=''; },2500); },1800);
+}
+
+function ibExportIDML() {
+  const btn=document.querySelector('#s-issuebuilder .tb-btn:not(.primary):not([id])');
+  if(!btn) return;
+  const orig=btn.innerHTML; btn.innerHTML='<i class="ti ti-loader" style="font-size:13px"></i> Exporting…';
+  setTimeout(()=>{ btn.innerHTML='<i class="ti ti-circle-check" style="font-size:13px"></i> IDML ready'; setTimeout(()=>{ btn.innerHTML=orig; },1500); },1200);
+}
+
+renderIBPageTabs(); renderIBCanvas(); renderIBQueues();
+
+</script>
+
+
+</body></html>
