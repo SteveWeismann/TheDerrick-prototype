@@ -526,7 +526,7 @@
 <div class="cover">
   <div class="cover-eyebrow">TheDerrick.com — Headless CMS</div>
   <div class="cover-title">UI <span>Prototype</span> Showcase</div>
-  <div class="cover-sub">Twelve interactive prototypes covering every staff-facing and reader-facing surface of the TheDerrick CMS platform. Design language: Substack editorial warmth applied to a full newsroom toolset.</div>
+  <div class="cover-sub">Fourteen interactive prototypes covering every staff-facing and reader-facing surface of the TheDerrick CMS platform. Design language: Substack editorial warmth applied to a full newsroom toolset.</div>
   <div class="cover-pills">
     <span class="cover-pill">01 Article Editor</span>
     <span class="cover-pill">02 Homepage Composer</span>
@@ -540,6 +540,8 @@
     <span class="cover-pill">10 Proof Viewer</span>
     <span class="cover-pill">11 PDF Preview</span>
     <span class="cover-pill">12 Admin Settings</span>
+    <span class="cover-pill">13 Roundup Analytics</span>
+    <span class="cover-pill">14 Roundup Builder</span>
   </div>
 </div>
 </div>
@@ -558,6 +560,8 @@
   <button class="nav-tab" onclick="showSection('proofviewer',this)"><i class="ti ti-checklist" aria-hidden="true"></i>Proof Viewer</button>
   <button class="nav-tab" onclick="showSection('pdfpreview',this)"><i class="ti ti-file-type-pdf" aria-hidden="true"></i>PDF Preview</button>
   <button class="nav-tab" onclick="showSection('adminsettings',this)"><i class="ti ti-settings" aria-hidden="true"></i>Admin</button>
+  <button class="nav-tab" onclick="showSection('printsubs',this)"><i class="ti ti-news" aria-hidden="true"></i>Roundup Analytics</button>
+  <button class="nav-tab" onclick="showSection('roundupbuilder',this)"><i class="ti ti-layout-columns" aria-hidden="true"></i>Roundup Builder</button>
 </nav>
 
 <!-- ═══════════════ SECTION 1: ARTICLE EDITOR ═══════════════ -->
@@ -602,7 +606,7 @@
           <div class="ed-byline">
             <div class="ed-avatar">LM</div>
             <span class="ed-byline-name">Luka Muller</span>
-            <span class="ed-byline-date">Jun 10, 2026 · autosaved 3m ago</span>
+            <span class="ed-byline-date">Sep 10, 2026 · autosaved 3m ago</span>
           </div>
           <div class="ed-blocks" id="edBlocks"></div>
           <div class="add-row" style="margin-top:16px">
@@ -621,9 +625,9 @@
       <div class="ed-panel">
         <div class="panel-sec">
           <div class="panel-lbl">Metadata</div>
-          <div class="panel-field"><label>Slug</label><input type="text" value="venango-bridge-repair"></div>
+          <div class="panel-field"><label>Slug</label><input type="text" value="venango-county-fair-attendance-record-2026"></div>
           <div class="panel-field"><label>Section</label><select><option>Local News</option><option>Government</option><option>Sports</option><option>Community</option><option>Legal Notices</option></select></div>
-          <div class="panel-field"><label>Tags</label><input type="text" value="county, infrastructure, budget"></div>
+          <div class="panel-field"><label>Tags</label><input type="text" value="county fair, Venango, attendance, 2026"></div>
         </div>
         <div class="panel-sec">
           <div class="panel-lbl">Print settings</div>
@@ -739,7 +743,7 @@
   <div class="proto-frame">
     <div class="proto-chrome">
       <div class="chrome-dot cd-red"></div><div class="chrome-dot cd-yellow"></div><div class="chrome-dot cd-green"></div>
-      <div class="chrome-url">thederrick.com/local-news/venango-bridge-repair-contract</div>
+      <div class="chrome-url">thederrick.com/local-news/venango-county-fair-attendance-record</div>
     </div>
     <div class="art-frame">
       <div class="art-header">
@@ -769,7 +773,7 @@
           <div class="art-dek">The county's oldest steel truss bridge will undergo structural reinforcement this fall, with completion expected before the first freeze.</div>
           <div class="art-byline">
             <div class="art-av">LM</div>
-            <div><div class="art-byname">Luka Muller</div><div class="art-bydate">June 10, 2026 · 4 min read</div></div>
+            <div><div class="art-byname">Luka Muller</div><div class="art-bydate">Sep 10, 2026 · 4 min read</div></div>
             <div class="art-share"><button><i class="ti ti-share-2"></i></button><button><i class="ti ti-bookmark"></i></button></div>
           </div>
           <div id="artMeterBar" class="meter-bar">
@@ -855,6 +859,11 @@
       <div class="dash-main">
         <div class="proto-topbar">
           <span class="proto-topbar-title" style="font-weight:500;color:#111827">Analytics &amp; revenue</span>
+          <div style="display:flex;background:var(--gray-100);border-radius:8px;padding:2px;gap:0;margin:0 4px">
+            <button class="dash-view-btn active" id="dv-combined" onclick="setDashView('combined',this)" style="font-size:12px;padding:4px 10px;border-radius:6px;border:none;cursor:pointer;background:var(--white);color:var(--gray-900);font-weight:500;box-shadow:0 1px 3px rgba(0,0,0,.1)">Combined</button>
+            <button class="dash-view-btn" id="dv-online" onclick="setDashView('online',this)" style="font-size:12px;padding:4px 10px;border-radius:6px;border:none;cursor:pointer;background:transparent;color:var(--gray-500)"><i class="ti ti-device-laptop" style="font-size:11px"></i> Online</button>
+            <button class="dash-view-btn" id="dv-print" onclick="setDashView('print',this)" style="font-size:12px;padding:4px 10px;border-radius:6px;border:none;cursor:pointer;background:transparent;color:var(--gray-500)"><i class="ti ti-printer" style="font-size:11px"></i> Print</button>
+          </div>
           <button class="range-btn" onclick="setDashRange(this,'7d')">7d</button>
           <button class="range-btn active" onclick="setDashRange(this,'30d')">30d</button>
           <button class="range-btn" onclick="setDashRange(this,'90d')">90d</button>
@@ -862,6 +871,26 @@
           <button class="tb-btn" style="margin-left:4px"><i class="ti ti-download" style="font-size:13px"></i> Export</button>
         </div>
         <div class="dash-scroll">
+          <div id="dashEditionBanner" style="display:flex;align-items:stretch;gap:0;border:0.5px solid var(--gray-200);border-radius:10px;overflow:hidden;margin-bottom:10px">
+            <div style="flex:1;padding:10px 16px;border-right:0.5px solid var(--gray-200)">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><i class="ti ti-device-laptop" style="color:var(--blue);font-size:14px"></i><span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--blue)">Online edition</span></div>
+              <div style="display:flex;gap:24px">
+                <div><div style="font-size:18px;font-weight:600;color:var(--gray-900)">1,284</div><div style="font-size:11px;color:var(--gray-500)">Digital subscribers</div></div>
+                <div><div style="font-size:18px;font-weight:600;color:var(--gray-900)">$14,210</div><div style="font-size:11px;color:var(--gray-500)">Digital MRR</div></div>
+                <div><div style="font-size:18px;font-weight:600;color:var(--gray-900)">84,320</div><div style="font-size:11px;color:var(--gray-500)">Pageviews (30d)</div></div>
+                <div><div style="font-size:18px;font-weight:600;color:var(--gray-900)">2.1%</div><div style="font-size:11px;color:var(--gray-500)">Digital churn</div></div>
+              </div>
+            </div>
+            <div style="flex:1;padding:10px 16px">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><i class="ti ti-news" style="color:#854F0B;font-size:14px"></i><span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:#854F0B">Print edition (Thursday roundup)</span></div>
+              <div style="display:flex;gap:24px">
+                <div><div style="font-size:18px;font-weight:600;color:var(--gray-900)">418</div><div style="font-size:11px;color:var(--gray-500)">Print subscribers</div></div>
+                <div><div style="font-size:18px;font-weight:600;color:var(--gray-900)">$8,360</div><div style="font-size:11px;color:var(--gray-500)">Print MRR</div></div>
+                <div><div style="font-size:18px;font-weight:600;color:var(--gray-900)">est. 55</div><div style="font-size:11px;color:var(--gray-500)">Newsstand/wk</div></div>
+                <div><div style="font-size:18px;font-weight:600;color:var(--gray-900)">0.7%</div><div style="font-size:11px;color:var(--gray-500)">Print churn</div></div>
+              </div>
+            </div>
+          </div>
           <div class="metrics-grid" id="dashMetrics"></div>
           <div class="dash-row">
             <div class="dash-card"><div class="dash-card-title">Subscriber growth <span class="dash-card-sub">30 days</span></div><div class="chart-wrap"><canvas id="subChart" aria-label="Subscriber growth chart"></canvas></div></div>
@@ -873,7 +902,28 @@
           </div>
           <div class="dash-row">
             <div class="dash-card"><div class="dash-card-title">GPS sync status <span class="dash-card-sub">last 24h</span></div><div id="dashGPS"></div></div>
-            <div class="dash-card"><div class="dash-card-title">Print edition metrics <span class="dash-card-sub">issue Jun 6</span></div><div id="dashPrint"></div></div>
+            <div class="dash-card"><div class="dash-card-title">Print edition metrics <span class="dash-card-sub">issue Sep 11</span></div><div id="dashPrint"></div></div>
+          </div>
+          <!-- Print-specific analytics row (visible when Print or Combined view) -->
+          <div class="dash-row" id="dashPrintRow">
+            <div class="dash-card">
+              <div class="dash-card-title"><i class="ti ti-news" style="font-size:13px;color:#854F0B;margin-right:4px"></i>Print subscriber growth <span class="dash-card-sub">12 months</span></div>
+              <div class="chart-wrap"><canvas id="dashPrintSubChart"></canvas></div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-title"><i class="ti ti-news" style="font-size:13px;color:#854F0B;margin-right:4px"></i>Online → Print conversion <span class="dash-card-sub">digital subs who added print</span></div>
+              <div id="dashPrintConv" style="margin-top:8px"></div>
+            </div>
+          </div>
+          <div class="dash-row" id="dashPrintRow2">
+            <div class="dash-card">
+              <div class="dash-card-title"><i class="ti ti-news" style="font-size:13px;color:#854F0B;margin-right:4px"></i>Roundup issue performance <span class="dash-card-sub">last 4 issues</span></div>
+              <div id="dashRoundupPerf" style="margin-top:8px"></div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-title"><i class="ti ti-news" style="font-size:13px;color:#854F0B;margin-right:4px"></i>Top print stories <span class="dash-card-sub">by QR scan + e-read after print</span></div>
+              <div id="dashPrintStories" style="margin-top:8px"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -896,7 +946,7 @@
   <div class="proto-frame">
     <div class="proto-chrome">
       <div class="chrome-dot cd-red"></div><div class="chrome-dot cd-yellow"></div><div class="chrome-dot cd-green"></div>
-      <div class="chrome-url">cms.thederrick.com/print/issues/jun-13-2026</div>
+      <div class="chrome-url">cms.thederrick.com/print/issues/sep-18-2026</div>
     </div>
     <div class="ib-shell">
       <div class="proto-sidebar">
@@ -915,8 +965,8 @@
       </div>
       <div class="ib-main">
         <div class="proto-topbar">
-          <span style="font-size:13px;font-weight:500;color:#111827">Issue · Jun 13, 2026</span>
-          <span style="font-size:12px;color:#6B7280;margin-left:4px">(Weekly)</span>
+          <span style="font-size:13px;font-weight:500;color:#111827">Issue · Sep 18, 2026</span>
+          <span style="font-size:12px;color:#6B7280;margin-left:4px">(Thursday roundup)</span>
           <button class="state-pill sp-copyedit" id="ibStatusBtn" onclick="cycleIBStatus()">In layout</button>
           <div style="flex:1"></div>
           <button class="tb-btn" onclick="ibExportIDML()"><i class="ti ti-file-export" style="font-size:13px"></i> Export IDML</button>
@@ -1009,7 +1059,7 @@
             <!-- Calendar view -->
             <div id="comm-calendar">
               <div class="cal-month-nav">
-                <span class="cal-month-title">August 2026</span>
+                <span class="cal-month-title">September 2026</span>
                 <button class="cal-nav-btn" aria-label="Previous month"><i class="ti ti-chevron-left"></i></button>
                 <button class="cal-nav-btn" aria-label="Next month"><i class="ti ti-chevron-right"></i></button>
               </div>
@@ -1019,7 +1069,7 @@
             <div id="comm-submissions" style="display:none">
               <div style="font-size:13px;font-weight:500;color:#111827;margin-bottom:12px">Pending review (3)</div>
               <div class="modq-item">
-                <div class="modq-meta"><span>Letter to editor</span><span>•</span><span>Submitted Aug 9</span><span>•</span><span>reader@gmail.com</span></div>
+                <div class="modq-meta"><span>Letter to editor</span><span>•</span><span>Submitted Sep 9</span><span>•</span><span>reader@gmail.com</span></div>
                 <div class="modq-title">Response to library closure announcement</div>
                 <div style="font-size:12px;color:#6B7280;margin-bottom:8px;line-height:1.5">The recent announcement about the Cranberry branch has left many families without access to the only...</div>
                 <div class="modq-actions">
@@ -1029,8 +1079,8 @@
                 </div>
               </div>
               <div class="modq-item">
-                <div class="modq-meta"><span>Event submission</span><span>•</span><span>Submitted Aug 9</span><span>•</span><span>olcevents@outlook.com</span></div>
-                <div class="modq-title">Oil City Lions Club Annual Pancake Breakfast — Aug 22</div>
+                <div class="modq-meta"><span>Event submission</span><span>•</span><span>Submitted Sep 9</span><span>•</span><span>olcevents@outlook.com</span></div>
+                <div class="modq-title">Oil City Lions Club Annual Pancake Breakfast — Sep 22</div>
                 <div style="font-size:12px;color:#6B7280;margin-bottom:8px;line-height:1.5">Annual community fundraiser at Oil City Fire Hall. All proceeds benefit local scholarships...</div>
                 <div class="modq-actions">
                   <button class="mod-btn approve" onclick="moderateItem(this,'approved')">Approve & add to calendar</button>
@@ -1038,9 +1088,9 @@
                 </div>
               </div>
               <div class="modq-item">
-                <div class="modq-meta"><span>Press release</span><span>•</span><span>Submitted Aug 8</span><span>•</span><span>pr@vcsd.k12.pa.us</span></div>
+                <div class="modq-meta"><span>Press release</span><span>•</span><span>Submitted Sep 8</span><span>•</span><span>pr@vcsd.k12.pa.us</span></div>
                 <div class="modq-title">Venango County SD — Fall sports registration now open</div>
-                <div style="font-size:12px;color:#6B7280;margin-bottom:8px;line-height:1.5">Registration for fall 2026 sports opens August 12. All student athletes must complete physical forms...</div>
+                <div style="font-size:12px;color:#6B7280;margin-bottom:8px;line-height:1.5">Registration for fall 2026 sports opens September 12. All student athletes must complete physical forms...</div>
                 <div class="modq-actions">
                   <button class="mod-btn approve" onclick="moderateItem(this,'approved')">Approve</button>
                   <button class="mod-btn reject" onclick="moderateItem(this,'rejected')">Reject</button>
@@ -1051,7 +1101,7 @@
             <!-- School closings -->
             <div id="comm-closings" style="display:none">
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-                <div style="font-size:13px;font-weight:500;color:#111827">School closings — Aug 10, 2026</div>
+                <div style="font-size:13px;font-weight:500;color:#111827">School closings — Sep 10, 2026</div>
                 <button class="tb-btn primary" style="margin-left:0"><i class="ti ti-plus" style="font-size:13px"></i> Add closing</button>
               </div>
               <div class="closing-item"><i class="ti ti-school" style="color:#6B7280"></i><div style="flex:1"><div style="font-size:13px;font-weight:500;color:#111827">Venango County SD</div><div style="font-size:12px;color:#6B7280">All schools — Full day closing — Teacher in-service</div></div><span class="closing-badge closed">Closed</span><button class="mod-btn hold" style="font-size:11px">Edit</button></div>
@@ -1151,10 +1201,10 @@
           <!-- My orders -->
           <div id="adv-orders">
             <div style="font-size:13px;font-weight:500;color:#111827;margin-bottom:12px">Active and recent orders</div>
-            <div class="order-row"><div style="flex:1"><div style="font-size:13px;font-weight:500;color:#111827">Half-page print — A2</div><div style="font-size:12px;color:#6B7280">Aug 7, 2026 issue • Run 4 weeks</div></div><span class="order-status os-running">Running</span><button class="pq-btn view" style="font-size:12px">View proof</button></div>
-            <div class="order-row"><div style="flex:1"><div style="font-size:13px;font-weight:500;color:#111827">Quarter-page print — B1</div><div style="font-size:12px;color:#6B7280">Aug 14, 2026 issue • Run 2 weeks</div></div><span class="order-status os-approved">Approved</span><button class="pq-btn view" style="font-size:12px">View proof</button></div>
-            <div class="order-row"><div style="flex:1"><div style="font-size:13px;font-weight:500;color:#111827">Digital leaderboard — Homepage</div><div style="font-size:12px;color:#6B7280">Aug 1–31, 2026 • CPM $8.50</div></div><span class="order-status os-running">Running</span><button class="pq-btn view" style="font-size:12px">Analytics</button></div>
-            <div class="order-row" style="background:var(--amber-lt);border-color:var(--amber)"><div style="flex:1"><div style="font-size:13px;font-weight:500;color:#111827">Full-page print — Front page</div><div style="font-size:12px;color:#854F0B">Aug 21 issue • ⚠ Proof awaiting your approval</div></div><span class="order-status os-pending">Proof pending</span><button class="pq-btn send" style="font-size:12px" onclick="showAdvTab('proofs',document.getElementById('atab-proofs'))">Review proof →</button></div>
+            <div class="order-row"><div style="flex:1"><div style="font-size:13px;font-weight:500;color:#111827">Half-page print — A2</div><div style="font-size:12px;color:#6B7280">Sep 7, 2026 issue • Run 4 weeks</div></div><span class="order-status os-running">Running</span><button class="pq-btn view" style="font-size:12px">View proof</button></div>
+            <div class="order-row"><div style="flex:1"><div style="font-size:13px;font-weight:500;color:#111827">Quarter-page print — B1</div><div style="font-size:12px;color:#6B7280">Sep 14, 2026 issue • Run 2 weeks</div></div><span class="order-status os-approved">Approved</span><button class="pq-btn view" style="font-size:12px">View proof</button></div>
+            <div class="order-row"><div style="flex:1"><div style="font-size:13px;font-weight:500;color:#111827">Digital leaderboard — Homepage</div><div style="font-size:12px;color:#6B7280">Sep 1–31, 2026 • CPM $8.50</div></div><span class="order-status os-running">Running</span><button class="pq-btn view" style="font-size:12px">Analytics</button></div>
+            <div class="order-row" style="background:var(--amber-lt);border-color:var(--amber)"><div style="flex:1"><div style="font-size:13px;font-weight:500;color:#111827">Full-page print — Front page</div><div style="font-size:12px;color:#854F0B">Sep 21 issue • ⚠ Proof awaiting your approval</div></div><span class="order-status os-pending">Proof pending</span><button class="pq-btn send" style="font-size:12px" onclick="showAdvTab('proofs',document.getElementById('atab-proofs'))">Review proof →</button></div>
           </div>
           <!-- Place order -->
           <div id="adv-new" style="display:none">
@@ -1179,7 +1229,7 @@
               <div id="advAvailMsg" style="display:none;margin-top:8px;font-size:12px;padding:8px 10px;border-radius:6px;background:#EAF3DE;color:#27500A;border:0.5px solid #97C459"><i class="ti ti-circle-check" style="margin-right:4px"></i>Available — 3 of 4 selected dates have open inventory</div>
             </div>
             <div class="adv-card" style="margin-bottom:0">
-              <h3>Availability calendar — Aug 2026</h3>
+              <h3>Availability calendar — Sep 2026</h3>
               <div style="display:flex;gap:4px;margin-bottom:8px;font-size:11px">
                 <span style="background:#EAF3DE;color:#27500A;padding:2px 8px;border-radius:4px">● Available</span>
                 <span style="background:#FCEBEB;color:#A32D2D;padding:2px 8px;border-radius:4px">● Sold out</span>
@@ -1197,18 +1247,18 @@
             </div>
             <div style="margin-top:14px">
               <div style="font-size:13px;font-weight:500;color:#111827;margin-bottom:8px">Uploaded creatives</div>
-              <div class="order-row"><i class="ti ti-file-type-pdf" style="font-size:20px;color:#D85A30"></i><div style="flex:1"><div style="font-size:13px;font-weight:500">cranberry-auto-hp-aug.pdf</div><div style="font-size:12px;color:#6B7280">Half page • 300 DPI • Uploaded Aug 7</div></div><span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:#EAF3DE;color:#27500A">Approved</span></div>
-              <div class="order-row"><i class="ti ti-file-type-pdf" style="font-size:20px;color:#D85A30"></i><div style="flex:1"><div style="font-size:13px;font-weight:500">cranberry-auto-fp-aug21.pdf</div><div style="font-size:12px;color:#6B7280">Full page • 300 DPI • Uploaded Aug 9</div></div><span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:#FAEEDA;color:#854F0B">Proof pending</span></div>
+              <div class="order-row"><i class="ti ti-file-type-pdf" style="font-size:20px;color:#D85A30"></i><div style="flex:1"><div style="font-size:13px;font-weight:500">cranberry-auto-hp-aug.pdf</div><div style="font-size:12px;color:#6B7280">Half page • 300 DPI • Uploaded Sep 7</div></div><span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:#EAF3DE;color:#27500A">Approved</span></div>
+              <div class="order-row"><i class="ti ti-file-type-pdf" style="font-size:20px;color:#D85A30"></i><div style="flex:1"><div style="font-size:13px;font-weight:500">cranberry-auto-fp-aug21.pdf</div><div style="font-size:12px;color:#6B7280">Full page • 300 DPI • Uploaded Sep 9</div></div><span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:#FAEEDA;color:#854F0B">Proof pending</span></div>
             </div>
           </div>
           <!-- Proofs -->
           <div id="adv-proofs" style="display:none">
             <div style="background:var(--amber-lt);border:0.5px solid var(--amber);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:#854F0B;display:flex;align-items:center;gap:10px">
               <i class="ti ti-alert-triangle" style="font-size:16px;flex-shrink:0"></i>
-              <span>1 proof requires your approval before the Aug 21 issue closes. <strong>Deadline: Aug 18 at 5 PM.</strong></span>
+              <span>1 proof requires your approval before the Sep 21 issue closes. <strong>Deadline: Sep 15 at 5 PM.</strong></span>
             </div>
             <div class="proof-preview">
-              <div class="proof-preview-img"><i class="ti ti-file-type-pdf" style="font-size:32px;color:#D85A30"></i>cranberry-auto-fp-aug21.pdf<span style="font-size:11px;color:#9CA3AF">Full page • Front page • Aug 21 issue</span></div>
+              <div class="proof-preview-img"><i class="ti ti-file-type-pdf" style="font-size:32px;color:#D85A30"></i>cranberry-auto-fp-aug21.pdf<span style="font-size:11px;color:#9CA3AF">Full page • Front page • Sep 21 issue</span></div>
             </div>
             <div style="display:flex;gap:8px;margin-top:10px">
               <button class="pq-btn approve" style="padding:8px 16px;font-size:13px" onclick="this.textContent='✓ Approved';this.style.background='#D1FAE5'">Approve proof</button>
@@ -1256,7 +1306,7 @@
       <div class="adops-main">
         <div class="proto-topbar">
           <span class="proto-topbar-title" style="font-weight:500;color:#111827">Ad Ops Dashboard</span>
-          <span style="font-size:12px;color:#6B7280">Issue: Aug 21, 2026</span>
+          <span style="font-size:12px;color:#6B7280">Issue: Sep 18, 2026</span>
           <div style="flex:1"></div>
           <button class="tb-btn" onclick="exportInvoices()"><i class="ti ti-download" style="font-size:13px"></i> Export invoices</button>
           <button class="tb-btn primary"><i class="ti ti-plus" style="font-size:13px"></i> New order</button>
@@ -1266,10 +1316,10 @@
             <div class="ops-stat-row">
               <div class="ops-stat clickable" onclick="drillDown('fillrate',this)" title="Click to drill down"><div class="ops-stat-lbl">Fill rate</div><div class="ops-stat-val">78%</div><div class="ops-stat-delta">+6% vs last issue</div></div>
               <div class="ops-stat clickable" onclick="drillDown('orders',this)" title="Click to drill down"><div class="ops-stat-lbl">Orders this issue</div><div class="ops-stat-val">12</div><div class="ops-stat-delta">8 approved</div></div>
-              <div class="ops-stat clickable" onclick="drillDown('proofspending',this)" title="Click to drill down"><div class="ops-stat-lbl">Proofs pending</div><div class="ops-stat-val" style="color:#854F0B">3</div><div style="font-size:11px;color:#854F0B;margin-top:2px">Deadline Aug 18</div></div>
+              <div class="ops-stat clickable" onclick="drillDown('proofspending',this)" title="Click to drill down"><div class="ops-stat-lbl">Proofs pending</div><div class="ops-stat-val" style="color:#854F0B">3</div><div style="font-size:11px;color:#854F0B;margin-top:2px">Deadline Sep 15</div></div>
               <div class="ops-stat clickable" onclick="drillDown('issuerevenue',this)" title="Click to drill down"><div class="ops-stat-lbl">Issue revenue</div><div class="ops-stat-val">$4,320</div><div class="ops-stat-delta">Target: $5,500</div></div>
             </div>
-            <div style="font-size:12px;font-weight:500;color:#6B7280;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">All orders — Aug 21 issue</div>
+            <div style="font-size:12px;font-weight:500;color:#6B7280;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">All orders — Sep 21 issue</div>
             <table class="ops-table">
               <thead><tr><th>Advertiser</th><th>Placement</th><th>Size</th><th>Rate</th><th>Status</th><th>Action</th></tr></thead>
               <tbody id="opsOrderTable"></tbody>
@@ -1278,7 +1328,7 @@
           <div class="adops-right">
             <div class="panel-lbl">Proof queue</div>
             <div id="opsProofQueue"></div>
-            <div class="panel-lbl" style="margin-top:14px">Page fill — Aug 21</div>
+            <div class="panel-lbl" style="margin-top:14px">Page fill — Sep 21</div>
             <div id="opsFillBars"></div>
             <div class="panel-lbl" style="margin-top:14px">Inventory — next 4 issues</div>
             <div id="opsInvCal"></div>
@@ -1331,13 +1381,13 @@
             <div class="meter-visual">
               <div style="display:flex;justify-content:space-between;font-size:12px;color:#6B7280;margin-bottom:4px"><span>Articles read this month</span><span style="font-weight:500;color:#111827">Unlimited (subscriber)</span></div>
               <div class="meter-track"><div class="meter-fill" style="width:100%;background:var(--green)"></div></div>
-              <div class="meter-legend"><span>Full access — meter does not apply to your plan</span><span>Resets Aug 31</span></div>
+              <div class="meter-legend"><span>Full access — meter does not apply to your plan</span><span>Resets Sep 30</span></div>
             </div>
           </div>
           <div class="account-card">
             <h3>Active plan <button>Manage →</button></h3>
             <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:4px"><span style="font-size:22px;font-weight:600;color:#111827">$20</span><span style="font-size:13px;color:#6B7280">/ month</span></div>
-            <div style="font-size:13px;color:#6B7280;margin-bottom:10px">Print + Digital · Next billing Aug 31, 2026 · Visa ···4242</div>
+            <div style="font-size:13px;color:#6B7280;margin-bottom:10px">Print + Digital · Next billing Sep 30, 2026 · Visa ···4242</div>
             <div style="display:flex;gap:6px">
               <button class="mod-btn hold" onclick="this.textContent='Paused'">Pause</button>
               <button class="mod-btn reject" onclick="this.textContent='Cancelled'">Cancel</button>
@@ -1346,7 +1396,7 @@
           </div>
           <div class="account-card">
             <h3>Recent invoices <button onclick="drillDown('subinvoices',this)" style="font-size:12px;color:var(--blue);background:transparent;border:none;cursor:pointer">View all →</button></h3>
-            <div class="invoice-row"><span style="color:#6B7280">Aug 1, 2026</span><span style="flex:1;margin-left:12px">Print + Digital subscription</span><span class="invoice-amount">$20.00</span><span class="invoice-status">Paid</span><button style="font-size:11px;padding:2px 8px;border:0.5px solid var(--gray-300);border-radius:4px;background:transparent;cursor:pointer;color:#6B7280;margin-left:6px">PDF</button></div>
+            <div class="invoice-row"><span style="color:#6B7280">Sep 1, 2026</span><span style="flex:1;margin-left:12px">Print + Digital subscription</span><span class="invoice-amount">$20.00</span><span class="invoice-status">Paid</span><button style="font-size:11px;padding:2px 8px;border:0.5px solid var(--gray-300);border-radius:4px;background:transparent;cursor:pointer;color:#6B7280;margin-left:6px">PDF</button></div>
             <div class="invoice-row"><span style="color:#6B7280">Jul 1, 2026</span><span style="flex:1;margin-left:12px">Print + Digital subscription</span><span class="invoice-amount">$20.00</span><span class="invoice-status">Paid</span><button style="font-size:11px;padding:2px 8px;border:0.5px solid var(--gray-300);border-radius:4px;background:transparent;cursor:pointer;color:#6B7280;margin-left:6px">PDF</button></div>
             <div class="invoice-row"><span style="color:#6B7280">Jun 1, 2026</span><span style="flex:1;margin-left:12px">Print + Digital subscription</span><span class="invoice-amount">$20.00</span><span class="invoice-status">Paid</span><button style="font-size:11px;padding:2px 8px;border:0.5px solid var(--gray-300);border-radius:4px;background:transparent;cursor:pointer;color:#6B7280;margin-left:6px">PDF</button></div>
           </div>
@@ -1404,7 +1454,7 @@
   <div class="proto-frame">
     <div class="proto-chrome">
       <div class="chrome-dot cd-red"></div><div class="chrome-dot cd-yellow"></div><div class="chrome-dot cd-green"></div>
-      <div class="chrome-url">cms.thederrick.com/proofs/P-2026-0841</div>
+      <div class="chrome-url">cms.thederrick.com/proofs/P-2026-1104</div>
     </div>
     <div class="pv-shell">
       <div class="proto-sidebar">
@@ -1423,7 +1473,7 @@
       </div>
       <div class="pv-main">
         <div class="proto-topbar">
-          <span class="proto-topbar-title" style="font-weight:500;color:#111827">Proof P-2026-0841</span>
+          <span class="proto-topbar-title" style="font-weight:500;color:#111827">Proof P-2026-1104</span>
           <span style="font-size:12px;color:#854F0B;background:var(--amber-lt);padding:3px 8px;border-radius:4px;font-weight:500">Awaiting approval</span>
           <div style="flex:1"></div>
           <button class="tb-btn"><i class="ti ti-download" style="font-size:13px"></i> Download PDF</button>
@@ -1432,7 +1482,7 @@
         <div class="pv-body">
           <div class="pv-canvas">
             <div class="proof-page">
-              <div class="proof-page-num">Page A1 — Front page · Aug 21, 2026 issue</div>
+              <div class="proof-page-num">Page A1 — Front page · Sep 18, 2026 issue</div>
               <div class="proof-story-block"><div class="proof-story-hed">Venango County commissioners approve $2.4M bridge contract</div><div class="proof-story-body">County commissioners voted 2-1 Tuesday to award the contract to Allegheny Bridge Works for emergency structural repairs on the Kennerdell Road span...</div></div>
               <div class="proof-ad-block annotated" onclick="pvAnnotateAd()" style="cursor:pointer">
                 Cranberry Auto Group — Full Page Ad<br>
@@ -1445,7 +1495,7 @@
           <div class="pv-sidebar">
             <div class="pv-section">
               <div class="pv-advertiser">Cranberry Auto Group</div>
-              <div class="pv-order-meta">Order #A-1042-08 · Full page A1 · Aug 21 issue</div>
+              <div class="pv-order-meta">Order #A-1042-08 · Full page A1 · Sep 21 issue</div>
               <button class="pv-action-btn approve" id="pvApproveBtn" onclick="pvApprove()"><i class="ti ti-circle-check" style="margin-right:4px"></i>Approve proof</button>
               <button class="pv-action-btn request" onclick="pvRequestChanges()"><i class="ti ti-edit" style="margin-right:4px"></i>Request changes</button>
               <button class="pv-action-btn reject" onclick="pvReject()"><i class="ti ti-x" style="margin-right:4px"></i>Reject</button>
@@ -1453,8 +1503,8 @@
             <div class="pv-section">
               <div class="panel-lbl">Annotation thread</div>
               <div id="pvThread">
-                <div class="thread-item"><div class="thread-avatar">JR</div><div class="thread-body"><div class="thread-author">J. Reynolds (Ad Ops) · Aug 9</div><div class="thread-text">Proof sent. Please review ad placement and confirm dimensions are correct at 300 DPI.</div></div></div>
-                <div class="thread-item" style="background:var(--amber-lt);border-radius:6px;padding:4px"><div class="thread-avatar" style="background:#FAEEDA;color:#854F0B">CA</div><div class="thread-body"><div class="thread-author">C. Albano (Cranberry Auto) · Aug 9</div><div class="thread-text">Logo feels small — can you increase by 20%? Also please verify the phone number reads as 814-555-0192.</div></div></div>
+                <div class="thread-item"><div class="thread-avatar">JR</div><div class="thread-body"><div class="thread-author">J. Reynolds (Ad Ops) · Sep 9</div><div class="thread-text">Proof sent. Please review ad placement and confirm dimensions are correct at 300 DPI.</div></div></div>
+                <div class="thread-item" style="background:var(--amber-lt);border-radius:6px;padding:4px"><div class="thread-avatar" style="background:#FAEEDA;color:#854F0B">CA</div><div class="thread-body"><div class="thread-author">C. Albano (Cranberry Auto) · Sep 9</div><div class="thread-text">Logo feels small — can you increase by 20%? Also please verify the phone number reads as 814-555-0192.</div></div></div>
               </div>
               <div class="pv-annotation-form">
                 <textarea id="pvAnnotationText" placeholder="Add a note…"></textarea>
@@ -1464,8 +1514,8 @@
             <div class="pv-section clickable" onclick="drillDown('pvarchive',this)" style="cursor:pointer" title="Click to view GPS archive record">
               <div class="panel-lbl">GPS archive →</div>
               <div style="font-size:12px;color:#6B7280;line-height:1.6">
-                <div>Proof ID: P-2026-0841</div>
-                <div>Sent: Aug 9, 2026</div>
+                <div>Proof ID: P-2026-1104</div>
+                <div>Sent: Sep 9, 2026</div>
                 <div>Status: Awaiting approval</div>
                 <div style="margin-top:4px;color:#854F0B">Will be archived to GPS upon approval — immutable record for compliance</div>
               </div>
@@ -1492,7 +1542,7 @@
   <div class="proto-frame">
     <div class="proto-chrome">
       <div class="chrome-dot cd-red"></div><div class="chrome-dot cd-yellow"></div><div class="chrome-dot cd-green"></div>
-      <div class="chrome-url">cms.thederrick.com/print/issues/aug-21-2026/preview</div>
+      <div class="chrome-url">cms.thederrick.com/print/issues/sep-18-2026/preview</div>
     </div>
     <div class="pdf-shell">
       <div class="proto-sidebar">
@@ -1511,7 +1561,7 @@
       </div>
       <div class="pdf-main">
         <div class="proto-topbar">
-          <span class="proto-topbar-title" style="font-weight:500;color:#111827">Issue preview · Aug 21, 2026</span>
+          <span class="proto-topbar-title" style="font-weight:500;color:#111827">Issue preview · Sep 18, 2026</span>
           <span class="state-pill sp-ready">Ready to print</span>
           <div style="flex:1"></div>
           <button class="pdf-toolbar-btn" onclick="pdfZoom(-1)"><i class="ti ti-zoom-out" style="font-size:13px"></i></button>
@@ -1526,16 +1576,16 @@
               <div class="pdf-page-inner">
                 <div class="pdf-masthead">
                   <div class="pdf-masthead-title">The Derrick</div>
-                  <div class="pdf-masthead-sub">SERVING VENANGO COUNTY SINCE 1859 · VOLUME 167 · NO. 33 · AUGUST 21, 2026 · PRICE $1.50</div>
+                  <div class="pdf-masthead-sub">SERVING VENANGO COUNTY SINCE 1859 · VOLUME 167 · NO. 33 · SEPTEMBER 18, 2026 · PRICE $1.50</div>
                 </div>
                 <div class="pdf-col-grid" style="grid-template-columns:1fr 1fr;gap:14px">
                   <div>
-                    <div class="pdf-story-hed">County approves $2.4M bridge repair contract</div>
+                    <div class="pdf-story-hed">Venango County Fair draws record 28,400 attendees</div>
                     <div class="pdf-story-byline">By Luka Muller, Staff Writer</div>
                     <div class="pdf-story-dek">Commissioners vote 2-1 to award work on Kennerdell Road span</div>
                     <div class="pdf-story-body">Venango County commissioners voted Tuesday to award a $2.4 million contract to Allegheny Bridge Works for emergency structural repairs on the Kennerdell Road span. The bridge serves approximately 4,200 daily commuters and is the county's last remaining steel truss structure. Commissioner Sarah Deluca cast the sole dissenting vote, citing the absence of competitive bids...</div>
                     <hr class="pdf-rule">
-                    <div class="pdf-story-hed" style="font-size:13px">Oil City schools present $18M budget proposal</div>
+                    <div class="pdf-story-hed" style="font-size:13px">Franklin hospital announces ER expansion after state grant award</div>
                     <div class="pdf-story-byline">By R. Haynes</div>
                     <div class="pdf-story-body">The Oil City Area School District presented its preliminary $18 million budget to the board Tuesday, proposing a 2.1-mill tax increase for the 2026–27 fiscal year...</div>
                   </div>
@@ -1553,7 +1603,7 @@
                   </div>
                 </div>
               </div>
-              <div class="pdf-page-num">Page A1 of 8 · The Derrick · Aug 21, 2026</div>
+              <div class="pdf-page-num">Page A1 of 8 · The Derrick · Sep 18, 2026</div>
             </div>
           </div>
           <div class="pdf-sidebar">
@@ -1682,10 +1732,10 @@
               <div class="admin-section-title">Users & roles</div>
               <div class="admin-section-desc">Manage staff accounts and role assignments. SSO is handled via Auth.js; users are provisioned automatically on first login.</div>
               <div class="settings-card">
-                <div class="user-row"><div class="user-avatar">LM</div><div style="flex:1"><div class="user-name">Luka Muller</div><div class="user-role">luka@thederrick.com · Last login: Aug 10, 2026</div></div><select style="font-size:12px;border:0.5px solid var(--gray-300);border-radius:6px;padding:3px 6px"><option>Reporter</option><option>Editor</option><option>Production</option><option>Ad Ops</option><option>Admin</option></select></div>
-                <div class="user-row"><div class="user-avatar" style="background:#EAF3DE;color:#27500A">RH</div><div style="flex:1"><div class="user-name">R. Haynes</div><div class="user-role">rhaynes@thederrick.com · Last login: Aug 9, 2026</div></div><select style="font-size:12px;border:0.5px solid var(--gray-300);border-radius:6px;padding:3px 6px"><option selected>Reporter</option><option>Editor</option><option>Production</option><option>Ad Ops</option><option>Admin</option></select></div>
-                <div class="user-row"><div class="user-avatar" style="background:#EEEDFE;color:#3C3489">JR</div><div style="flex:1"><div class="user-name">J. Reynolds</div><div class="user-role">jreynolds@thederrick.com · Last login: Aug 10, 2026</div></div><select style="font-size:12px;border:0.5px solid var(--gray-300);border-radius:6px;padding:3px 6px"><option>Reporter</option><option>Editor</option><option>Production</option><option selected>Ad Ops</option><option>Admin</option></select></div>
-                <div class="user-row"><div class="user-avatar" style="background:#FAEEDA;color:#854F0B">SA</div><div style="flex:1"><div class="user-name">S. Ashworth (Admin)</div><div class="user-role">sashworth@thederrick.com · Last login: Aug 10, 2026</div></div><select style="font-size:12px;border:0.5px solid var(--gray-300);border-radius:6px;padding:3px 6px"><option>Reporter</option><option>Editor</option><option>Production</option><option>Ad Ops</option><option selected>Admin</option></select></div>
+                <div class="user-row"><div class="user-avatar">LM</div><div style="flex:1"><div class="user-name">Luka Muller</div><div class="user-role">luka@thederrick.com · Last login: Sep 10, 2026</div></div><select style="font-size:12px;border:0.5px solid var(--gray-300);border-radius:6px;padding:3px 6px"><option>Reporter</option><option>Editor</option><option>Production</option><option>Ad Ops</option><option>Admin</option></select></div>
+                <div class="user-row"><div class="user-avatar" style="background:#EAF3DE;color:#27500A">RH</div><div style="flex:1"><div class="user-name">R. Haynes</div><div class="user-role">rhaynes@thederrick.com · Last login: Sep 9, 2026</div></div><select style="font-size:12px;border:0.5px solid var(--gray-300);border-radius:6px;padding:3px 6px"><option selected>Reporter</option><option>Editor</option><option>Production</option><option>Ad Ops</option><option>Admin</option></select></div>
+                <div class="user-row"><div class="user-avatar" style="background:#EEEDFE;color:#3C3489">JR</div><div style="flex:1"><div class="user-name">J. Reynolds</div><div class="user-role">jreynolds@thederrick.com · Last login: Sep 10, 2026</div></div><select style="font-size:12px;border:0.5px solid var(--gray-300);border-radius:6px;padding:3px 6px"><option>Reporter</option><option>Editor</option><option>Production</option><option selected>Ad Ops</option><option>Admin</option></select></div>
+                <div class="user-row"><div class="user-avatar" style="background:#FAEEDA;color:#854F0B">SA</div><div style="flex:1"><div class="user-name">S. Ashworth (Admin)</div><div class="user-role">sashworth@thederrick.com · Last login: Sep 10, 2026</div></div><select style="font-size:12px;border:0.5px solid var(--gray-300);border-radius:6px;padding:3px 6px"><option>Reporter</option><option>Editor</option><option>Production</option><option>Ad Ops</option><option selected>Admin</option></select></div>
               </div>
             </div>
             <!-- GPS sync -->
@@ -1693,9 +1743,9 @@
               <div class="admin-section-title">GPS CRM sync</div>
               <div class="admin-section-desc">Status of the Growth Power Suite integration. GPS serves as the System of Record for donors, subscribers, and advertisers.</div>
               <div class="settings-card">
-                <div class="sync-status-row clickable" onclick="drillDown('gpssubs',this)" style="cursor:pointer" title="Click to drill down"><div class="sync-dot sync-ok"></div><span style="flex:1">Subscription events</span><span style="color:#059669;font-weight:500;font-size:12px">38 synced · last sync 4m ago →</span></div>
-                <div class="sync-status-row clickable" onclick="drillDown('gpsdonations',this)" style="cursor:pointer" title="Click to drill down"><div class="sync-dot sync-ok"></div><span style="flex:1">Donation events</span><span style="color:#059669;font-weight:500;font-size:12px">12 synced · last sync 4m ago →</span></div>
-                <div class="sync-status-row"><div class="sync-dot sync-ok"></div><span style="flex:1">Proof archive</span><span style="color:#059669;font-weight:500;font-size:12px">4 archived · last sync 12m ago</span></div>
+                <div class="sync-status-row clickable" onclick="drillDown('gpssubs',this)" style="cursor:pointer" title="Click to drill down"><div class="sync-dot sync-ok"></div><span style="flex:1">Subscription events</span><span style="color:#059669;font-weight:500;font-size:12px">38 synced · last sync 6m ago →</span></div>
+                <div class="sync-status-row clickable" onclick="drillDown('gpsdonations',this)" style="cursor:pointer" title="Click to drill down"><div class="sync-dot sync-ok"></div><span style="flex:1">Donation events</span><span style="color:#059669;font-weight:500;font-size:12px">12 synced · last sync 6m ago →</span></div>
+                <div class="sync-status-row"><div class="sync-dot sync-ok"></div><span style="flex:1">Proof archive</span><span style="color:#059669;font-weight:500;font-size:12px">5 archived · last sync 8m ago</span></div>
                 <div class="sync-status-row"><div class="sync-dot sync-warn"></div><span style="flex:1">Entitlement sync</span><span style="color:#854F0B;font-weight:500;font-size:12px">Delayed · last sync 28m ago</span></div>
                 <div class="sync-status-row clickable" onclick="drillDown('gpserrors',this)" style="cursor:pointer" title="Click to drill down"><div class="sync-dot sync-err"></div><span style="flex:1">Sync errors (last 24h)</span><span style="color:#DC2626;font-weight:500;font-size:12px">2 errors → View log</span></div>
               </div>
@@ -1833,12 +1883,12 @@ updateWC();
 // ── PROTOTYPE 2: HOMEPAGE COMPOSER ─────────────────────
 const hpStories = [
   {id:'h1',hed:'Commissioners approve $2.4M bridge contract',section:'news',author:'L. Muller',time:'2h ago'},
-  {id:'h2',hed:'Oil City schools present $18M budget proposal',section:'news',author:'R. Haynes',time:'3h ago'},
-  {id:'h3',hed:'Cranberry Township fire dept. recruiting volunteers',section:'news',author:'L. Muller',time:'5h ago'},
-  {id:'h4',hed:'Falcons secure playoff berth with Friday win',section:'sports',author:'D. Walsh',time:'1h ago'},
-  {id:'h5',hed:'Regional swim meet results — full standings',section:'sports',author:'D. Walsh',time:'4h ago'},
-  {id:'h6',hed:'Franklin Farmers Market opens for season',section:'community',author:'M. Reed',time:'6h ago'},
-  {id:'h7',hed:'Arts council announces summer grant recipients',section:'community',author:'M. Reed',time:'8h ago'},
+  {id:'h2',hed:'Franklin hospital announces ER expansion after state grant award',section:'news',author:'R. Haynes',time:'3h ago'},
+  {id:'h3',hed:'Venango County commissioners approve 2027 budget framework',section:'news',author:'L. Muller',time:'5h ago'},
+  {id:'h4',hed:'Falcons beat Corry 28–14, move to 4–0 on the season',section:'sports',author:'D. Walsh',time:'1h ago'},
+  {id:'h5',hed:'Lady Falcons volleyball wins district opener in four sets',section:'sports',author:'D. Walsh',time:'4h ago'},
+  {id:'h6',hed:'Fall foliage forecast: peak color expected in Venango by Oct 10',section:'community',author:'M. Reed',time:'6h ago'},
+  {id:'h7',hed:'Oil City Area SD opens new STEM wing with ribbon cutting',section:'community',author:'M. Reed',time:'8h ago'},
 ];
 const hpZoneData = [
   {id:'hz1',name:'Top story',slots:['h1'],auto:false},
@@ -2031,7 +2081,7 @@ function renderRevChart() {
 }
 
 function renderDashTopStories() {
-  const stories = [{t:'Commissioners approve $2.4M bridge contract',v:4820},{t:'Oil City school budget hearing',v:3210},{t:'Falcons secure playoff berth Friday',v:2980},{t:'Cranberry Twp. fire dept. recruiting',v:1840},{t:'Farmers market opens for season',v:1320}];
+  const stories = [{t:'Commissioners approve $2.4M bridge contract',v:4820},{t:'Oil City school budget hearing',v:3210},{t:'Falcons secure playoff berth Friday',v:2980},{t:'Cranberry Twp. fire dept. recruiting',v:1840},{t:'Franklin hospital ER expansion approved for season',v:1320}];
   document.getElementById('dashTopStories').innerHTML = stories.map((s,i)=>`<div class="tr-row"><span class="tr-rank">${i+1}</span><span class="tr-title">${s.t}</span><div class="tr-bar-wrap"><div class="tr-bar" style="width:${Math.round(s.v/4820*100)}%"></div></div><span class="tr-val">${s.v.toLocaleString()}</span></div>`).join('');
 }
 
@@ -2066,13 +2116,13 @@ function initCharts() {
 // ── PROTOTYPE 5: ISSUE BUILDER ─────────────────────────
 const ibPages = [{id:'p1',lbl:'A1'},{id:'p2',lbl:'A2'},{id:'p3',lbl:'A3'},{id:'p4',lbl:'B1'},{id:'p5',lbl:'B2'},{id:'p6',lbl:'B3'},{id:'p7',lbl:'B4'},{id:'p8',lbl:'Back'}];
 const ibQueue = {
-  stories:[{id:'qs1',hed:'County approves bridge contract',by:'L. Muller · News'},{id:'qs2',hed:'School board sets $18M budget',by:'R. Haynes · News'},{id:'qs3',hed:'Falcons in playoffs',by:'D. Walsh · Sports'},{id:'qs4',hed:'Farmers market opens',by:'M. Reed · Community'}],
+  stories:[{id:'qs1',hed:'County Fair breaks attendance record',by:'L. Muller · News'},{id:'qs2',hed:'Oil City council approves police station renovation',by:'R. Haynes · News'},{id:'qs3',hed:'Falcons beat Corry 28–14, improve to 4–0',by:'D. Walsh · Sports'},{id:'qs4',hed:'Franklin hospital ER expansion approved',by:'M. Reed · Community'}],
   ads:[{id:'qa1',hed:'Cranberry Auto — quarter page',sz:'QP'},{id:'qa2',hed:'Franklin Savings — half page',sz:'HP'}],
-  legal:[{id:'ql1',hed:'Fictitious name — Smith & Sons',ref:'FN-2026-0441'},{id:'ql2',hed:'Sheriff sale — Route 8',ref:'SS-2026-0118'}]
+  legal:[{id:'ql1',hed:'Fictitious name — Holbrook & Sons',ref:'FN-2026-0612'},{id:'ql2',hed:'Sheriff sale — Elk Street, Franklin',ref:'SS-2026-0118'}]
 };
 const ibPlacements = {
   p1:[
-    {id:'pl1',type:'hero',lbl:'Lead story',content:{id:'qs1',hed:'County approves $2.4M bridge repair contract',by:'L. Muller · News'}},
+    {id:'pl1',type:'hero',lbl:'Lead story',content:{id:'qs1',hed:'Venango County Fair draws record 28,400 attendees',by:'L. Muller · News'}},
     {id:'pl2',type:'sub',lbl:'Second story',content:null},
     {id:'pl3',type:'brief',lbl:'Brief',content:null},
     {id:'pl4',type:'ad',lbl:'Ad slot A1-bottom',content:{id:'qa1',hed:'Cranberry Auto — quarter page',type:'ad',sz:'QP'}},
@@ -2353,7 +2403,7 @@ function buildOpsProofQueue() {
   pending.forEach(o => {
     const d = document.createElement('div');
     d.className='proof-queue-item';
-    d.innerHTML=`<div class="pq-advertiser">${o.adv}</div><div class="pq-meta">${o.place} · Proof due Aug 18</div><div class="pq-actions"><button class="pq-btn send" onclick="this.textContent='Sent ✓';this.style.background='#D1FAE5'">Send proof</button><button class="pq-btn view">View</button></div>`;
+    d.innerHTML=`<div class="pq-advertiser">${o.adv}</div><div class="pq-meta">${o.place} · Proof due Sep 18</div><div class="pq-actions"><button class="pq-btn send" onclick="this.textContent='Sent ✓';this.style.background='#D1FAE5'">Send proof</button><button class="pq-btn view">View</button></div>`;
     q.appendChild(d);
   });
 }
@@ -2372,7 +2422,7 @@ function buildFillBars() {
 function buildOpsInvCal() {
   const c = document.getElementById('opsInvCal');
   if (!c) return;
-  c.innerHTML='<div style="font-size:10px;color:#6B7280;margin-bottom:4px;display:grid;grid-template-columns:repeat(4,1fr);gap:3px"><span>Aug 21</span><span>Aug 28</span><span>Sep 4</span><span>Sep 11</span></div>';
+  c.innerHTML='<div style="font-size:10px;color:#6B7280;margin-bottom:4px;display:grid;grid-template-columns:repeat(4,1fr);gap:3px"><span>Sep 21</span><span>Sep 28</span><span>Sep 4</span><span>Sep 11</span></div>';
   const weeks = [['icm-partial','78%'],['icm-open','42%'],['icm-open','18%'],['icm-open','5%']];
   const grid = document.createElement('div');
   grid.style.cssText='display:grid;grid-template-columns:repeat(4,1fr);gap:3px';
@@ -2420,7 +2470,7 @@ function pvApprove() {
   item.style.background = '#EAF3DE';
   item.style.borderRadius = '6px';
   item.style.padding = '4px';
-  item.innerHTML = '<div class="thread-avatar" style="background:#EAF3DE;color:#27500A">JR</div><div class="thread-body"><div class="thread-author">J. Reynolds (Ad Ops) · just now</div><div class="thread-text">Proof approved. GPS archive record created. Scheduled for Aug 21 issue.</div></div>';
+  item.innerHTML = '<div class="thread-avatar" style="background:#EAF3DE;color:#27500A">JR</div><div class="thread-body"><div class="thread-author">J. Reynolds (Ad Ops) · just now</div><div class="thread-text">Proof approved. GPS archive record created. Scheduled for Sep 21 issue.</div></div>';
   thread.appendChild(item);
 }
 function pvRequestChanges() {
@@ -2516,7 +2566,7 @@ function saveSettings() {
     <div class="dd-kpi-row" id="ddKpiRow" style="display:none"></div>
     <div class="dd-body" id="ddBody"></div>
     <div class="dd-footer">
-      <span class="dd-footer-note" id="ddFooterNote">Data as of Aug 10, 2026 · 30-day window</span>
+      <span class="dd-footer-note" id="ddFooterNote">Data as of Sep 10, 2026 · 30-day window</span>
       <button class="dd-export-btn" onclick="ddExport()"><i class="ti ti-download" style="font-size:13px"></i> Export CSV</button>
     </div>
   </div>
@@ -2567,7 +2617,7 @@ const DD = {
   // ── Analytics: MRR ────────────────────────────────────────────────────────
   mrr: {
     icon:'ti-currency-dollar', color:'#059669', bgColor:'#D1FAE5',
-    title:'Monthly Recurring Revenue', sub:'$14,210 · Aug 2026',
+    title:'Monthly Recurring Revenue', sub:'$14,210 · Sep 2026',
     kpis:[
       {val:'$14,210',lbl:'Total MRR',delta:'+$620',up:true},
       {val:'$1.00',lbl:'vs 30d ago',delta:'+4.6%',up:true},
@@ -2606,11 +2656,11 @@ const DD = {
     body: () => `
       <div class="dd-section-title">Top 5 articles by pageviews</div>
       ${ddRows([
-        {label:'Commissioners approve $2.4M bridge contract',val:'4,820',sub:'Local News · 8.2% paywall conv.'},
-        {label:'Oil City school budget hearing',val:'3,210',sub:'Government · 5.1% conv.'},
-        {label:'Falcons secure playoff berth Friday',val:'2,980',sub:'Sports · 1.8% conv.'},
-        {label:'Cranberry Twp. fire dept. recruiting',val:'1,840',sub:'Local News · 3.2% conv.'},
-        {label:'Farmers market opens for season',val:'1,320',sub:'Community · 0.6% conv.'},
+        {label:'Venango County Fair — record 28,400 attendance',val:'7,240',sub:'Local News · 9.1% paywall conv.'},
+        {label:'Oil City council approves police station reno',val:'5,310',sub:'Government · 6.3% conv.'},
+        {label:'Falcons beat Corry 28–14, go 4–0',val:'4,180',sub:'Sports · 2.1% conv.'},
+        {label:'Franklin hospital ER expansion — state grant',val:'3,640',sub:'Local News · 5.8% conv.'},
+        {label:'Commissioners approve 2027 budget framework',val:'2,890',sub:'Government · 3.4% conv.'},
       ])}
       <div class="dd-section-title" style="margin-top:14px">Traffic by source</div>
       ${ddBarChart([
@@ -2661,7 +2711,7 @@ const DD = {
   // ── Ad Ops: Fill rate ─────────────────────────────────────────────────────
   fillrate: {
     icon:'ti-percentage', color:'#059669', bgColor:'#D1FAE5',
-    title:'Ad fill rate — Aug 21 issue', sub:'78% overall · 8 pages',
+    title:'Ad fill rate — Sep 21 issue', sub:'78% overall · 8 pages',
     kpis:[
       {val:'78%',lbl:'Overall fill',delta:'+6% vs last issue',up:true},
       {val:'6/8',lbl:'Pages at 50%+',delta:'',up:true},
@@ -2688,21 +2738,21 @@ const DD = {
       ])}
       <div class="dd-section-title" style="margin-top:14px">Fill rate trend — last 6 issues</div>
       ${ddSparkline([65,70,72,68,72,78],'#059669')}`,
-    footerNote:'Ad order data · Aug 21 issue'
+    footerNote:'Ad order data · Sep 21 issue'
   },
 
   // ── Ad Ops: Orders ────────────────────────────────────────────────────────
   orders: {
     icon:'ti-receipt', color:'#2563A8', bgColor:'#E6F1FB',
-    title:'Orders — Aug 21 issue', sub:'12 orders · 8 approved · 4 pending',
+    title:'Orders — Sep 21 issue', sub:'12 orders · 8 approved · 4 pending',
     kpis:[
       {val:'12',lbl:'Total orders',delta:'',up:true},
       {val:'8',lbl:'Approved',delta:'',up:true},
-      {val:'3',lbl:'Proof pending',delta:'Deadline Aug 18',up:false},
+      {val:'3',lbl:'Proof pending',delta:'Deadline Sep 15',up:false},
       {val:'1',lbl:'Awaiting creative',delta:'',up:false},
     ],
     body: () => `
-      <div class="dd-section-title">All orders — Aug 21 issue</div>
+      <div class="dd-section-title">All orders — Sep 21 issue</div>
       ${ddRows([
         {label:'Cranberry Auto — A1 Full page',val:'$480',sub:'Proof pending'},
         {label:'Franklin Savings — A2 Half page',val:'$280',sub:'Approved ✓'},
@@ -2717,13 +2767,13 @@ const DD = {
         {label:'Classic Cleaners — A3 Quarter',val:'$160',sub:'Approved ✓'},
         {label:'Franklin YMCA — B2 Classified',val:'$60',sub:'Awaiting creative'},
       ])}`,
-    footerNote:'Ad order records · Aug 21 issue'
+    footerNote:'Ad order records · Sep 21 issue'
   },
 
   // ── Ad Ops: Proofs pending ────────────────────────────────────────────────
   proofspending: {
     icon:'ti-checklist', color:'#854F0B', bgColor:'#FEF3C7',
-    title:'Proofs pending approval', sub:'3 of 12 orders · Deadline Aug 18, 5 PM',
+    title:'Proofs pending approval', sub:'3 of 12 orders · Deadline Sep 15, 5 PM',
     kpis:[
       {val:'3',lbl:'Pending advertiser',delta:'Deadline in 8 days',up:false},
       {val:'0',lbl:'Overdue',delta:'',up:true},
@@ -2733,21 +2783,21 @@ const DD = {
     body: () => `
       <div class="dd-section-title">Pending proofs</div>
       ${ddRows([
-        {label:'Cranberry Auto — A1 Full page',val:'Sent Aug 9',sub:'6 days elapsed · 1 annotation'},
-        {label:'Smith Law — B3 Quarter',val:'Sent Aug 10',sub:'5 days elapsed · 0 annotations'},
-        {label:'Franklin Ford — Back page',val:'Sent Aug 10',sub:'5 days elapsed · 0 annotations'},
+        {label:'Cranberry Auto — A1 Full page',val:'Sent Sep 9',sub:'6 days elapsed · 1 annotation'},
+        {label:'Smith Law — B3 Quarter',val:'Sent Sep 10',sub:'5 days elapsed · 0 annotations'},
+        {label:'Franklin Ford — Back page',val:'Sent Sep 10',sub:'5 days elapsed · 0 annotations'},
       ])}
       <div class="dd-section-title" style="margin-top:14px">Approved proofs</div>
       ${ddRows([
-        {label:'Franklin Savings — A2 Half',val:'Approved Aug 8',sub:'2-day turnaround'},
-        {label:'OC HVAC — B1 Quarter',val:'Approved Aug 7',sub:'1-day turnaround'},
-        {label:'Seneca Supplies — A3 Half',val:'Approved Aug 9',sub:'3-day turnaround'},
-        {label:'Cranberry Auto — B4 Quarter',val:'Approved Aug 8',sub:'2-day turnaround'},
-        {label:'Valley Dental — B1 Quarter',val:'Approved Aug 9',sub:'2-day turnaround'},
-        {label:'Korners Flooring — B3 Quarter',val:'Approved Aug 10',sub:'1-day turnaround'},
-        {label:'Classic Cleaners — A3 Quarter',val:'Approved Aug 10',sub:'1-day turnaround'},
+        {label:'Franklin Savings — A2 Half',val:'Approved Sep 8',sub:'2-day turnaround'},
+        {label:'OC HVAC — B1 Quarter',val:'Approved Sep 7',sub:'1-day turnaround'},
+        {label:'Seneca Supplies — A3 Half',val:'Approved Sep 9',sub:'3-day turnaround'},
+        {label:'Cranberry Auto — B4 Quarter',val:'Approved Sep 8',sub:'2-day turnaround'},
+        {label:'Valley Dental — B1 Quarter',val:'Approved Sep 9',sub:'2-day turnaround'},
+        {label:'Korners Flooring — B3 Quarter',val:'Approved Sep 10',sub:'1-day turnaround'},
+        {label:'Classic Cleaners — A3 Quarter',val:'Approved Sep 10',sub:'1-day turnaround'},
         {label:'Franklin YMCA',val:'Awaiting creative',sub:'Not sent yet'},
-        {label:'Franklin Ford (secondary)',val:'Approved Aug 8',sub:'1-day turnaround'},
+        {label:'Franklin Ford (secondary)',val:'Approved Sep 8',sub:'1-day turnaround'},
       ])}`,
     footerNote:'Proof records · GPS archive synced'
   },
@@ -2755,7 +2805,7 @@ const DD = {
   // ── Ad Ops: Issue revenue ─────────────────────────────────────────────────
   issuerevenue: {
     icon:'ti-cash', color:'#059669', bgColor:'#D1FAE5',
-    title:'Issue revenue — Aug 21, 2026', sub:'$4,320 booked of $5,500 target',
+    title:'Issue revenue — Sep 18, 2026', sub:'$4,320 booked of $5,500 target',
     kpis:[
       {val:'$4,320',lbl:'Booked revenue',delta:'79% of target',up:false},
       {val:'$1,180',lbl:'Revenue gap',delta:'$600 on B2 alone',up:false},
@@ -2787,7 +2837,7 @@ const DD = {
   // ── Community Hub: Events ─────────────────────────────────────────────────
   events: {
     icon:'ti-calendar-event', color:'#059669', bgColor:'#D1FAE5',
-    title:'Approved events — August 2026', sub:'14 events on the community calendar',
+    title:'Approved events — September 2026', sub:'14 events on the community calendar',
     kpis:[
       {val:'14',lbl:'Approved events',delta:'+3 vs last month',up:true},
       {val:'4',lbl:'Categories',delta:'',up:true},
@@ -2804,12 +2854,12 @@ const DD = {
       ])}
       <div class="dd-section-title" style="margin-top:14px">Upcoming this week</div>
       ${ddRows([
-        {label:'Venango County SD — VCSD board mtg',val:'Aug 13',sub:'Government'},
-        {label:'Oil City Lions Club Pancake Breakfast',val:'Aug 22',sub:'Community'},
-        {label:'Falcons vs. Titusville — home game',val:'Aug 14',sub:'Sports'},
+        {label:'Venango County SD — VCSD board mtg',val:'Sep 13',sub:'Government'},
+        {label:'Oil City Lions Club Pancake Breakfast',val:'Sep 22',sub:'Community'},
+        {label:'Falcons vs. Titusville — home game',val:'Sep 11',sub:'Sports'},
         {label:'Franklin Farmers Market (weekly)',val:'Every Sat',sub:'Community'},
       ])}`,
-    footerNote:'Community Hub calendar · Aug 2026'
+    footerNote:'Community Hub calendar · Sep 2026'
   },
 
   // ── Community Hub: Pending submissions ────────────────────────────────────
@@ -2825,16 +2875,16 @@ const DD = {
     body: () => `
       <div class="dd-section-title">Pending submissions</div>
       ${ddRows([
-        {label:'Letter to editor — Library closure response',val:'Aug 9',sub:'reader@gmail.com · Letter'},
-        {label:'Event — Oil City Lions Pancake Breakfast',val:'Aug 9',sub:'olcevents@outlook.com · Event'},
-        {label:'Press release — VCSD fall sports registration',val:'Aug 8',sub:'pr@vcsd.k12.pa.us · Press release'},
+        {label:'Letter to editor — County Fair parking concerns',val:'Sep 10',sub:'reader@gmail.com · Letter'},
+        {label:'Event — Venango County Library book sale',val:'Sep 9',sub:'library@venangocounty.us · Event'},
+        {label:'Press release — Oil City HS Homecoming schedule',val:'Sep 9',sub:'pr@oilcityasd.org · Press release'},
       ])}
       <div class="dd-section-title" style="margin-top:14px">Recent decisions</div>
       ${ddRows([
-        {label:'Letter — Budget response, J. Hartley',val:'Approved Aug 8',sub:''},
-        {label:'Event — Cranberry Twp. Fair',val:'Approved Aug 7',sub:'Added to calendar'},
-        {label:'Spam submission',val:'Rejected Aug 7',sub:''},
-        {label:'Event — Oil City Kiwanis',val:'Approved Aug 6',sub:''},
+        {label:'Letter — Budget response, J. Hartley',val:'Approved Sep 8',sub:''},
+        {label:'Event — Cranberry Twp. Fair',val:'Approved Sep 7',sub:'Added to calendar'},
+        {label:'Spam submission',val:'Rejected Sep 7',sub:''},
+        {label:'Event — Oil City Kiwanis',val:'Approved Sep 6',sub:''},
       ])}`,
     footerNote:'Moderation queue · last reviewed 2h ago'
   },
@@ -2859,9 +2909,9 @@ const DD = {
       ])}
       <div class="dd-section-title" style="margin-top:14px">Recent alert sends</div>
       ${ddRows([
-        {label:'School closings — Aug 10 (Venango SD + OC Area)',val:'Aug 10',sub:'1,102 sent · 94.2% delivered'},
-        {label:'Breaking news — Route 322 closure',val:'Aug 8',sub:'847 sent · 95.8% delivered'},
-        {label:'Weekly digest — Aug 4 edition',val:'Aug 4',sub:'412 sent · 93.1% open rate'},
+        {label:'School closings — Sep 10 (Venango SD + OC Area)',val:'Sep 10',sub:'1,102 sent · 94.2% delivered'},
+        {label:'Breaking news — Route 322 closure',val:'Sep 8',sub:'847 sent · 95.8% delivered'},
+        {label:'Weekly digest — Sep 4 edition',val:'Sep 4',sub:'412 sent · 93.1% open rate'},
       ])}`,
     footerNote:'Postmark · CAN-SPAM compliant opt-in'
   },
@@ -2877,7 +2927,7 @@ const DD = {
       {val:'1,102',lbl:'Alert subscribers',delta:'',up:true},
     ],
     body: () => `
-      <div class="dd-section-title">District status — Aug 10, 2026</div>
+      <div class="dd-section-title">District status — Sep 10, 2026</div>
       ${ddRows([
         {label:'Venango County School District',val:'Closed',sub:'Full day — teacher in-service'},
         {label:'Oil City Area School District',val:'2-hr delay',sub:'Roads unclear'},
@@ -2898,7 +2948,7 @@ const DD = {
   // ── Issue Builder: Pages placed ───────────────────────────────────────────
   ibpages: {
     icon:'ti-layout', color:'#2563A8', bgColor:'#E6F1FB',
-    title:'Issue layout — Aug 21, 2026', sub:'3 of 8 pages fully placed',
+    title:'Issue layout — Sep 18, 2026', sub:'3 of 8 pages fully placed',
     kpis:[
       {val:'3/8',lbl:'Pages placed',delta:'37.5% complete',up:false},
       {val:'5',lbl:'Pages remaining',delta:'',up:false},
@@ -2923,13 +2973,13 @@ const DD = {
         {label:'Ad slots ready to place',val:'2',sub:'Franklin Savings HP, OC HVAC QP'},
         {label:'Legal notices ready',val:'0',sub:'All placed ✓'},
       ])}`,
-    footerNote:'Issue Builder · Jun 13, 2026 issue'
+    footerNote:'Issue Builder · Sep 18, 2026 issue'
   },
 
   // ── Issue Builder: Ads approved ───────────────────────────────────────────
   ibads: {
     icon:'ti-ad-2', color:'#059669', bgColor:'#D1FAE5',
-    title:'Ad approvals — Aug 21 issue', sub:'6 of 6 ads approved',
+    title:'Ad approvals — Sep 21 issue', sub:'6 of 6 ads approved',
     kpis:[
       {val:'6/6',lbl:'Approved',delta:'All clear',up:true},
       {val:'0',lbl:'Pending',delta:'',up:true},
@@ -2939,12 +2989,12 @@ const DD = {
     body: () => `
       <div class="dd-section-title">All approved ads</div>
       ${ddRows([
-        {label:'Cranberry Auto — Full page A1',val:'Approved Aug 9',sub:'$480 · cranberry-auto-fp-aug21.pdf'},
-        {label:'Franklin Savings — Half page A2',val:'Approved Aug 8',sub:'$280 · fs-bank-hp-aug.pdf'},
-        {label:'OC HVAC — Quarter page B1',val:'Approved Aug 7',sub:'$160 · ochvac-qp.pdf'},
-        {label:'Cranberry Auto — Quarter page B4',val:'Approved Aug 8',sub:'$160 · cranberry-auto-qp-b4.pdf'},
-        {label:'Valley Dental — Quarter page',val:'Approved Aug 9',sub:'$160 · valley-dental-qp.pdf'},
-        {label:'Korners Flooring — Quarter page',val:'Approved Aug 10',sub:'$160 · korners-qp.pdf'},
+        {label:'Cranberry Auto — Full page A1',val:'Approved Sep 9',sub:'$480 · cranberry-auto-fp-aug21.pdf'},
+        {label:'Franklin Savings — Half page A2',val:'Approved Sep 8',sub:'$280 · fs-bank-hp-aug.pdf'},
+        {label:'OC HVAC — Quarter page B1',val:'Approved Sep 7',sub:'$160 · ochvac-qp.pdf'},
+        {label:'Cranberry Auto — Quarter page B4',val:'Approved Sep 8',sub:'$160 · cranberry-auto-qp-b4.pdf'},
+        {label:'Valley Dental — Quarter page',val:'Approved Sep 9',sub:'$160 · valley-dental-qp.pdf'},
+        {label:'Korners Flooring — Quarter page',val:'Approved Sep 10',sub:'$160 · korners-qp.pdf'},
       ])}`,
     footerNote:'Proof archive · GPS synced'
   },
@@ -2952,7 +3002,7 @@ const DD = {
   // ── Issue Builder: Legal notices ──────────────────────────────────────────
   iblegal: {
     icon:'ti-gavel', color:'#0C447C', bgColor:'#E6F1FB',
-    title:'Legal notices — Aug 21 issue', sub:'4 notices placed · Title 45 Pa.C.S.A.',
+    title:'Legal notices — Sep 21 issue', sub:'4 notices placed · Title 45 Pa.C.S.A.',
     kpis:[
       {val:'4',lbl:'Notices placed',delta:'',up:true},
       {val:'0',lbl:'Pending placement',delta:'',up:true},
@@ -2962,16 +3012,16 @@ const DD = {
     body: () => `
       <div class="dd-section-title">Legal notices — this issue</div>
       ${ddRows([
-        {label:'Fictitious name — Smith & Sons Contracting',val:'Page A1',sub:'Ref: FN-2026-0441 · GPS archived'},
-        {label:'Sheriff sale — Route 8 property',val:'Page A2',sub:'Ref: SS-2026-0118 · GPS archived'},
-        {label:'Zoning notice — Cranberry Twp.',val:'Page B1',sub:'Ref: ZN-2026-0892 · GPS archived'},
-        {label:'Estate notice — Wilson estate',val:'Page B3',sub:'Ref: EN-2026-0334 · GPS archived'},
+        {label:'Fictitious name — Holbrook & Sons Contracting',val:'Page A1',sub:'Ref: FN-2026-0612 · GPS archived'},
+        {label:'Sheriff sale — Elk Street property, Franklin',val:'Page A2',sub:'Ref: SS-2026-0143 · GPS archived'},
+        {label:'Zoning notice — Oil City Route 8 corridor',val:'Page B1',sub:'Ref: ZN-2026-1014 · GPS archived'},
+        {label:'Estate notice — Mayberry estate',val:'Page B3',sub:'Ref: EN-2026-0441 · GPS archived'},
       ])}
       <div class="dd-section-title" style="margin-top:14px">Title 45 Pa.C.S.A. compliance</div>
       ${ddRows([
         {label:'Publication confirmation recorded',val:'Yes ✓',sub:'All 4 notices'},
         {label:'GPS proof archive',val:'Synced ✓',sub:'4m ago'},
-        {label:'Issue date for legal purposes',val:'Aug 21, 2026',sub:''},
+        {label:'Issue date for legal purposes',val:'Sep 18, 2026',sub:''},
         {label:'Newspaper of general circulation',val:'Yes ✓',sub:'PNPA member'},
       ])}`,
     footerNote:'GPS publication archive · immutable record'
@@ -2997,11 +3047,11 @@ const DD = {
       ])}
       <div class="dd-section-title" style="margin-top:14px">Recent sync log</div>
       ${ddRows([
-        {label:'New sub — sarah.miller@gmail.com (Print+Digital)',val:'4m ago',sub:'GPS contact updated ✓'},
-        {label:'Renewal — john.kowalski@hotmail.com (Digital)',val:'18m ago',sub:'GPS billing updated ✓'},
-        {label:'Cancellation — t.hayes@yahoo.com (Digital)',val:'1h ago',sub:'GPS churn recorded ✓'},
-        {label:'New sub — rdavis@franklinpa.net (Digital)',val:'2h ago',sub:'GPS contact updated ✓'},
-        {label:'Plan upgrade — m.reyes@gmail.com (Digital→Print)',val:'3h ago',sub:'GPS plan updated ✓'},
+        {label:'New sub — p.holbrook@gmail.com (Print+Digital)',val:'6m ago',sub:'GPS contact updated ✓'},
+        {label:'Renewal — r.dzurenda@hotmail.com (Digital)',val:'22m ago',sub:'GPS billing updated ✓'},
+        {label:'Cancellation — b.tanner@yahoo.com (Digital)',val:'2h ago',sub:'GPS churn recorded ✓'},
+        {label:'New sub — mkowalski@franklinpa.net (Digital)',val:'3h ago',sub:'GPS contact updated ✓'},
+        {label:'Plan upgrade — g.hartwell@gmail.com (Digital→Print)',val:'4h ago',sub:'GPS plan updated ✓'},
       ])}`,
     footerNote:'GPS CRM · Stripe webhook-driven · last 24h'
   },
@@ -3024,11 +3074,11 @@ const DD = {
       ])}
       <div class="dd-section-title" style="margin-top:14px">Recent donations</div>
       ${ddRows([
-        {label:'One-time — $500 (Unrestricted)',val:'4h ago',sub:'Anonymous · GPS Fund: General'},
-        {label:'Recurring — $25/mo (Journalism fund)',val:'6h ago',sub:'K. Blackwood · GPS Fund: Journalism'},
-        {label:'One-time — $100 (Unrestricted)',val:'8h ago',sub:'B. Hartwell · GPS Fund: General'},
-        {label:'One-time — $250 (Journalism fund)',val:'10h ago',sub:'Anonymous · GPS Fund: Journalism'},
-        {label:'Recurring — $10/mo',val:'12h ago',sub:'M. Scorzafava · GPS Fund: General'},
+        {label:'One-time — $250 (Unrestricted)',val:'3h ago',sub:'Anonymous · GPS Fund: General'},
+        {label:'Recurring — $25/mo (Journalism fund)',val:'5h ago',sub:'D. Albrecht · GPS Fund: Journalism'},
+        {label:'One-time — $100 (Unrestricted)',val:'7h ago',sub:'W. Reinhart · GPS Fund: General'},
+        {label:'One-time — $500 (Fair coverage fund)',val:'9h ago',sub:'Anonymous · GPS Fund: Journalism'},
+        {label:'Recurring — $15/mo',val:'11h ago',sub:'T. Scorzafava · GPS Fund: General'},
       ])}`,
     footerNote:'GPS CRM · Stripe Checkout · Form 990 eligible'
   },
@@ -3046,8 +3096,8 @@ const DD = {
     body: () => `
       <div class="dd-section-title">Error log</div>
       ${ddRows([
-        {label:'Entitlement update — j.kowalski@hotmail.com',val:'28m ago',sub:'Error: GPS contact not found — check ID mapping'},
-        {label:'Subscription cancellation — t.hayes@yahoo.com',val:'1h ago',sub:'Error: GPS API timeout (504) — retry in 15m'},
+        {label:'Entitlement update — r.dzurenda@hotmail.com',val:'32m ago',sub:'Error: GPS contact not found — check ID mapping'},
+        {label:'Subscription cancellation — b.tanner@yahoo.com',val:'2h ago',sub:'Error: GPS API timeout (504) — retry in 15m'},
       ])}
       <div class="dd-section-title" style="margin-top:14px">Recommended actions</div>
       ${ddRows([
@@ -3066,7 +3116,7 @@ const DD = {
     kpis:[
       {val:'Unlimited',lbl:'Access level',delta:'No meter applies',up:true},
       {val:'47',lbl:'Articles read',delta:'this month',up:true},
-      {val:'Aug 31',lbl:'Billing date',delta:'',up:true},
+      {val:'Sep 30',lbl:'Billing date',delta:'',up:true},
       {val:'18mo',lbl:'Subscriber since',delta:'Feb 2025',up:true},
     ],
     body: () => `
@@ -3079,10 +3129,10 @@ const DD = {
       ])}
       <div class="dd-section-title" style="margin-top:14px">Recent articles read</div>
       ${ddRows([
-        {label:'Commissioners approve $2.4M bridge contract',val:'Aug 10',sub:'Local News · 4 min read'},
-        {label:'Oil City school budget hearing',val:'Aug 9',sub:'Government'},
-        {label:'Falcons secure playoff berth',val:'Aug 8',sub:'Sports'},
-        {label:'Cranberry Twp. fire dept. recruiting',val:'Aug 7',sub:'Local News'},
+        {label:'Commissioners approve $2.4M bridge contract',val:'Sep 10',sub:'Local News · 4 min read'},
+        {label:'Oil City school budget hearing',val:'Sep 9',sub:'Government'},
+        {label:'Falcons secure playoff berth',val:'Sep 8',sub:'Sports'},
+        {label:'Cranberry Twp. fire dept. recruiting',val:'Sep 7',sub:'Local News'},
       ])}`,
     footerNote:'Article read events · subscriber plan: Print + Digital'
   },
@@ -3100,7 +3150,8 @@ const DD = {
     body: () => `
       <div class="dd-section-title">Invoice history</div>
       ${ddRows([
-        {label:'Aug 1, 2026 — Print + Digital',val:'$20.00',sub:'Paid · Visa ···4242'},
+        {label:'Sep 1, 2026 — Print + Digital',val:'$20.00',sub:'Paid · Visa ···4242'},
+        {label:'Sep 1, 2026 — Print + Digital',val:'$20.00',sub:'Paid · Visa ···4242'},
         {label:'Jul 1, 2026 — Print + Digital',val:'$20.00',sub:'Paid · Visa ···4242'},
         {label:'Jun 1, 2026 — Print + Digital',val:'$20.00',sub:'Paid · Visa ···4242'},
         {label:'May 1, 2026 — Print + Digital',val:'$20.00',sub:'Paid · Visa ···4242'},
@@ -3108,7 +3159,6 @@ const DD = {
         {label:'Mar 1, 2026 — Print + Digital',val:'$20.00',sub:'Paid · Visa ···4242'},
         {label:'Feb 1, 2026 — Print + Digital',val:'$20.00',sub:'Paid · Visa ···4242'},
         {label:'Jan 1, 2026 — Print + Digital',val:'$20.00',sub:'Paid · Visa ···4242'},
-        {label:'Dec 1, 2025 — Print + Digital',val:'$20.00',sub:'Paid · Visa ···4242'},
       ])}`,
     footerNote:'Stripe Billing · all amounts in USD'
   },
@@ -3116,27 +3166,27 @@ const DD = {
   // ── Proof Viewer: GPS archive ─────────────────────────────────────────────
   pvarchive: {
     icon:'ti-database', color:'#0C447C', bgColor:'#E6F1FB',
-    title:'GPS proof archive record', sub:'P-2026-0841 · Cranberry Auto Group',
+    title:'GPS proof archive record', sub:'P-2026-1104 · Cranberry Auto Group',
     kpis:[
-      {val:'P-2026-0841',lbl:'Proof ID',delta:'',up:true},
+      {val:'P-2026-1104',lbl:'Proof ID',delta:'',up:true},
       {val:'Pending',lbl:'Archive status',delta:'Awaiting approval',up:false},
-      {val:'Aug 9',lbl:'Sent to advertiser',delta:'',up:true},
-      {val:'Aug 21',lbl:'Publication date',delta:'issue date',up:true},
+      {val:'Sep 9',lbl:'Sent to advertiser',delta:'',up:true},
+      {val:'Sep 21',lbl:'Publication date',delta:'issue date',up:true},
     ],
     body: () => `
       <div class="dd-section-title">Proof chain of custody</div>
       ${ddRows([
-        {label:'Proof generated',val:'Aug 9, 2026 9:14 AM',sub:'By J. Reynolds (Ad Ops)'},
-        {label:'Sent to advertiser',val:'Aug 9, 2026 9:15 AM',sub:'Signed URL · 7-day expiry'},
-        {label:'Advertiser viewed',val:'Aug 9, 2026 2:33 PM',sub:'C. Albano (Cranberry Auto)'},
-        {label:'Annotation added',val:'Aug 9, 2026 2:41 PM',sub:'Logo resize + phone number check'},
-        {label:'Approval pending',val:'Awaiting',sub:'Deadline Aug 18, 5 PM'},
+        {label:'Proof generated',val:'Sep 9, 2026 9:14 AM',sub:'By J. Reynolds (Ad Ops)'},
+        {label:'Sent to advertiser',val:'Sep 9, 2026 9:15 AM',sub:'Signed URL · 7-day expiry'},
+        {label:'Advertiser viewed',val:'Sep 9, 2026 2:33 PM',sub:'C. Albano (Cranberry Auto)'},
+        {label:'Annotation added',val:'Sep 9, 2026 2:41 PM',sub:'Logo resize + phone number check'},
+        {label:'Approval pending',val:'Awaiting',sub:'Deadline Sep 15, 5 PM'},
       ])}
       <div class="dd-section-title" style="margin-top:14px">Legal notice association</div>
       ${ddRows([
-        {label:'Legal notice on this page',val:'FN-2026-0441',sub:'Fictitious name — Smith & Sons'},
+        {label:'Legal notice on this page',val:'FN-2026-0441',sub:'Fictitious name — Holbrook & Sons'},
         {label:'GPS publication record',val:'Pending',sub:'Will be created on issue finalization'},
-        {label:'Title 45 Pa.C.S.A. compliance',val:'On track',sub:'Issue date Aug 21, 2026'},
+        {label:'Title 45 Pa.C.S.A. compliance',val:'On track',sub:'Issue date Sep 18, 2026'},
       ])}`,
     footerNote:'GPS proof archive · immutable on approval'
   },
@@ -3224,7 +3274,7 @@ function drillDown(key, triggerEl) {
   document.getElementById('ddBody').innerHTML = cfg.body();
 
   // Set footer
-  document.getElementById('ddFooterNote').textContent = cfg.footerNote || 'Data as of Aug 10, 2026';
+  document.getElementById('ddFooterNote').textContent = cfg.footerNote || 'Data as of Sep 10, 2026';
 
   // Open
   document.getElementById('ddOverlay').classList.add('open');
@@ -3246,6 +3296,1100 @@ function ddExport() {
 
 // Close on Escape
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrillDown(); });
+</script>
+
+<!-- ═══════════════ SECTION 13: PRINT EDITION ═══════════════ -->
+<div class="section" id="s-printsubs">
+  <div class="section-header">
+    <div class="section-num">Prototype 13</div>
+    <div class="section-title">Roundup Analytics</div>
+    <div class="section-desc">Staff-facing management for the weekly Thursday roundup. Track new and active print subscribers, monitor delivery addresses, manage renewal status, and view print-specific analytics — separate from the digital subscription stack.</div>
+  </div>
+  <div class="proto-frame">
+    <div class="proto-chrome">
+      <div class="chrome-dot cd-red"></div><div class="chrome-dot cd-yellow"></div><div class="chrome-dot cd-green"></div>
+      <div class="chrome-url">cms.thederrick.com/print/subscriptions</div>
+    </div>
+    <!-- Shell -->
+    <div style="display:flex;height:820px;background:var(--white)">
+      <!-- Global sidebar -->
+      <div class="proto-sidebar">
+        <button class="ed-sb-icon"><i class="ti ti-file-text"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-photo"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-layout"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon active"><i class="ti ti-news"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-calendar-event"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon"><i class="ti ti-users"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-chart-bar"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon" style="margin-top:auto"><i class="ti ti-settings"></i></button>
+        <div class="ed-avatar" style="margin-bottom:4px">JR</div>
+      </div>
+      <!-- Main -->
+      <div style="flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden">
+        <!-- Topbar -->
+        <div class="proto-topbar">
+          <span style="font-size:13px;font-weight:500;color:#111827">Roundup Analytics</span>
+          <span style="font-size:12px;color:#6B7280">Weekly Thursday print roundup</span>
+          <div style="flex:1"></div>
+          <button class="tb-btn" onclick="psExport()"><i class="ti ti-download" style="font-size:13px"></i> Export list</button>
+          <button class="tb-btn primary" onclick="showPsTab('newsub',document.getElementById('pstab-newsub'))"><i class="ti ti-plus" style="font-size:13px"></i> New subscriber</button>
+        </div>
+        <!-- Tab strip -->
+        <div style="display:flex;border-bottom:0.5px solid var(--gray-200);padding:0 0 0 0;background:var(--white);flex-shrink:0">
+          <button class="sub-tab active" id="pstab-overview" onclick="showPsTab('overview',this)">Overview</button>
+          <button class="sub-tab" id="pstab-subscribers" onclick="showPsTab('subscribers',this)">Subscribers</button>
+          <button class="sub-tab" id="pstab-analytics" onclick="showPsTab('analytics',this)">Analytics</button>
+          <button class="sub-tab" id="pstab-delivery" onclick="showPsTab('delivery',this)">Delivery routes</button>
+          <button class="sub-tab" id="pstab-newsub" onclick="showPsTab('newsub',this)">New subscriber</button>
+        </div>
+        <!-- Body -->
+        <div style="flex:1;overflow-y:auto;padding:20px 24px" id="psBody">
+
+          <!-- ── OVERVIEW TAB ── -->
+          <div id="ps-overview">
+            <!-- KPI cards -->
+            <div class="ops-stat-row" style="grid-template-columns:repeat(5,1fr)">
+              <div class="ops-stat clickable" onclick="drillDown('psTotal',this)" title="Drill down">
+                <div class="ops-stat-lbl">Total print subscribers</div>
+                <div class="ops-stat-val">418</div>
+                <div class="ops-stat-delta">+12 this month</div>
+              </div>
+              <div class="ops-stat clickable" onclick="drillDown('psActive',this)" title="Drill down">
+                <div class="ops-stat-lbl">Active this week</div>
+                <div class="ops-stat-val">402</div>
+                <div class="ops-stat-delta">96.2% of total</div>
+              </div>
+              <div class="ops-stat clickable" onclick="drillDown('psNew',this)" title="Drill down">
+                <div class="ops-stat-lbl">New this month</div>
+                <div class="ops-stat-val">12</div>
+                <div class="ops-stat-delta">vs 8 last month</div>
+              </div>
+              <div class="ops-stat clickable" onclick="drillDown('psChurn',this)" title="Drill down">
+                <div class="ops-stat-lbl">Cancelled</div>
+                <div class="ops-stat-val" style="color:#854F0B">3</div>
+                <div style="font-size:11px;color:#854F0B;margin-top:2px">this month</div>
+              </div>
+              <div class="ops-stat clickable" onclick="drillDown('psMrr',this)" title="Drill down">
+                <div class="ops-stat-lbl">Print MRR</div>
+                <div class="ops-stat-val">$8,360</div>
+                <div class="ops-stat-delta">+$240 vs last mo</div>
+              </div>
+            </div>
+            <!-- 2-col layout: growth chart + breakdown -->
+            <div class="dash-row" style="margin-top:4px">
+              <div class="dash-card">
+                <div class="dash-card-title">Print subscriber growth <span class="dash-card-sub">last 12 months</span></div>
+                <div class="chart-wrap"><canvas id="psGrowthChart"></canvas></div>
+              </div>
+              <div class="dash-card">
+                <div class="dash-card-title">Subscribers by plan</div>
+                <div style="margin-top:8px">
+                  <div class="dd-chart-row"><span class="dd-chart-lbl">Print + Digital ($20/mo)</span><div class="dd-chart-bar-wrap"><div class="dd-chart-bar" style="width:100%;background:#2563A8"></div></div><span class="dd-chart-val">442</span></div>
+                  <div class="dd-chart-row"><span class="dd-chart-lbl">Print-only ($152/yr)</span><div class="dd-chart-bar-wrap"><div class="dd-chart-bar" style="width:8%;background:#854F0B"></div></div><span class="dd-chart-val">36</span></div>
+                  <div class="dd-chart-row"><span class="dd-chart-lbl">Carrier route</span><div class="dd-chart-bar-wrap"><div class="dd-chart-bar" style="width:60%;background:#059669"></div></div><span class="dd-chart-val">24</span></div>
+                  <div class="dd-chart-row"><span class="dd-chart-lbl">Mail delivery</span><div class="dd-chart-bar-wrap"><div class="dd-chart-bar" style="width:50%;background:#F59E0B"></div></div><span class="dd-chart-val">18</span></div>
+                  <div class="dd-chart-row"><span class="dd-chart-lbl">Newsstand / single copy</span><div class="dd-chart-bar-wrap"><div class="dd-chart-bar" style="width:31%;background:#D85A30"></div></div><span class="dd-chart-val">est. 55/wk</span></div>
+                </div>
+              </div>
+            </div>
+            <!-- Renewal status + recent sign-ups -->
+            <div class="dash-row">
+              <div class="dash-card">
+                <div class="dash-card-title">Renewal status <span class="dash-card-sub">next 30 days</span></div>
+                <div style="margin-top:8px">
+                  <div class="dd-row"><span class="dd-row-label">Renewing automatically (Stripe)</span><div><div class="dd-row-val" style="color:#059669">387</div></div></div>
+                  <div class="dd-row"><span class="dd-row-label">Manual renewal required</span><div><div class="dd-row-val" style="color:#854F0B">18</div><div class="dd-row-sub">expires in &lt;30 days</div></div></div>
+                  <div class="dd-row"><span class="dd-row-label">Past due (dunning active)</span><div><div class="dd-row-val" style="color:#DC2626">7</div></div></div>
+                  <div class="dd-row"><span class="dd-row-label">Complimentary / staff</span><div><div class="dd-row-val">6</div></div></div>
+                  <div class="dd-row"><span class="dd-row-label">Vacation hold active</span><div><div class="dd-row-val">14</div></div></div>
+                </div>
+              </div>
+              <div class="dash-card">
+                <div class="dash-card-title">Recent sign-ups <span class="dash-card-sub">this month</span></div>
+                <div style="margin-top:8px">
+                  <div class="dd-row"><span class="dd-row-label" style="font-weight:500">Patricia Holbrook</span><div><div class="dd-row-val" style="font-size:11px;font-weight:400">Print+Digital · Sep 8</div></div></div>
+                  <div class="dd-row"><span class="dd-row-label" style="font-weight:500">Franklin County Library</span><div><div class="dd-row-val" style="font-size:11px;font-weight:400">Institutional · Sep 7</div></div></div>
+                  <div class="dd-row"><span class="dd-row-label" style="font-weight:500">Robert Dzurenda</span><div><div class="dd-row-val" style="font-size:11px;font-weight:400">Print+Digital · Sep 5</div></div></div>
+                  <div class="dd-row"><span class="dd-row-label" style="font-weight:500">Mary Ellen Kowalski</span><div><div class="dd-row-val" style="font-size:11px;font-weight:400">Print+Digital · Sep 3</div></div></div>
+                  <div class="dd-row"><span class="dd-row-label" style="font-weight:500">Oil City VFW Post 146</span><div><div class="dd-row-val" style="font-size:11px;font-weight:400">Institutional · Sep 1</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── SUBSCRIBERS TAB ── -->
+          <div id="ps-subscribers" style="display:none">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+              <input type="text" placeholder="Search by name, address, or account…" style="flex:1;font-size:13px;border:0.5px solid var(--gray-300);border-radius:8px;padding:7px 12px;font-family:var(--sans)">
+              <select style="font-size:13px;border:0.5px solid var(--gray-300);border-radius:8px;padding:7px 10px;font-family:var(--sans)"><option>All statuses</option><option>Active</option><option>Past due</option><option>Vacation hold</option><option>Cancelled</option></select>
+              <select style="font-size:13px;border:0.5px solid var(--gray-300);border-radius:8px;padding:7px 10px;font-family:var(--sans)"><option>All delivery</option><option>Carrier route</option><option>Mail</option><option>Pickup</option></select>
+            </div>
+            <table class="ops-table" style="width:100%">
+              <thead><tr><th>Name</th><th>Plan</th><th>Delivery</th><th>Address</th><th>Since</th><th>Status</th><th>Next billing</th><th></th></tr></thead>
+              <tbody id="psSubTable"></tbody>
+            </table>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;font-size:12px;color:var(--gray-500)">
+              <span>Showing 1–15 of 418 subscribers</span>
+              <div style="display:flex;gap:6px">
+                <button class="tb-btn" style="font-size:12px">← Prev</button>
+                <button class="tb-btn" style="font-size:12px;background:var(--gray-900);color:var(--white);border-color:transparent">1</button>
+                <button class="tb-btn" style="font-size:12px">2</button>
+                <button class="tb-btn" style="font-size:12px">3</button>
+                <button class="tb-btn" style="font-size:12px">Next →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── ANALYTICS TAB ── -->
+          <div id="ps-analytics" style="display:none">
+            <!-- Range toggle -->
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:16px">
+              <span style="font-size:12px;color:var(--gray-500);margin-right:4px">Period:</span>
+              <button class="range-btn active" onclick="setPsRange(this,'4w')">4 weeks</button>
+              <button class="range-btn" onclick="setPsRange(this,'13w')">13 weeks</button>
+              <button class="range-btn" onclick="setPsRange(this,'1y')">1 year</button>
+              <button class="range-btn" onclick="setPsRange(this,'all')">All time</button>
+            </div>
+            <div class="dash-row">
+              <div class="dash-card">
+                <div class="dash-card-title">Print subscribers <span class="dash-card-sub">net growth by week</span></div>
+                <div class="chart-wrap"><canvas id="psWeeklyChart"></canvas></div>
+              </div>
+              <div class="dash-card">
+                <div class="dash-card-title">Revenue <span class="dash-card-sub">print subscription only</span></div>
+                <div class="chart-wrap"><canvas id="psRevChart"></canvas></div>
+              </div>
+            </div>
+            <div class="dash-row">
+              <div class="dash-card">
+                <div class="dash-card-title">Sign-up source <span class="dash-card-sub">last 12 months</span></div>
+                <div style="margin-top:8px" id="psSourceChart"></div>
+              </div>
+              <div class="dash-card">
+                <div class="dash-card-title">Issue performance <span class="dash-card-sub">page reads & shares</span></div>
+                <div style="margin-top:8px" id="psIssuePerf"></div>
+              </div>
+            </div>
+            <div class="dash-row">
+              <div class="dash-card">
+                <div class="dash-card-title">Cancellation reasons <span class="dash-card-sub">last 90 days</span></div>
+                <div style="margin-top:8px" id="psCancelReasons"></div>
+              </div>
+              <div class="dash-card">
+                <div class="dash-card-title">Geographic distribution <span class="dash-card-sub">by ZIP code</span></div>
+                <div style="margin-top:8px" id="psGeoChart"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── DELIVERY ROUTES TAB ── -->
+          <div id="ps-delivery" style="display:none">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+              <div style="font-size:13px;font-weight:500;color:var(--gray-900)">Delivery routes — Thursday edition</div>
+              <div style="flex:1"></div>
+              <span style="font-size:12px;color:var(--gray-500)">Printed: Wednesday night · Delivered: Thursday AM</span>
+              <button class="tb-btn primary"><i class="ti ti-download" style="font-size:13px"></i> Print manifest</button>
+            </div>
+            <div id="psRouteCards"></div>
+          </div>
+
+          <!-- ── NEW SUBSCRIBER TAB ── -->
+          <div id="ps-newsub" style="display:none">
+            <div style="max-width:560px">
+              <div style="font-size:15px;font-weight:500;color:var(--gray-900);margin-bottom:4px">Add new print subscriber</div>
+              <div style="font-size:13px;color:var(--gray-500);margin-bottom:20px">Enter subscriber details. Address is required for delivery. Payment processed via Stripe or marked as invoice/complimentary.</div>
+              <div class="settings-card">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-500);margin-bottom:10px">Contact</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+                  <div class="form-group"><label>First name</label><input type="text" placeholder="Patricia"></div>
+                  <div class="form-group"><label>Last name</label><input type="text" placeholder="Holbrook"></div>
+                </div>
+                <div class="form-group" style="margin-bottom:10px"><label>Email address</label><input type="text" placeholder="pholbrook@gmail.com"></div>
+                <div class="form-group" style="margin-bottom:0"><label>Phone (optional)</label><input type="text" placeholder="814-555-0192"></div>
+              </div>
+              <div class="settings-card">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-500);margin-bottom:10px">Delivery address</div>
+                <div class="form-group" style="margin-bottom:10px"><label>Street address</label><input type="text" placeholder="412 Elk Street"></div>
+                <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin-bottom:10px">
+                  <div class="form-group"><label>City</label><input type="text" placeholder="Franklin"></div>
+                  <div class="form-group"><label>State</label><input type="text" placeholder="PA"></div>
+                  <div class="form-group"><label>ZIP</label><input type="text" placeholder="16323"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                  <div class="form-group"><label>Delivery type</label>
+                    <select><option>Carrier route</option><option>Mail / USPS</option><option>Pickup — office</option><option>Pickup — newsstand</option></select>
+                  </div>
+                  <div class="form-group"><label>Route assignment</label>
+                    <select><option>Route 1 — Oil City N</option><option>Route 2 — Oil City S</option><option>Route 3 — Franklin</option><option>Route 4 — Cranberry</option><option>Route 5 — Rural / Mail</option></select>
+                  </div>
+                </div>
+              </div>
+              <div class="settings-card">
+                <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-500);margin-bottom:10px">Plan & billing</div>
+                <div class="plan-compare" style="margin-bottom:14px">
+                  <div class="plan-card sel" onclick="selPsplan(this)" style="padding:14px;max-width:none;border-color:var(--blue);background:var(--blue-lt)">
+                    <div class="plan-price" style="font-size:18px">$20<span style="font-size:12px;font-weight:400;color:var(--gray-500)">/mo</span></div>
+                    <div class="plan-name" style="font-size:13px;margin-bottom:6px">Print + Digital</div>
+                    <div style="font-size:11px;color:var(--gray-500)">Weekly print + full digital access</div>
+                  </div>
+                  <div class="plan-card" onclick="selPsplan(this)" style="padding:14px;max-width:none">
+                    <div class="plan-price" style="font-size:18px">$152<span style="font-size:12px;font-weight:400;color:var(--gray-500)">/yr</span></div>
+                    <div class="plan-name" style="font-size:13px;margin-bottom:6px">Print-only</div>
+                    <div style="font-size:11px;color:var(--gray-500)">Weekly print delivery · billed annually</div>
+                  </div>
+                  <div class="plan-card" onclick="selPsplan(this)" style="padding:14px;max-width:none">
+                    <div class="plan-price" style="font-size:18px">$0</div>
+                    <div class="plan-name" style="font-size:13px;margin-bottom:6px">Complimentary</div>
+                    <div style="font-size:11px;color:var(--gray-500)">Staff / exchange / gift</div>
+                  </div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                  <div class="form-group"><label>Billing method</label>
+                    <select><option>Stripe (auto-renew)</option><option>Invoice / check</option><option>Complimentary</option></select>
+                  </div>
+                  <div class="form-group"><label>Start date</label><input type="date" value="2026-09-08"></div>
+                </div>
+                <div class="form-group" style="margin-top:10px"><label>Notes (internal)</label>
+                  <input type="text" placeholder="e.g. switched from digital-only, referred by J. Reynolds">
+                </div>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:4px">
+                <button class="tb-btn primary" style="padding:9px 20px;font-size:13px" onclick="submitNewPsSub(this)"><i class="ti ti-circle-check" style="font-size:13px"></i> Add subscriber</button>
+                <button class="tb-btn" style="padding:9px 16px;font-size:13px" onclick="showPsTab('subscribers',document.getElementById('pstab-subscribers'))">Cancel</button>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /psBody -->
+      </div><!-- /main -->
+    </div><!-- /shell -->
+  </div><!-- /proto-frame -->
+  <div class="annotations">
+    <div class="ann-card"><div class="ann-label">Print-only subscription stack</div><div class="ann-text">Separate from the digital metered paywall. Print subscribers are tracked by delivery address, route, and billing method. GPS CRM receives every sign-up and renewal event.</div></div>
+    <div class="ann-card"><div class="ann-label">Weekly roundup model</div><div class="ann-text">The Thursday paper is a curated selection of the week's most-read and most-important digital stories. Analytics show which digital stories translate best into print engagement — used to inform the Roundup Builder story selection.</div></div>
+    <div class="ann-card"><div class="ann-label">Delivery route management</div><div class="ann-text">418 subscribers across 5 routes. Route manifest exports as a printable list for carriers. Vacation holds flagged automatically on Thursday's manifest so carriers skip the address.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 14: ROUNDUP BUILDER ═══════════════ -->
+<div class="section" id="s-roundupbuilder">
+  <div class="section-header">
+    <div class="section-num">Prototype 14</div>
+    <div class="section-title">Roundup Builder — Pull Online → Print</div>
+    <div class="section-desc">The Roundup Builder is the layout tool for the Print Edition (the Roundup) — the same product. Pull this week's top online stories directly into the Thursday paper layout. Stories are ranked by digital pageviews, read time, and shares. Drag from the Online Articles panel onto a page slot, use quick-add, or click Auto-select to populate with the week's best performers. What ships from this screen becomes Thursday's paper.</div>
+  </div>
+  <div class="proto-frame">
+    <div class="proto-chrome">
+      <div class="chrome-dot cd-red"></div><div class="chrome-dot cd-yellow"></div><div class="chrome-dot cd-green"></div>
+      <div class="chrome-url">cms.thederrick.com/print/roundup/sep-18-2026</div>
+    </div>
+    <div style="display:flex;height:860px;background:var(--white)">
+
+      <!-- Global sidebar -->
+      <div class="proto-sidebar">
+        <button class="ed-sb-icon"><i class="ti ti-file-text"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-photo"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-layout"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon active"><i class="ti ti-news"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-calendar-event"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon"><i class="ti ti-users"></i></button>
+        <button class="ed-sb-icon"><i class="ti ti-chart-bar"></i></button>
+        <div class="ed-sb-div"></div>
+        <button class="ed-sb-icon" style="margin-top:auto"><i class="ti ti-settings"></i></button>
+        <div class="ed-avatar" style="margin-bottom:4px">LM</div>
+      </div>
+
+      <!-- Main -->
+      <div style="flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden">
+
+        <!-- Top bar -->
+        <div class="proto-topbar" style="gap:6px">
+          <span style="font-size:13px;font-weight:500;color:#111827">Roundup</span>
+          <span style="font-size:12px;color:#6B7280">Sep 18, 2026 · Thursday</span>
+          <button class="state-pill sp-draft" id="rbStatusBtn" onclick="cycleRbStatus()">Selecting stories</button>
+          <div style="flex:1"></div>
+          <button class="tb-btn" onclick="rbAutoSelect(event)" title="Populate all slots with the top-performing online stories this week"><i class="ti ti-wand" style="font-size:13px"></i> Auto-select top stories</button>
+          <button class="tb-btn" id="rbProofBtn" onclick="rbSendProofs()" style="background:var(--amber-lt);color:var(--amber-dk);border-color:var(--amber)"><i class="ti ti-send" style="font-size:13px"></i> Send proofs</button>
+          <button class="tb-btn primary" id="rbPdfBtn" onclick="rbGeneratePdf()"><i class="ti ti-printer" style="font-size:13px"></i> Generate PDF</button>
+        </div>
+
+        <!-- Three-pane builder -->
+        <div style="flex:1;display:flex;min-height:0">
+
+          <!-- ── LEFT PANE: Online article browser ───────────────────────── -->
+          <div style="width:280px;border-right:0.5px solid var(--gray-200);display:flex;flex-direction:column;background:var(--white);flex-shrink:0">
+
+            <div style="padding:10px 12px;border-bottom:0.5px solid var(--gray-200);background:var(--gray-50)">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
+                <i class="ti ti-device-laptop" style="color:var(--blue);font-size:14px"></i>
+                <span style="font-size:12px;font-weight:600;color:var(--blue)">ONLINE ARTICLES</span>
+                <span style="font-size:10px;color:var(--gray-500);margin-left:2px">this week</span>
+                <span style="margin-left:auto;font-size:10px;font-weight:600;background:var(--blue-lt);color:var(--blue);padding:1px 6px;border-radius:4px">38 published</span>
+              </div>
+              <input type="text" id="rbSearchInput" placeholder="Search articles…" oninput="rbFilterStories()" style="width:100%;font-size:12px;border:0.5px solid var(--gray-300);border-radius:8px;padding:5px 9px;font-family:var(--sans);margin-bottom:6px">
+              <div style="display:flex;gap:4px;flex-wrap:wrap">
+                <button class="bm-btn rb-filter-btn active" onclick="rbSetFilter(this,'all')">All</button>
+                <button class="bm-btn rb-filter-btn" onclick="rbSetFilter(this,'Local News')">Local</button>
+                <button class="bm-btn rb-filter-btn" onclick="rbSetFilter(this,'Government')">Govt</button>
+                <button class="bm-btn rb-filter-btn" onclick="rbSetFilter(this,'Sports')">Sports</button>
+                <button class="bm-btn rb-filter-btn" onclick="rbSetFilter(this,'Community')">Comm.</button>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;margin-top:6px">
+                <span style="font-size:11px;color:var(--gray-500)">Sort:</span>
+                <select id="rbSortSel" onchange="rbSortStories()" style="font-size:11px;border:0.5px solid var(--gray-300);border-radius:6px;padding:2px 5px;font-family:var(--sans);flex:1">
+                  <option value="views">Pageviews ↓</option>
+                  <option value="time">Read time ↓</option>
+                  <option value="shares">Shares ↓</option>
+                  <option value="recent">Most recent</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Story list -->
+            <div style="flex:1;overflow-y:auto;padding:8px" id="rbArticleList"></div>
+
+          </div>
+
+          <!-- ── CENTER PANE: Page layout canvas ─────────────────────────── -->
+          <div style="flex:1;display:flex;flex-direction:column;min-width:0;background:var(--gray-100);overflow:hidden">
+
+            <!-- Page thumbnail strip -->
+            <div style="display:flex;gap:6px;padding:8px 12px;border-bottom:0.5px solid var(--gray-200);background:var(--white);overflow-x:auto;flex-shrink:0" id="rbPageStrip"></div>
+
+            <!-- Canvas area -->
+            <div style="flex:1;overflow-y:auto;display:flex;align-items:flex-start;justify-content:center;padding:16px">
+              <div style="width:480px">
+
+                <!-- Masthead -->
+                <div style="background:var(--white);border:0.5px solid var(--gray-300);border-radius:4px 4px 0 0;padding:12px 18px;text-align:center">
+                  <div style="font-family:Georgia,serif;font-size:22px;font-weight:700;letter-spacing:-.3px;color:var(--gray-900)">The Derrick</div>
+                  <div style="border-top:2px solid var(--gray-900);border-bottom:0.5px solid var(--gray-300);padding:3px 0;margin-top:4px;font-size:8px;letter-spacing:.07em;text-transform:uppercase;color:var(--gray-500)">Weekly Roundup · Thursday, September 18, 2026 · This week's top stories from TheDerrick.com</div>
+                </div>
+
+                <!-- Page slots canvas -->
+                <div style="background:var(--white);border:0.5px solid var(--gray-300);border-top:none;border-radius:0 0 4px 4px;padding:14px 16px" id="rbCanvas">
+                  <!-- JS renders slots here -->
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ── RIGHT PANE: Progress + stats ────────────────────────────── -->
+          <div style="width:200px;border-left:0.5px solid var(--gray-200);display:flex;flex-direction:column;background:var(--gray-50);flex-shrink:0;overflow-y:auto">
+
+            <div class="panel-sec">
+              <div class="panel-lbl">Layout progress</div>
+              <div class="ib-prog clickable" onclick="drillDown('rbprogress',this)" style="cursor:pointer">
+                <span style="font-size:12px;color:var(--gray-500)">Stories placed</span>
+                <span style="font-weight:600;color:var(--gray-900)" id="rbProgLbl">0 / 8</span>
+              </div>
+              <div class="ib-prog-bar" style="margin-bottom:8px"><div class="ib-prog-fill" style="width:0%;background:var(--blue);transition:width .3s" id="rbProgBar"></div></div>
+              <div class="ib-prog">
+                <span style="font-size:12px;color:var(--gray-500)">Ads placed</span>
+                <span style="font-weight:600;color:var(--green)">3 / 4</span>
+              </div>
+              <div class="ib-prog-bar"><div class="ib-prog-fill" style="width:75%;background:var(--green)"></div></div>
+            </div>
+
+            <div class="panel-sec">
+              <div class="panel-lbl">This week online</div>
+              <div style="font-size:12px;color:var(--gray-500);line-height:1.9">
+                <div><strong style="color:var(--gray-900)">38</strong> stories published</div>
+                <div><strong style="color:var(--gray-900)">84,320</strong> pageviews</div>
+                <div><strong style="color:var(--gray-900)">2m 41s</strong> avg read</div>
+                <div><strong style="color:#059669">6,140</strong> top story views</div>
+              </div>
+            </div>
+
+            <div class="panel-sec">
+              <div class="panel-lbl">Section coverage</div>
+              <div id="rbCoverage"></div>
+            </div>
+
+            <div class="panel-sec">
+              <div class="panel-lbl">Print ad slots</div>
+              <div class="ib-ad-item" style="margin-bottom:5px;font-size:11px">
+                <div style="font-weight:500;color:#412402">Cranberry Auto — HP</div>
+                <div style="color:#854F0B;font-size:10px">Half page · Approved ✓</div>
+              </div>
+              <div class="ib-ad-item" style="margin-bottom:5px;font-size:11px">
+                <div style="font-weight:500;color:#412402">Franklin Savings — QP</div>
+                <div style="color:#854F0B;font-size:10px">Quarter page · Approved ✓</div>
+              </div>
+              <div class="ib-ad-item" style="font-size:11px;opacity:.5">
+                <div style="font-weight:500;color:#412402">Back page — OPEN</div>
+                <div style="color:#854F0B;font-size:10px">Full page · No order yet</div>
+              </div>
+            </div>
+
+            <div class="panel-sec">
+              <div class="panel-lbl">QR code stats</div>
+              <div style="font-size:12px;color:var(--gray-500);line-height:1.9">
+                <div>Auto-generated per story</div>
+                <div>Last issue: <strong style="color:#059669">44</strong> scans</div>
+                <div>Conv. to sub: <strong style="color:#059669">3</strong></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="annotations">
+    <div class="ann-card"><div class="ann-label">Pull from online edition</div><div class="ann-text">The left panel is a live browser of this week's published digital stories, sortable by pageviews, read time, shares, or recency. Staff drag any story onto a page slot — or type in the search box to find a specific article. No switching between surfaces to find content.</div></div>
+    <div class="ann-card"><div class="ann-label">Performance-informed selection</div><div class="ann-text">Every story card shows the digital pageview count with a color-coded badge (green &gt;3K, blue &gt;1.5K, gray otherwise) alongside section and read time. Auto-select populates all 8 slots with the week's highest-performing stories in one click — editors can then swap any slot manually.</div></div>
+    <div class="ann-card"><div class="ann-label">Print-to-digital loop</div><div class="ann-text">Each placed story gets an auto-generated QR code in the PDF pointing to the full online article. Scan data feeds back into analytics — the "Online → Print conversion" panel on the Analytics dashboard shows which print stories drive new digital subscribers.</div></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════════
+// ANALYTICS DASHBOARD — Online/Print view switching
+// ═══════════════════════════════════════════════════════════════════════════════
+
+function setDashView(view, btn) {
+  document.querySelectorAll('.dash-view-btn').forEach(b => {
+    b.style.background = 'transparent';
+    b.style.color = 'var(--gray-500)';
+    b.style.boxShadow = 'none';
+    b.style.fontWeight = '400';
+  });
+  btn.style.background = 'var(--white)';
+  btn.style.color = 'var(--gray-900)';
+  btn.style.boxShadow = '0 1px 3px rgba(0,0,0,.1)';
+  btn.style.fontWeight = '500';
+
+  const banner = document.getElementById('dashEditionBanner');
+  const printRow1 = document.getElementById('dashPrintRow');
+  const printRow2 = document.getElementById('dashPrintRow2');
+  const metricsGrid = document.getElementById('dashMetrics');
+
+  if (view === 'online') {
+    // Show only online metrics — hide print rows and tint banner
+    if (banner) { banner.children[0].style.opacity='1'; banner.children[1].style.opacity='.35'; }
+    if (printRow1) printRow1.style.display='none';
+    if (printRow2) printRow2.style.display='none';
+    // Switch metric cards to online-only
+    const d = window._dashData || dashData['30d'];
+    renderDashMetrics({...d, metrics:[
+      {l:'Digital subscribers',i:'ti-device-laptop',v:'1,284',d:'+38',up:true},
+      {l:'Digital MRR',i:'ti-currency-dollar',v:'$14,210',d:'+$620',up:true},
+      {l:'Pageviews (30d)',i:'ti-eye',v:'84,320',d:'+12%',up:true},
+      {l:'Digital churn',i:'ti-trending-down',v:'2.1%',d:'-0.3%',up:true},
+    ]});
+  } else if (view === 'print') {
+    // Show only print metrics — dim online side of banner
+    if (banner) { banner.children[0].style.opacity='.35'; banner.children[1].style.opacity='1'; }
+    if (printRow1) printRow1.style.display='';
+    if (printRow2) printRow2.style.display='';
+    renderDashMetrics({metrics:[
+      {l:'Print subscribers',i:'ti-news',v:'418',d:'+12',up:true},
+      {l:'Print MRR',i:'ti-currency-dollar',v:'$8,360',d:'+$240',up:true},
+      {l:'Newsstand est./wk',i:'ti-shopping-cart',v:'~55',d:'',up:true},
+      {l:'Print churn',i:'ti-trending-down',v:'0.7%',d:'-0.1%',up:true},
+    ]});
+    renderDashPrintCharts();
+  } else {
+    // Combined — restore defaults
+    if (banner) { banner.children[0].style.opacity='1'; banner.children[1].style.opacity='1'; }
+    if (printRow1) printRow1.style.display='';
+    if (printRow2) printRow2.style.display='';
+    const d = dashData['30d'];
+    renderDashMetrics(d);
+    renderDashPrintCharts();
+  }
+}
+
+let dashPrintSubChartInst = null;
+function renderDashPrintCharts() {
+  // Print subscriber growth chart
+  const ctx = document.getElementById('dashPrintSubChart');
+  if (ctx && !dashPrintSubChartInst) {
+    dashPrintSubChartInst = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep'],
+        datasets: [{
+          data: [374,379,383,386,390,395,399,404,408,412,416,418],
+          borderColor: '#854F0B', borderWidth: 2, pointRadius: 3,
+          pointBackgroundColor: '#854F0B', fill: true,
+          backgroundColor: 'rgba(133,79,11,0.07)', tension: .4
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {legend: {display: false}},
+        scales: {
+          x: {grid:{display:false}, ticks:{font:{size:10},color:'#6B7280'}},
+          y: {grid:{color:'rgba(0,0,0,0.04)'}, ticks:{font:{size:10},color:'#6B7280'}, min:360}
+        }
+      }
+    });
+  }
+
+  // Online → Print conversion funnel
+  const conv = document.getElementById('dashPrintConv');
+  if (conv && !conv.dataset.inited) {
+    conv.dataset.inited = '1';
+    const steps = [
+      {l:'Digital subscribers',v:'1,284',pct:100,c:'#2563A8'},
+      {l:'Opened Print+Digital option',v:'386',pct:30,c:'#7F77DD'},
+      {l:'Started upgrade flow',v:'94',pct:7.3,c:'#F59E0B'},
+      {l:'Completed upgrade to print',v:'38',pct:3.0,c:'#854F0B'},
+    ];
+    conv.innerHTML = steps.map(s => `
+      <div class="funnel-step">
+        <div class="funnel-lbl" style="font-size:11px">${s.l}</div>
+        <div class="funnel-bar-wrap" style="height:6px"><div class="funnel-bar" style="width:${s.pct}%;background:${s.c}"></div></div>
+        <div class="funnel-val" style="font-size:11px">${s.v}</div>
+      </div>`).join('');
+  }
+
+  // Roundup issue performance table
+  const rp = document.getElementById('dashRoundupPerf');
+  if (rp && !rp.dataset.inited) {
+    rp.dataset.inited = '1';
+    const issues = [
+      {date:'Sep 11',subs:402,reads:1840,qr:44,topStory:'County bridge contract'},
+      {date:'Sep 7',subs:399,reads:1710,qr:31,topStory:'Oil City budget hearing'},
+      {date:'Sep 28',subs:396,reads:1920,qr:44,topStory:'Falcons playoff win'},
+      {date:'Sep 21',subs:393,reads:1620,qr:27,topStory:'Cranberry fire dept.'},
+    ];
+    rp.innerHTML = `<div style="display:grid;grid-template-columns:auto 1fr 1fr 1fr;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-500);padding:0 0 6px;border-bottom:0.5px solid var(--gray-200);gap:8px">
+      <span>Issue</span><span>Subs</span><span>e-Reads</span><span>QR scans</span></div>` +
+      issues.map(i => `<div class="dd-row" style="display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:8px">
+        <span class="dd-row-label" style="font-size:11px">${i.date}</span>
+        <span class="dd-row-val" style="font-size:11px">${i.subs}</span>
+        <span class="dd-row-val" style="font-size:11px">${i.reads}</span>
+        <span class="dd-row-val" style="font-size:11px;color:#059669">${i.qr}</span>
+      </div>`).join('');
+  }
+
+  // Top print stories by QR scan
+  const ps = document.getElementById('dashPrintStories');
+  if (ps && !ps.dataset.inited) {
+    ps.dataset.inited = '1';
+    const stories = [
+      {hed:'Venango County Fair — attendance record',qr:22,conv:4},
+      {hed:'Falcons beat Corry — full game recap',qr:17,conv:3},
+      {hed:'Franklin hospital ER expansion',qr:11,conv:2},
+      {hed:'Oil City council police station vote',qr:8,conv:1},
+      {hed:'2027 budget framework — what it means',qr:6,conv:0},
+    ];
+    ps.innerHTML = stories.map(s => `<div class="dd-row">
+      <span class="dd-row-label" style="font-size:11px">${s.hed}</span>
+      <div style="text-align:right">
+        <div class="dd-row-val" style="font-size:11px">${s.qr} scans</div>
+        <div class="dd-row-sub" style="color:${s.conv>0?'#059669':'var(--gray-400)'}">${s.conv>0?s.conv+' → sub':''}</div>
+      </div>
+    </div>`).join('');
+  }
+}
+
+// Show print rows by default (combined view)
+document.addEventListener('DOMContentLoaded', () => {
+  const pr1 = document.getElementById('dashPrintRow');
+  const pr2 = document.getElementById('dashPrintRow2');
+  if (pr1) pr1.style.display = '';
+  if (pr2) pr2.style.display = '';
+});
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// PRINT EDITION — SUBSCRIPTIONS (Section 13)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+function showPsTab(tab, btn) {
+  ['overview','subscribers','analytics','delivery','newsub'].forEach(t => {
+    const el = document.getElementById('ps-'+t);
+    const b = document.getElementById('pstab-'+t);
+    if (el) el.style.display = 'none';
+    if (b) b.classList.remove('active');
+  });
+  const show = document.getElementById('ps-'+tab);
+  if (show) show.style.display = 'block';
+  if (btn && btn.classList) btn.classList.add('active');
+  if (tab === 'analytics') initPsAnalytics();
+  if (tab === 'delivery') renderPsRoutes();
+  if (tab === 'subscribers') renderPsSubTable();
+}
+
+const psSubscribers = [
+  {name:'Patricia Holbrook',plan:'Print+Digital',delivery:'Carrier',address:'412 Elk St, Franklin',since:'Sep 2026',status:'active',next:'Sep 1'},
+  {name:'Franklin County Library',plan:'Institutional',delivery:'Mail',address:'PO Box 74, Franklin',since:'Sep 2026',status:'active',next:'Sep 1'},
+  {name:'Robert Dzurenda',plan:'Print+Digital',delivery:'Carrier',address:'218 Seneca St, Oil City',since:'Sep 2026',status:'active',next:'Sep 5'},
+  {name:'Mary Ellen Kowalski',plan:'Print+Digital',delivery:'Carrier',address:'31 West First St, Oil City',since:'Sep 2026',status:'active',next:'Sep 3'},
+  {name:'Oil City VFW Post 146',plan:'Institutional',delivery:'Pickup',address:'Office pickup',since:'Sep 2026',status:'active',next:'Sep 1'},
+  {name:'George Hartwell',plan:'Print+Digital',delivery:'Carrier',address:'820 Plumer Ave, Franklin',since:'Jul 2026',status:'active',next:'Sep 28'},
+  {name:'Susan Blackwood',plan:'Print+Digital',delivery:'Mail',address:'Rural Route 3, Polk',since:'Jun 2026',status:'hold',next:'Sep 30'},
+  {name:'Cranberry Twp. Library',plan:'Institutional',delivery:'Carrier',address:'200 Municipal Dr, Seneca',since:'Mar 2026',status:'active',next:'Sep 1'},
+  {name:'Thomas Scorzafava',plan:'Print+Digital',delivery:'Carrier',address:'114 Center St, Titusville',since:'Feb 2026',status:'active',next:'Sep 22'},
+  {name:'Eleanor Pruitt',plan:'Print+Digital',delivery:'Mail',address:'Rural Route 1, Pleasantville',since:'Jan 2026',status:'pastdue',next:'Overdue'},
+  {name:'William Reinhart',plan:'Print+Digital',delivery:'Carrier',address:'617 Seventh Ave, Titusville',since:'Dec 2025',status:'active',next:'Sep 8'},
+  {name:'Dorothy Albrecht',plan:'Print+Digital',delivery:'Carrier',address:'44 Pine St, Franklin',since:'Nov 2025',status:'active',next:'Sep 14'},
+  {name:'James Mayberry III',plan:'Complimentary',delivery:'Pickup',address:'Office pickup',since:'Oct 2025',status:'comp',next:'—'},
+  {name:'Barbara Sloane',plan:'Print+Digital',delivery:'Carrier',address:'198 West First St, Oil City',since:'Sep 2025',status:'active',next:'Sep 25'},
+  {name:'Venango County Comm.',plan:'Institutional',delivery:'Mail',address:'PO Box 831, Franklin',since:'Jun 2025',status:'active',next:'Sep 1'},
+];
+const psStatusColors = {
+  active:{bg:'#EAF3DE',color:'#27500A',lbl:'Active'},
+  pastdue:{bg:'#FEF3C7',color:'#854F0B',lbl:'Past due'},
+  hold:{bg:'#E6F1FB',color:'#0C447C',lbl:'On hold'},
+  comp:{bg:'#EEEDFE',color:'#3C3489',lbl:'Compl.'},
+};
+
+function renderPsSubTable() {
+  const tb = document.getElementById('psSubTable');
+  if (!tb || tb.children.length > 0) return;
+  psSubscribers.forEach(s => {
+    const sc = psStatusColors[s.status] || psStatusColors.active;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td style="font-weight:500">${s.name}</td><td>${s.plan}</td><td>${s.delivery}</td><td style="font-size:11px;color:var(--gray-500)">${s.address}</td><td style="font-size:11px;color:var(--gray-500)">${s.since}</td><td><span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:${sc.bg};color:${sc.color}">${sc.lbl}</span></td><td style="font-size:12px;color:${s.status==='pastdue'?'#DC2626':'var(--gray-500)'}">${s.next}</td><td><button class="pq-btn view">Edit</button></td>`;
+    tb.appendChild(tr);
+  });
+}
+
+let psGrowthInst = null;
+function initPsGrowthChart() {
+  const ctx = document.getElementById('psGrowthChart');
+  if (!ctx || psGrowthInst) return;
+  const months = ['Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep'];
+  const counts = [374,379,383,386,390,395,399,404,408,412,416,418];
+  psGrowthInst = new Chart(ctx, {
+    type:'line',
+    data:{labels:months,datasets:[{data:counts,borderColor:'#854F0B',borderWidth:2,pointRadius:3,pointBackgroundColor:'#854F0B',fill:true,backgroundColor:'rgba(133,79,11,0.07)',tension:.4}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:10},color:'#6B7280'}},y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{font:{size:10},color:'#6B7280'},min:360}}}
+  });
+}
+setTimeout(initPsGrowthChart, 300);
+
+let psAnalyticsInited = false, psWeeklyInst = null, psRevInst = null;
+function initPsAnalytics() {
+  if (psAnalyticsInited) return;
+  psAnalyticsInited = true;
+  const wCtx = document.getElementById('psWeeklyChart');
+  if (wCtx) {
+    psWeeklyInst = new Chart(wCtx, {
+      type:'bar',
+      data:{labels:['Jul 3','Jul 10','Jul 17','Sep 21','Sep 28','Sep 7','Sep 11','Sep 21'],datasets:[{label:'New',data:[4,3,5,2,4,3,4,2],backgroundColor:'#854F0B'},{label:'Cancelled',data:[-1,-1,-2,-1,-1,-1,-2,0],backgroundColor:'#DC2626'}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{font:{size:10},boxWidth:10}}},scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:10}}},y:{stacked:true,grid:{color:'rgba(0,0,0,0.04)'},ticks:{font:{size:10}}}}}
+    });
+  }
+  const rCtx = document.getElementById('psRevChart');
+  if (rCtx) {
+    const months = ['Feb','Mar','Apr','May','Jun','Jul','Aug','Sep'];
+    psRevInst = new Chart(rCtx, {
+      type:'line',
+      data:{labels:months,datasets:[{data:[7800,7900,7980,8040,8100,8180,8260,8360],borderColor:'#854F0B',borderWidth:2,pointRadius:3,pointBackgroundColor:'#854F0B',fill:true,backgroundColor:'rgba(133,79,11,0.07)',tension:.4}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:10},color:'#6B7280'}},y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{font:{size:10},color:'#6B7280',callback:v=>'$'+v.toLocaleString()}}}}
+    });
+  }
+  const src = document.getElementById('psSourceChart');
+  if (src) src.innerHTML = [{label:'Digital upgrade',val:'68',pct:54,color:'#2563A8'},{label:'Staff / phone',val:'31',pct:25,color:'#059669'},{label:'Website form',val:'18',pct:14,color:'#7F77DD'},{label:'Gift / referral',val:'8',pct:6,color:'#F59E0B'}].map(s=>`<div class="dd-chart-row"><span class="dd-chart-lbl">${s.label}</span><div class="dd-chart-bar-wrap"><div class="dd-chart-bar" style="width:${s.pct}%;background:${s.color}"></div></div><span class="dd-chart-val">${s.val}</span></div>`).join('');
+  const ip = document.getElementById('psIssuePerf');
+  if (ip) ip.innerHTML = `<div style="display:grid;grid-template-columns:1fr auto auto auto;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-500);padding:0 0 5px;border-bottom:0.5px solid var(--gray-200);gap:8px"><span>Issue</span><span>e-Reads</span><span>Shares</span><span>QR</span></div>`+[{l:'Sep 11',r:'1,840',s:'142',q:'44'},{l:'Sep 7',r:'1,710',s:'128',q:'31'},{l:'Sep 28',r:'1,920',s:'167',q:'44'},{l:'Sep 21',r:'1,620',s:'119',q:'27'}].map(i=>`<div class="dd-row" style="display:grid;grid-template-columns:1fr auto auto auto;gap:8px"><span class="dd-row-label" style="font-size:11px">${i.l}</span><span class="dd-row-val" style="font-size:11px">${i.r}</span><span class="dd-row-val" style="font-size:11px">${i.s}</span><span class="dd-row-val" style="font-size:11px;color:#059669">${i.q}</span></div>`).join('');
+  const cr = document.getElementById('psCancelReasons');
+  if (cr) cr.innerHTML = [{label:'Price / financial',val:'4',pct:44,color:'#DC2626'},{label:'Moving out of area',val:'3',pct:33,color:'#F59E0B'},{label:'Reading digitally',val:'1',pct:11,color:'#7F77DD'},{label:'Other',val:'1',pct:11,color:'#9CA3AF'}].map(r=>`<div class="dd-chart-row"><span class="dd-chart-lbl">${r.label}</span><div class="dd-chart-bar-wrap"><div class="dd-chart-bar" style="width:${r.pct}%;background:${r.color}"></div></div><span class="dd-chart-val">${r.val}</span></div>`).join('');
+  const geo = document.getElementById('psGeoChart');
+  if (geo) geo.innerHTML = [{label:'16301 — Oil City',val:'148',pct:100,color:'#2563A8'},{label:'16323 — Franklin',val:'112',pct:76,color:'#2563A8'},{label:'16314 — Cranberry',val:'64',pct:43,color:'#7F77DD'},{label:'16354 — Titusville',val:'48',pct:32,color:'#059669'},{label:'Other / rural',val:'46',pct:31,color:'#9CA3AF'}].map(z=>`<div class="dd-chart-row"><span class="dd-chart-lbl">${z.label}</span><div class="dd-chart-bar-wrap"><div class="dd-chart-bar" style="width:${z.pct}%;background:${z.color}"></div></div><span class="dd-chart-val">${z.val}</span></div>`).join('');
+}
+
+function setPsRange(btn, range) {
+  document.querySelectorAll('#ps-analytics .range-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+const psRoutes = [
+  {id:1,name:'Route 1 — Oil City North',carrier:'Mike Hoffman',count:94,hold:3,stops:'Downtown + Miller Farm Rd corridor',departs:'5:30 AM Thu'},
+  {id:2,name:'Route 2 — Oil City South',carrier:'Janet Broda',count:88,hold:1,stops:'Reno Rd, Petroleum Ctr Rd, river corridor',departs:'5:30 AM Thu'},
+  {id:3,name:'Route 3 — Franklin',carrier:'Tom Picarelli',count:112,hold:5,stops:'Liberty St, Elk St, 13th–15th district',departs:'5:45 AM Thu'},
+  {id:4,name:'Route 4 — Cranberry / Seneca',carrier:'Lisa Woomer',count:82,hold:2,stops:'Hwy 322, Seneca Rd, residential',departs:'6:00 AM Thu'},
+  {id:5,name:'Route 5 — Rural / Mail',carrier:'USPS standard',count:42,hold:3,stops:'All mail subscribers + rural ZIP 16301–16354',departs:'Wednesday PM'},
+];
+
+function renderPsRoutes() {
+  const c = document.getElementById('psRouteCards');
+  if (!c || c.children.length > 0) return;
+  psRoutes.forEach(r => {
+    const div = document.createElement('div');
+    div.className = 'adv-card';
+    div.style.marginBottom = '10px';
+    div.innerHTML = `<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><div style="width:32px;height:32px;border-radius:8px;background:var(--amber-lt);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--amber-dk);flex-shrink:0">${r.id}</div><div style="flex:1"><div style="font-size:13px;font-weight:500;color:var(--gray-900)">${r.name}</div><div style="font-size:12px;color:var(--gray-500)">Carrier: ${r.carrier} · Departs: ${r.departs}</div></div><div style="text-align:right"><div style="font-size:18px;font-weight:600;color:var(--gray-900)">${r.count}</div><div style="font-size:11px;color:var(--gray-500)">subscribers</div></div><button class="tb-btn" onclick="this.textContent='Manifest sent ✓';this.style.background='#EAF3DE';this.style.color='#27500A';setTimeout(()=>{this.textContent='Print manifest';this.style.background='';this.style.color='';},2000)"><i class="ti ti-printer" style="font-size:12px"></i> Print manifest</button></div><div style="display:flex;gap:16px;font-size:12px;color:var(--gray-500)"><span><strong style="color:var(--gray-900)">${r.count-r.hold}</strong> delivering this week</span><span><strong style="color:#854F0B">${r.hold}</strong> vacation hold</span><span style="flex:1;text-align:right">${r.stops}</span></div>`;
+    c.appendChild(div);
+  });
+}
+
+function selPsplan(el) {
+  document.querySelectorAll('#ps-newsub .plan-card').forEach(c=>{c.classList.remove('sel');c.style.borderColor='';c.style.background='';});
+  el.classList.add('sel'); el.style.borderColor='var(--blue)'; el.style.background='var(--blue-lt)';
+}
+function submitNewPsSub(btn) {
+  btn.innerHTML='<i class="ti ti-circle-check" style="font-size:13px"></i> Subscriber added!';
+  btn.style.background='#059669';
+  setTimeout(()=>{btn.innerHTML='<i class="ti ti-circle-check" style="font-size:13px"></i> Add subscriber';btn.style.background='';showPsTab('subscribers',document.getElementById('pstab-subscribers'));},2000);
+}
+function psExport() {
+  const btn=event.target.closest('button');
+  const orig=btn.innerHTML;
+  btn.innerHTML='<i class="ti ti-circle-check" style="font-size:13px"></i> CSV ready';
+  btn.style.background='#EAF3DE';btn.style.color='#27500A';
+  setTimeout(()=>{btn.innerHTML=orig;btn.style.background='';btn.style.color='';},2000);
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// ROUNDUP BUILDER (Section 14) — with article pull from online edition
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Full online story pool — this week's published articles
+const rbAllStories = [
+  {id:'rb1',hed:'Venango County Fair draws record 28,400 — largest attendance since 2009',section:'Local News',views:7240,readMin:3,shares:118,published:'Mon Sep 15'},
+  {id:'rb2',hed:'Oil City council votes 4–3 to approve $1.1M police station renovation',section:'Government',views:5310,readMin:4,shares:74,published:'Tue Sep 16'},
+  {id:'rb3',hed:'Falcons beat Corry 28–14, improve to 4–0 — defense holds for third shutout quarter',section:'Sports',views:4180,readMin:2,shares:103,published:'Fri Sep 12'},
+  {id:'rb4',hed:'Franklin hospital announces ER expansion after state grant award',section:'Local News',views:3640,readMin:4,shares:58,published:'Wed Sep 17'},
+  {id:'rb5',hed:'Venango County commissioners approve 2027 budget framework, hold tax rate flat',section:'Government',views:2890,readMin:5,shares:37,published:'Tue Sep 16'},
+  {id:'rb6',hed:'Oil Region Alliance names new executive director after six-month search',section:'Local News',views:2210,readMin:3,shares:41,published:'Mon Sep 15'},
+  {id:'rb7',hed:'Cranberry Township zoning board rejects proposed truck depot on Route 322',section:'Government',views:1780,readMin:3,shares:29,published:'Thu Sep 11'},
+  {id:'rb8',hed:'Oil City Area School District opens new STEM wing — ribbon cutting Thursday',section:'Local News',views:1540,readMin:2,shares:44,published:'Wed Sep 17'},
+  {id:'rb9',hed:'Lady Falcons volleyball wins district opener in four sets over Titusville',section:'Sports',views:1290,readMin:2,shares:31,published:'Sat Sep 13'},
+  {id:'rb10',hed:'Fall foliage forecast: experts predict peak color in Venango by Oct 10',section:'Community',views:1080,readMin:2,shares:26,published:'Wed Sep 17'},
+  {id:'rb11',hed:'Franklin water authority warns of discoloration during main replacement on 12th St',section:'Local News',views:840,readMin:2,shares:14,published:'Tue Sep 16'},
+  {id:'rb12',hed:'Venango County Housing Authority breaks ground on 24-unit senior complex in Emlenton',section:'Local News',views:720,readMin:3,shares:19,published:'Mon Sep 15'},
+];
+
+const rbSlotDefs = [
+  {id:'rbs1',lbl:'Lead story',note:'Full width · most prominent placement'},
+  {id:'rbs2',lbl:'Second story',note:'Right column, front page'},
+  {id:'rbs3',lbl:'Third story / brief',note:'Front page briefs box'},
+  {id:'rbs4',lbl:'Page 2 — main story',note:''},
+  {id:'rbs5',lbl:'Page 3 — main story',note:''},
+  {id:'rbs6',lbl:'Page 4 — main story',note:''},
+  {id:'rbs7',lbl:'Page 5 — main story',note:''},
+  {id:'rbs8',lbl:'Page 6 — main story',note:''},
+];
+
+let rbSlotContent = {}; // slotId → storyId
+let rbFilter = 'all';
+let rbSearchTerm = '';
+let rbDragSrc = null;
+let rbSortKey = 'views';
+
+const rbStatusCycle = [
+  {cls:'sp-draft',lbl:'Selecting stories'},
+  {cls:'sp-copyedit',lbl:'In layout'},
+  {cls:'sp-layout',lbl:'Proofs sent'},
+  {cls:'sp-ready',lbl:'Ready to print'},
+];
+let rbStatusIdx = 0;
+
+function cycleRbStatus() {
+  rbStatusIdx = (rbStatusIdx+1) % rbStatusCycle.length;
+  const s = rbStatusCycle[rbStatusIdx];
+  const btn = document.getElementById('rbStatusBtn');
+  if (btn) { btn.className='state-pill '+s.cls; btn.textContent=s.lbl; }
+}
+
+// ── Render the article browser (left pane) ────────────────────────────────────
+function rbRenderArticleList() {
+  const list = document.getElementById('rbArticleList');
+  if (!list) return;
+
+  const placed = new Set(Object.values(rbSlotContent));
+
+  let stories = rbAllStories.filter(s => {
+    const matchFilter = rbFilter === 'all' || s.section === rbFilter;
+    const matchSearch = !rbSearchTerm || s.hed.toLowerCase().includes(rbSearchTerm.toLowerCase()) || s.section.toLowerCase().includes(rbSearchTerm.toLowerCase());
+    return matchFilter && matchSearch;
+  });
+
+  stories.sort((a,b) => {
+    if (rbSortKey === 'time') return b.readMin - a.readMin;
+    if (rbSortKey === 'shares') return b.shares - a.shares;
+    if (rbSortKey === 'recent') return rbAllStories.indexOf(a) - rbAllStories.indexOf(b);
+    return b.views - a.views;
+  });
+
+  list.innerHTML = '';
+
+  stories.forEach((s, rank) => {
+    const isPlaced = placed.has(s.id);
+    const viewColor = s.views > 3000 ? '#059669' : s.views > 1500 ? '#2563A8' : '#6B7280';
+    const card = document.createElement('div');
+    card.style.cssText = `border:0.5px solid ${isPlaced?'#97C459':' var(--gray-200)'};background:${isPlaced?'#EAF3DE':'var(--white)'};border-radius:8px;padding:8px 10px;margin-bottom:5px;cursor:${isPlaced?'default':'grab'};transition:border-color .12s,box-shadow .12s;position:relative`;
+
+    if (!isPlaced) {
+      card.draggable = true;
+      card.addEventListener('dragstart', e => {
+        rbDragSrc = s.id;
+        card.style.opacity = '.4';
+        e.dataTransfer.effectAllowed = 'move';
+      });
+      card.addEventListener('dragend', () => card.style.opacity = '');
+      card.addEventListener('mouseover', () => { if (!isPlaced) card.style.boxShadow='0 0 0 2px var(--blue)'; });
+      card.addEventListener('mouseout', () => card.style.boxShadow='');
+    }
+
+    card.innerHTML = `
+      <div style="display:flex;align-items:flex-start;gap:6px;margin-bottom:4px">
+        ${rbSortKey==='views'?`<span style="font-size:9px;font-weight:600;color:var(--gray-500);width:14px;text-align:center;flex-shrink:0;padding-top:1px">${rank+1}</span>`:''}
+        <div style="font-size:12px;font-weight:${isPlaced?'500':'400'};color:var(--gray-900);line-height:1.35;flex:1">${s.hed}</div>
+        ${isPlaced?'<span style="font-size:9px;font-weight:600;color:#27500A;flex-shrink:0">✓ Placed</span>':''}
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+        <span style="font-size:9px;font-weight:600;padding:1px 5px;border-radius:3px;background:${viewColor};color:#fff">${s.views.toLocaleString()} views</span>
+        <span style="font-size:10px;color:var(--gray-500)">${s.section}</span>
+        <span style="font-size:10px;color:var(--gray-500)">${s.readMin}m read</span>
+        <span style="font-size:10px;color:var(--gray-500)">${s.shares} shares</span>
+        <span style="font-size:10px;color:var(--gray-500);margin-left:auto">${s.published}</span>
+      </div>
+      ${!isPlaced?`<div style="margin-top:5px;font-size:10px;color:var(--blue);font-weight:500">↕ Drag to a page slot  or  <button onclick="rbQuickPlace('${s.id}')" style="font-size:10px;color:var(--blue);background:transparent;border:none;cursor:pointer;font-weight:600;text-decoration:underline;padding:0">quick-add →</button></div>`:''}
+    `;
+    list.appendChild(card);
+  });
+
+  if (!stories.length) {
+    list.innerHTML = '<div style="text-align:center;padding:24px 0;font-size:12px;color:var(--gray-500)">No stories match the current filter</div>';
+  }
+}
+
+function rbQuickPlace(storyId) {
+  // Find the first empty slot
+  const emptySlot = rbSlotDefs.find(s => !rbSlotContent[s.id]);
+  if (!emptySlot) {
+    alert('All slots are filled. Remove a story from a slot first, or drag this story onto a slot to replace it.');
+    return;
+  }
+  rbSlotContent[emptySlot.id] = storyId;
+  rbRenderCanvas();
+  rbRenderArticleList();
+  rbUpdateProgress();
+  rbUpdateCoverage();
+}
+
+function rbSetFilter(btn, filter) {
+  document.querySelectorAll('.rb-filter-btn').forEach(b => { b.style.background='transparent'; b.style.color='var(--gray-500)'; b.classList.remove('active'); });
+  btn.style.background='var(--gray-900)'; btn.style.color='var(--white)'; btn.classList.add('active');
+  rbFilter = filter;
+  rbRenderArticleList();
+}
+
+function rbFilterStories() {
+  rbSearchTerm = document.getElementById('rbSearchInput')?.value || '';
+  rbRenderArticleList();
+}
+
+function rbSortStories() {
+  rbSortKey = document.getElementById('rbSortSel')?.value || 'views';
+  rbRenderArticleList();
+}
+
+// ── Page thumbnail strip ──────────────────────────────────────────────────────
+function rbRenderPageStrip() {
+  const strip = document.getElementById('rbPageStrip');
+  if (!strip || strip.children.length) return;
+  const pages = ['Front','Pg 2','Pg 3','Pg 4','Pg 5','Pg 6','Pg 7','Pg 8'];
+  pages.forEach((lbl, i) => {
+    const btn = document.createElement('button');
+    btn.style.cssText = `font-size:11px;padding:3px 10px;border-radius:6px;border:1.5px solid ${i===0?'var(--blue)':'var(--gray-200)'};background:${i===0?'var(--blue-lt)':'transparent'};color:${i===0?'var(--blue)':'var(--gray-500)'};cursor:pointer;white-space:nowrap;flex-shrink:0`;
+    btn.textContent = lbl;
+    btn.onclick = () => {
+      strip.querySelectorAll('button').forEach(b=>{b.style.border='1.5px solid var(--gray-200)';b.style.background='transparent';b.style.color='var(--gray-500)';});
+      btn.style.border='1.5px solid var(--blue)';btn.style.background='var(--blue-lt)';btn.style.color='var(--blue)';
+    };
+    strip.appendChild(btn);
+  });
+  // Lock indicator
+  const lock = document.createElement('span');
+  lock.style.cssText='font-size:10px;color:var(--gray-500);margin-left:auto;display:flex;align-items:center;gap:4px;flex-shrink:0';
+  lock.innerHTML='<i class="ti ti-lock" style="font-size:12px"></i> 8-page fixed template';
+  strip.appendChild(lock);
+}
+
+// ── Canvas ────────────────────────────────────────────────────────────────────
+function rbRenderCanvas() {
+  const canvas = document.getElementById('rbCanvas');
+  if (!canvas) return;
+  canvas.innerHTML = '';
+
+  // Front page: lead spans full width, then 2-col for slots 2+3
+  const frontGrid = document.createElement('div');
+  frontGrid.style.cssText = 'display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;padding-bottom:10px;border-bottom:0.5px solid var(--gray-200)';
+
+  rbSlotDefs.slice(0,3).forEach((slot, idx) => {
+    const storyId = rbSlotContent[slot.id];
+    const story = storyId ? rbAllStories.find(s=>s.id===storyId) : null;
+    const wrap = document.createElement('div');
+    if (idx === 0) wrap.style.gridColumn = '1/-1';
+
+    const slotDiv = document.createElement('div');
+    slotDiv.className = 'ib-placement' + (story ? ' filled' : '');
+    slotDiv.style.minHeight = idx===0 ? '110px' : '70px';
+    slotDiv.style.position = 'relative';
+
+    slotDiv.addEventListener('dragover', e=>{e.preventDefault();slotDiv.style.outline='2px solid var(--blue)';});
+    slotDiv.addEventListener('dragleave', ()=>slotDiv.style.outline='');
+    slotDiv.addEventListener('drop', e=>{
+      e.preventDefault(); slotDiv.style.outline='';
+      if (!rbDragSrc) return;
+      // Remove from whichever slot currently holds this story
+      Object.keys(rbSlotContent).forEach(k=>{if(rbSlotContent[k]===rbDragSrc) delete rbSlotContent[k];});
+      rbSlotContent[slot.id] = rbDragSrc; rbDragSrc=null;
+      rbRenderCanvas(); rbRenderArticleList(); rbUpdateProgress(); rbUpdateCoverage();
+    });
+
+    slotDiv.innerHTML = story ? rbStorySlotHtml(story, slot, idx===0) : rbEmptySlotHtml(slot);
+    wrap.appendChild(slotDiv);
+    frontGrid.appendChild(wrap);
+  });
+  canvas.appendChild(frontGrid);
+
+  // Pages 2–6: one story per page
+  const pageLabel = document.createElement('div');
+  pageLabel.style.cssText='font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--gray-500);margin-bottom:8px';
+  pageLabel.textContent='Pages 2–6 — main stories';
+  canvas.appendChild(pageLabel);
+
+  const innerGrid = document.createElement('div');
+  innerGrid.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px';
+
+  rbSlotDefs.slice(3,8).forEach(slot => {
+    const storyId = rbSlotContent[slot.id];
+    const story = storyId ? rbAllStories.find(s=>s.id===storyId) : null;
+    const slotDiv = document.createElement('div');
+    slotDiv.className = 'ib-placement' + (story ? ' filled' : '');
+    slotDiv.style.minHeight = '66px';
+    slotDiv.style.position = 'relative';
+
+    slotDiv.addEventListener('dragover', e=>{e.preventDefault();slotDiv.style.outline='2px solid var(--blue)';});
+    slotDiv.addEventListener('dragleave', ()=>slotDiv.style.outline='');
+    slotDiv.addEventListener('drop', e=>{
+      e.preventDefault(); slotDiv.style.outline='';
+      if (!rbDragSrc) return;
+      Object.keys(rbSlotContent).forEach(k=>{if(rbSlotContent[k]===rbDragSrc) delete rbSlotContent[k];});
+      rbSlotContent[slot.id] = rbDragSrc; rbDragSrc=null;
+      rbRenderCanvas(); rbRenderArticleList(); rbUpdateProgress(); rbUpdateCoverage();
+    });
+
+    slotDiv.innerHTML = story ? rbStorySlotHtml(story, slot, false) : rbEmptySlotHtml(slot);
+    innerGrid.appendChild(slotDiv);
+  });
+  canvas.appendChild(innerGrid);
+
+  // Ad + legal footer
+  canvas.insertAdjacentHTML('beforeend',`
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px">
+      <div class="ib-placement ad-slot" style="min-height:52px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--amber-dk);flex-direction:column;gap:3px"><i class="ti ti-ad-2" style="font-size:16px"></i>Half page ad — page 7</div>
+      <div class="ib-placement legal-slot" style="min-height:52px;padding:8px 10px"><div style="font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#0C447C;margin-bottom:3px">Legal notices + classifieds — page 8</div><div style="font-size:10px;color:#0C447C;line-height:1.5">Fictitious name · Sheriff sale · Classifieds</div></div>
+    </div>`);
+}
+
+function rbStorySlotHtml(story, slot, isLead) {
+  const viewColor = story.views > 3000 ? '#059669' : story.views > 1500 ? '#2563A8' : '#6B7280';
+  return `
+    <div style="font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--gray-500);margin-bottom:4px">${slot.lbl}</div>
+    <div style="font-size:${isLead?'13px':'11px'};font-weight:600;line-height:1.3;color:var(--gray-900);margin-bottom:5px">${story.hed}</div>
+    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+      <span style="font-size:9px;font-weight:600;padding:1px 4px;border-radius:3px;background:${viewColor};color:#fff">${story.views.toLocaleString()} views</span>
+      <span style="font-size:10px;color:var(--gray-500)">${story.section}</span>
+      <span style="font-size:10px;color:var(--gray-500)">${story.readMin}m</span>
+      <span style="font-size:9px;color:#2563A8;margin-left:auto;font-weight:500">QR ↗</span>
+    </div>
+    <button onclick="rbClearSlot('${slot.id}')" style="position:absolute;top:4px;right:4px;background:transparent;border:none;cursor:pointer;color:var(--gray-500);font-size:13px;border-radius:4px;padding:1px 4px" title="Remove story">×</button>`;
+}
+
+function rbEmptySlotHtml(slot) {
+  return `<div class="ib-empty-lbl">
+    <i class="ti ti-drag-drop" style="font-size:14px"></i>
+    <span style="font-size:11px">${slot.lbl}</span>
+    <span style="font-size:9px;color:var(--gray-400)">${slot.note||'Drag a story here'}</span>
+  </div>`;
+}
+
+function rbClearSlot(slotId) {
+  delete rbSlotContent[slotId];
+  rbRenderCanvas(); rbRenderArticleList(); rbUpdateProgress(); rbUpdateCoverage();
+}
+
+// ── Progress + coverage ───────────────────────────────────────────────────────
+function rbUpdateProgress() {
+  const placed = Object.keys(rbSlotContent).length;
+  const lbl = document.getElementById('rbProgLbl');
+  const bar = document.getElementById('rbProgBar');
+  if (lbl) lbl.textContent = placed + ' / 8';
+  if (bar) bar.style.width = (placed/8*100)+'%';
+  bar && (bar.style.background = placed>=8 ? '#059669' : 'var(--blue)');
+}
+
+function rbUpdateCoverage() {
+  const cov = document.getElementById('rbCoverage');
+  if (!cov) return;
+  const placed = Object.values(rbSlotContent).map(id => rbAllStories.find(s=>s.id===id)).filter(Boolean);
+  const counts = {};
+  placed.forEach(s => counts[s.section] = (counts[s.section]||0)+1);
+  const sections = [['Local News','#2563A8'],['Government','#7F77DD'],['Sports','#059669'],['Community','#F59E0B']];
+  const max = Math.max(...Object.values(counts), 1);
+  cov.innerHTML = sections.map(([sec,color])=>`
+    <div class="dd-chart-row" style="margin-bottom:2px">
+      <span class="dd-chart-lbl" style="font-size:10px;width:90px">${sec}</span>
+      <div class="dd-chart-bar-wrap" style="height:5px"><div class="dd-chart-bar" style="width:${((counts[sec]||0)/max*100)}%;background:${color};transition:width .3s"></div></div>
+      <span class="dd-chart-val" style="font-size:11px;width:16px">${counts[sec]||0}</span>
+    </div>`).join('');
+}
+
+// ── Auto-select ───────────────────────────────────────────────────────────────
+function rbAutoSelect(evt) {
+  const sorted = [...rbAllStories].sort((a,b)=>b.views-a.views);
+  rbSlotContent = {};
+  rbSlotDefs.forEach((slot, i) => { if (sorted[i]) rbSlotContent[slot.id] = sorted[i].id; });
+  const btn = evt.target.closest('button');
+  btn.innerHTML = '<i class="ti ti-circle-check" style="font-size:13px"></i> Auto-selected!';
+  btn.style.background='#EAF3DE'; btn.style.color='#27500A';
+  setTimeout(()=>{ btn.innerHTML='<i class="ti ti-wand" style="font-size:13px"></i> Auto-select top stories'; btn.style.background=''; btn.style.color=''; },1800);
+  rbRenderCanvas(); rbRenderArticleList(); rbUpdateProgress(); rbUpdateCoverage();
+  if (rbStatusIdx===0) cycleRbStatus();
+}
+
+// ── Workflow buttons ──────────────────────────────────────────────────────────
+function rbSendProofs() {
+  const btn=document.getElementById('rbProofBtn');
+  btn.innerHTML='<i class="ti ti-circle-check" style="font-size:13px"></i> Proofs sent!';
+  btn.style.background='#EAF3DE';btn.style.color='#27500A';btn.style.borderColor='#97C459';
+  setTimeout(()=>{btn.innerHTML='<i class="ti ti-send" style="font-size:13px"></i> Send proofs';btn.style.background='var(--amber-lt)';btn.style.color='var(--amber-dk)';btn.style.borderColor='var(--amber)';},2000);
+  if (rbStatusIdx<2){rbStatusIdx=2;const s=rbStatusCycle[2];const b=document.getElementById('rbStatusBtn');if(b){b.className='state-pill '+s.cls;b.textContent=s.lbl;}}
+}
+
+function rbGeneratePdf() {
+  const btn=document.getElementById('rbPdfBtn');
+  btn.innerHTML='<i class="ti ti-loader" style="font-size:13px"></i> Rendering…';
+  setTimeout(()=>{
+    btn.innerHTML='<i class="ti ti-circle-check" style="font-size:13px"></i> PDF ready';
+    btn.style.background='#059669';
+    rbStatusIdx=3;const s=rbStatusCycle[3];const b=document.getElementById('rbStatusBtn');if(b){b.className='state-pill '+s.cls;b.textContent=s.lbl;}
+    setTimeout(()=>{btn.innerHTML='<i class="ti ti-printer" style="font-size:13px"></i> Generate PDF';btn.style.background='';},2500);
+  },1800);
+}
+
+// ── Drill-down data for new surfaces ─────────────────────────────────────────
+Object.assign(DD||{}, {
+  psTotal:{icon:'ti-news',color:'#854F0B',bgColor:'#FEF3C7',title:'Total print subscribers',sub:'418 active · weekly Thursday edition',kpis:[{val:'418',lbl:'Total',delta:'+12 this month',up:true},{val:'442',lbl:'Print+Digital plan',delta:'',up:true},{val:'5',lbl:'Delivery routes',delta:'',up:true},{val:'$8,360',lbl:'Print MRR',delta:'+$240',up:true}],body:()=>`<div class="dd-section-title">By delivery type</div>${ddBarChart([{label:'Print+Digital plan',val:'382',pct:92,color:'#2563A8'},{label:'Print-only ($152/yr)',val:'36',pct:9,color:'#854F0B'},{label:'Complimentary',val:'6',pct:1,color:'#9CA3AF'}])}<div class="dd-section-title" style="margin-top:14px">By geography</div>${ddBarChart([{label:'Oil City (16301)',val:'148',pct:100,color:'#2563A8'},{label:'Franklin (16323)',val:'112',pct:76,color:'#059669'},{label:'Cranberry (16314)',val:'64',pct:43,color:'#7F77DD'},{label:'Titusville (16354)',val:'48',pct:32,color:'#F59E0B'},{label:'Rural / other',val:'46',pct:31,color:'#9CA3AF'}])}`,footerNote:'GPS CRM · print subscriber records'},
+  psActive:{icon:'ti-circle-check',color:'#059669',bgColor:'#D1FAE5',title:'Active this week',sub:'402 of 418 delivering Thursday',kpis:[{val:'402',lbl:'Active',delta:'96.2%',up:true},{val:'14',lbl:'Vacation hold',delta:'',up:false},{val:'2',lbl:'Address issues',delta:'',up:false},{val:'0',lbl:'Missed last week',delta:'',up:true}],body:()=>`<div class="dd-section-title">Non-delivery reasons</div>${ddRows([{label:'Vacation hold',val:'14',sub:'Carriers skip automatically'},{label:'Returned mail',val:'2',sub:'Follow-up required'},{label:'Past due — suspended',val:'0',sub:''},{label:'Complimentary suspended',val:'0',sub:''}])}`,footerNote:'Delivery records · updated weekly'},
+  psNew:{icon:'ti-user-plus',color:'#059669',bgColor:'#D1FAE5',title:'New this month',sub:'12 new print subscribers · Sep 2026',kpis:[{val:'12',lbl:'New',delta:'+50% vs Jul',up:true},{val:'8',lbl:'Last month',delta:'',up:false},{val:'68%',lbl:'From digital upgrade',delta:'',up:true},{val:'$240',lbl:'MRR added',delta:'',up:true}],body:()=>`<div class="dd-section-title">New subscribers — Sep 2026</div>${ddRows([{label:'Patricia Holbrook',val:'Sep 8',sub:'Print+Digital · Carrier route 3'},{label:'Franklin County Library',val:'Sep 7',sub:'Institutional · Mail'},{label:'Robert Dzurenda',val:'Sep 5',sub:'Print+Digital · Carrier route 1'},{label:'Mary Ellen Kowalski',val:'Sep 3',sub:'Print+Digital · Carrier route 2'},{label:'Oil City VFW Post 146',val:'Sep 1',sub:'Institutional · Pickup'}])}<div class="dd-section-title" style="margin-top:14px">Sign-up source</div>${ddBarChart([{label:'Digital upgrade',val:'8',pct:67,color:'#2563A8'},{label:'Staff / phone',val:'3',pct:25,color:'#059669'},{label:'Walk-in / newsstand',val:'1',pct:8,color:'#F59E0B'}])}`,footerNote:'GPS CRM · September 2026'},
+  psChurn:{icon:'ti-user-minus',color:'#854F0B',bgColor:'#FEF3C7',title:'Cancellations this month',sub:'3 cancelled · 0.7% monthly churn',kpis:[{val:'3',lbl:'Cancelled',delta:'',up:false},{val:'0.7%',lbl:'Churn',delta:'below 1% target',up:true},{val:'2',lbl:'Past due',delta:'',up:false},{val:'1',lbl:'Downgraded',delta:'kept digital',up:true}],body:()=>`<div class="dd-section-title">Cancellations — Sep 2026</div>${ddRows([{label:'J. Henderson — moved out of area',val:'Sep 9',sub:'No forward address'},{label:'L. Petrocelli — financial',val:'Sep 5',sub:'Kept digital-only plan'},{label:'B. Tanner — no reason given',val:'Sep 2',sub:'Refund issued'}])}`,footerNote:'GPS CRM · churn records'},
+  psMrr:{icon:'ti-currency-dollar',color:'#059669',bgColor:'#D1FAE5',title:'Print MRR',sub:'$8,360 · September 2026',kpis:[{val:'$8,360',lbl:'Print MRR',delta:'+$240',up:true},{val:'$20',lbl:'Avg plan',delta:'',up:true},{val:'$100,320',lbl:'ARR run-rate',delta:'',up:true},{val:'418',lbl:'Subscribers',delta:'',up:true}],body:()=>`<div class="dd-section-title">MRR movement — September</div>${ddRows([{label:'New subscriber MRR',val:'+$240',sub:'12 new × $20 avg'},{label:'Churn MRR lost',val:'-$60',sub:'3 cancellations'},{label:'Net new MRR',val:'+$180',sub:''}])}`,footerNote:'Stripe + GPS · print billing'},
+  rbprogress:{icon:'ti-layout-columns',color:'#2563A8',bgColor:'#E6F1FB',title:'Roundup layout progress',sub:'Sep 18, 2026 Thursday edition',kpis:[{val:Object.keys(rbSlotContent||{}).length+'/8',lbl:'Stories placed',delta:'',up:false},{val:'3/4',lbl:'Ads placed',delta:'',up:false},{val:'38',lbl:'Online stories this week',delta:'',up:true},{val:'84,320',lbl:'Total pageviews',delta:'',up:true}],body:()=>`<div class="dd-section-title">Placed stories</div>${ddRows(Object.entries(rbSlotContent||{}).map(([sid,stid])=>{const slot=rbSlotDefs.find(s=>s.id===sid);const story=rbAllStories.find(s=>s.id===stid);return story?{label:story.hed,val:slot?.lbl||sid,sub:story.views.toLocaleString()+' views · '+story.section}:{label:'—',val:sid,sub:''};}))}<div class="dd-section-title" style="margin-top:14px">Top unplaced stories</div>${ddRows(rbAllStories.filter(s=>!Object.values(rbSlotContent||{}).includes(s.id)).slice(0,4).map(s=>({label:s.hed,val:s.views.toLocaleString()+' views',sub:s.section})))}`,footerNote:'Roundup Builder · Sep 21 edition'},
+});
+
+// ── Initialize ────────────────────────────────────────────────────────────────
+rbRenderPageStrip();
+rbRenderCanvas();
+rbRenderArticleList();
+rbUpdateProgress();
+rbUpdateCoverage();
 </script>
 </body>
 </html>
