@@ -517,6 +517,46 @@
   .ops-stat.clickable:hover{box-shadow:0 0 0 2px var(--blue)}
   .metric-card.clickable:hover::after,.ops-stat.clickable:hover::after{content:'Drill down →';font-size:10px;color:var(--blue);display:block;margin-top:4px;font-weight:500}
 
+
+  /* ── Cover pill expandable cards ───────────────────────────────── */
+  .cover-pills { display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-start; }
+  .cover-pill-wrap { position: relative; }
+  .cover-pill {
+    font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 20px;
+    background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    cursor: pointer; transition: background .15s, color .15s, border-color .15s;
+    user-select: none; display: inline-flex; align-items: center; gap: 5px;
+  }
+  .cover-pill:hover { background: rgba(126,184,247,0.18); color: #7EB8F7; border-color: rgba(126,184,247,0.4); }
+  .cover-pill.open { background: rgba(126,184,247,0.22); color: #7EB8F7; border-color: #7EB8F7; }
+  .cover-pill .pill-arrow { font-size: 9px; transition: transform .2s; display: inline-block; }
+  .cover-pill.open .pill-arrow { transform: rotate(180deg); }
+  .cover-pill-desc {
+    display: none; position: absolute; top: calc(100% + 10px); left: 0;
+    width: 560px; max-width: 90vw;
+    background: #1C2A3A; border: 0.5px solid rgba(126,184,247,0.3);
+    border-radius: 12px; padding: 20px 24px; z-index: 200;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  }
+  .cover-pill-desc.open { display: block; }
+  .cover-pill-desc h4 {
+    font-size: 13px; font-weight: 600; color: #7EB8F7; margin: 0 0 12px;
+    text-transform: uppercase; letter-spacing: .07em;
+  }
+  .cover-pill-desc p {
+    font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.7;
+    margin: 0 0 10px;
+  }
+  .cover-pill-desc p:last-child { margin-bottom: 0; }
+  .cover-pill-desc .pill-nav-btn {
+    margin-top: 14px; display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; color: #7EB8F7;
+    background: rgba(126,184,247,0.12); border: 0.5px solid rgba(126,184,247,0.3);
+    border-radius: 8px; padding: 6px 14px; cursor: pointer; transition: background .12s;
+  }
+  .cover-pill-desc .pill-nav-btn:hover { background: rgba(126,184,247,0.22); }
+
 </style>
 </style>
 </head>
@@ -528,21 +568,178 @@
   <div class="cover-title">UI <span>Prototype</span> Showcase</div>
   <div class="cover-sub">Fourteen interactive prototypes covering every staff-facing and reader-facing surface of the TheDerrick CMS platform. Design language: Substack editorial warmth applied to a full newsroom toolset.</div>
   <div class="cover-pills">
-    <span class="cover-pill">01 Article Editor</span>
-    <span class="cover-pill">02 Homepage Composer</span>
-    <span class="cover-pill">03 Article + Paywall</span>
-    <span class="cover-pill">04 Analytics Dashboard</span>
-    <span class="cover-pill">05 Issue Builder</span>
-    <span class="cover-pill">06 Community Hub</span>
-    <span class="cover-pill">07 Advertiser Portal</span>
-    <span class="cover-pill">08 Ad Ops Dashboard</span>
-    <span class="cover-pill">09 Subscriber Portal</span>
-    <span class="cover-pill">10 Proof Viewer</span>
-    <span class="cover-pill">11 PDF Preview</span>
-    <span class="cover-pill">12 Admin Settings</span>
-    <span class="cover-pill">13 Roundup Analytics</span>
-    <span class="cover-pill">14 Roundup Builder</span>
+  <div class="cover-pill-wrap">
+    <span class="cover-pill" onclick="togglePillDesc('editor', this)">01 Article Editor <span class="pill-arrow">▾</span></span>
+    <div class="cover-pill-desc" id="pilldesc-editor">
+      <h4>01 Article Editor</h4>
+      <p>The Article Editor is the primary daily workspace for every reporter and editor at The Derrick. It opens to a clean, distraction-free canvas modeled on Substack's editorial warmth — the chrome recedes, the writing surface dominates, and the tools appear exactly when needed.</p>
+<p>Reporters compose in structured blocks: text paragraphs, pull quotes, photo embeds with caption fields, subheadings, and a dedicated Legal Notice block that automatically applies Title 45 Pa.C.S.A. formatting and routes the notice to the GPS publication archive on publish.</p>
+<p>The workflow state pill at the top right controls the article's lifecycle. A single click advances the piece from Draft through Copy Edit, Layout, Ready to Publish, and Published — each state triggering the appropriate notification to the next person in the chain. No separate task management tool needed.</p>
+<p>The metadata panel on the right handles everything the CMS needs for distribution: URL slug, section assignment, tag cloud, paywall setting (metered, hard wall, or always-free for public-safety content), print inclusion toggle, and SEO preview showing exactly how the headline and dek appear in Google.</p>
+<p>Autosave runs every 30 seconds and surfaces a discreet timestamp below the toolbar. If two editors open the same article simultaneously, the conflict warning fires immediately with a link to version history — no silent overwrites. Word count, estimated read time, and a readability score update live as the reporter types.</p>
+      <button class="pill-nav-btn" onclick="closePillAndNav('editor')">Open prototype →</button>
+    </div>
   </div>
+  <div class="cover-pill-wrap">
+    <span class="cover-pill" onclick="togglePillDesc('homepage', this)">02 Homepage Composer <span class="pill-arrow">▾</span></span>
+    <div class="cover-pill-desc" id="pilldesc-homepage">
+      <h4>02 Homepage Composer</h4>
+      <p>The Homepage Composer gives editors direct control over what readers see the moment they arrive at TheDerrick.com, without touching a line of code or filing a ticket with a developer. The surface is organized around named zones — configurable content regions that map directly to sections of the live homepage.</p>
+<p>Three default zones ship with the CMS: Top Story (the dominant hero placement), Top News (a curated 3–5 story grid), and Latest News (an auto-feed that pulls the most recently published articles by section). Editors can rename zones, reorder them, and add new ones. Each zone accepts drag-and-drop story cards pulled from a right-side queue filtered by section, recency, or search.</p>
+<p>The Breaking News Bar sits above the main navigation on the live site. Activating it from this surface pushes a red-background urgent message to all readers immediately and simultaneously triggers email alerts to the 847 subscribers enrolled in breaking news notifications — no separate step required.</p>
+<p>Every change is staged. Editors can preview exactly how the homepage will render before committing. A single Publish Homepage button pushes the layout live and records the editor's name, timestamp, and which stories moved in the activity log. The live status indicator confirms publication within seconds.</p>
+<p>Stories in the queue show their current pageview count, paywall state, and whether they have an assigned photo — so editors can make curation decisions informed by real performance data rather than intuition alone.</p>
+      <button class="pill-nav-btn" onclick="closePillAndNav('homepage')">Open prototype →</button>
+    </div>
+  </div>
+  <div class="cover-pill-wrap">
+    <span class="cover-pill" onclick="togglePillDesc('article', this)">03 Article + Paywall <span class="pill-arrow">▾</span></span>
+    <div class="cover-pill-desc" id="pilldesc-article">
+      <h4>03 Article + Paywall</h4>
+      <p>The Article Page and Paywall surface demonstrates the complete reader-facing experience for a TheDerrick.com story — all four states a reader can encounter depending on their subscription status, metered article count, and the article's paywall classification.</p>
+<p>Anonymous readers see the full article header, byline, and lead paragraph, then hit a soft truncation with a metered bar showing how many free articles remain this month. The mission strip below the masthead reminds readers that The Derrick is independent local journalism serving Venango County since 1859, with no paywall on public safety content.</p>
+<p>Readers who have consumed their monthly free allotment encounter the upgrade wall — a full-bleed modal with two plan cards (Digital at $8/month, Print + Digital at $20/month), a clear value statement naming what's covered, and a single Subscribe CTA. A sticky bottom bar reinforces the offer on scroll without blocking reading entirely.</p>
+<p>Authenticated subscribers see none of this friction. The article renders in full with no meter bar, no mission strip, no upgrade prompt — just the story, author card, related articles, and an inline donation ask at the end for readers who want to give beyond their subscription.</p>
+<p>Legal notice articles — required by Title 45 Pa.C.S.A. to be publicly accessible — are always served in full to any reader regardless of meter state or subscription status. The CMS enforces this automatically; no editor decision required. The paywall logic treats these articles as permanently exempt.</p>
+      <button class="pill-nav-btn" onclick="closePillAndNav('article')">Open prototype →</button>
+    </div>
+  </div>
+  <div class="cover-pill-wrap">
+    <span class="cover-pill" onclick="togglePillDesc('analytics', this)">04 Analytics Dashboard <span class="pill-arrow">▾</span></span>
+    <div class="cover-pill-desc" id="pilldesc-analytics">
+      <h4>04 Analytics Dashboard</h4>
+      <p>The Analytics Dashboard is the operations center for understanding how both editions of The Derrick are performing — online and in print — from a single surface. A three-way toggle at the top switches the entire dashboard between Combined, Online-only, and Print-only views without reloading the page.</p>
+<p>The edition split banner runs permanently across the top of the metrics area, showing both businesses side by side: Online (1,284 digital subscribers, $14,210 MRR, 84,320 pageviews, 2.1% churn) and Print (418 print subscribers, $8,360 MRR, estimated 55 newsstand copies per week, 0.7% churn). This single row gives any staff member a complete picture of revenue health in under five seconds.</p>
+<p>Every metric card is clickable. Tapping any number opens a drill-down modal with four summary KPIs, bar charts, and detailed row-level data. The Digital Subscribers card breaks down by plan, shows a 30-day new subscriber sparkline, cohort retention by month, and acquisition sources. The Churn card shows cancellation reasons, dunning recovery rates, and month-by-month cohort retention through month six.</p>
+<p>The Print view adds four panels exclusive to the Roundup: a 12-month print subscriber growth chart, an Online-to-Print conversion funnel tracing how digital readers upgrade to the Thursday paper, a roundup issue performance table showing e-reads, shares, and QR code scans for each recent issue, and a ranking of top print stories by QR scan volume — showing which printed stories drive readers back online.</p>
+<p>The GPS sync panel shows the real-time health of the connection between the CMS and the GPS CRM: subscriptions synced, donations recorded, proof archive entries, and any errors requiring staff attention. Sync errors show a red indicator with a count and a direct link to the error log — no hunting through settings menus.</p>
+<p>A 7-day, 30-day, 90-day, and 1-year range toggle controls the time window across all charts simultaneously. The Export button produces a CSV of the current view's data.</p>
+      <button class="pill-nav-btn" onclick="closePillAndNav('analytics')">Open prototype →</button>
+    </div>
+  </div>
+  <div class="cover-pill-wrap">
+    <span class="cover-pill" onclick="togglePillDesc('issuebuilder', this)">05 Issue Builder <span class="pill-arrow">▾</span></span>
+    <div class="cover-pill-desc" id="pilldesc-issuebuilder">
+      <h4>05 Issue Builder</h4>
+      <p>The Issue Builder is the production surface for laying out each edition of the print paper. It replaces the manual coordination that currently happens across email, phone calls, and shared spreadsheets — bringing story placement, ad tracking, legal notice management, and proof workflow into a single interface.</p>
+<p>Eight page thumbnails run down the left side, each representing one page of the issue. Clicking a thumbnail loads that page's canvas in the center — a drag-and-drop grid of story slots, ad slots, and legal notice slots. Slots show their current state: empty (dashed border), filled with a story (title and byline visible), reserved for an approved ad (amber background), or placed legal notice (blue border with Title 45 label).</p>
+<p>The story queue on the right lists every article marked for print inclusion from the Article Editor, sorted by section. Ad slots show the approval status of each booked ad — pending proof, proof sent, approved, or creative missing. Legal notice slots track the publication reference number and GPS archive status for Title 45 Pa.C.S.A. compliance.</p>
+<p>Three progress bars at the bottom of the right panel give editors a live completion readout: pages placed, ads approved, and legal notices confirmed. These bars update in real time as content is dropped onto the canvas — no manual counting.</p>
+<p>When the issue is ready, three workflow buttons ship the work downstream: Send Proofs dispatches PDF proof links to every advertiser with a pending approval; Generate PDF renders the print-ready file via Puppeteer and makes it available in the PDF Preview surface; Export IDML produces an InDesign-compatible layout file for any production workflow that still requires it.</p>
+      <button class="pill-nav-btn" onclick="closePillAndNav('issuebuilder')">Open prototype →</button>
+    </div>
+  </div>
+  <div class="cover-pill-wrap">
+    <span class="cover-pill" onclick="togglePillDesc('community', this)">06 Community Hub <span class="pill-arrow">▾</span></span>
+    <div class="cover-pill-desc" id="pilldesc-community">
+      <h4>06 Community Hub</h4>
+      <p>The Community Hub is the staff-facing moderation surface for all public-submitted content and community event management. It consolidates four distinct workflows — event calendar, submission moderation, school closings, and email alert management — into a single tabbed surface at cms.thederrick.com/community.</p>
+<p>The Event Calendar tab renders a full month grid with color-coded event chips by category: news (green), government (blue), sports (purple), and school (amber). Staff can add events directly from the calendar or from the Quick Submit panel on the right side of the surface. Community members submit through the public-facing form; those submissions land in the moderation queue.</p>
+<p>The Submissions tab shows every pending letter to the editor, event submission, and press release from the public, each with the submitter's email, submission date, and a content preview. Three action buttons — Approve, Reject, and Hold for Review — process each item. Approved events move to the calendar automatically; approved letters route to the article editor queue.</p>
+<p>The School Closings tab tracks the status of all six Venango County school districts in real time. When any district is marked as Closed or Delayed, an amber alert banner activates on both the homepage and article pages sitewide — no separate CMS action required. Staff can dismiss the banner when conditions clear, or it expires automatically at the start of the next school day.</p>
+<p>The Alerts tab shows the opt-in rates and recent send history for each alert type: Breaking News (847 subscribers), School Closings (1,102 subscribers), e-Edition Available (623 subscribers), and Weekly Digest (412 subscribers). All sends are delivered via Postmark and are CAN-SPAM compliant opt-in.</p>
+      <button class="pill-nav-btn" onclick="closePillAndNav('community')">Open prototype →</button>
+    </div>
+  </div>
+  <div class="cover-pill-wrap">
+    <span class="cover-pill" onclick="togglePillDesc('advertiser', this)">07 Advertiser Portal <span class="pill-arrow">▾</span></span>
+    <div class="cover-pill-desc" id="pilldesc-advertiser">
+      <h4>07 Advertiser Portal</h4>
+      <p>The Advertiser Portal is the self-service commercial interface for businesses that advertise in The Derrick. It lives at thederrick.com/advertise and is accessible with a separate advertiser login — no CMS credentials required. The portal is designed to feel like a business tool, using commercial vocabulary throughout rather than newsroom terminology.</p>
+<p>The My Orders tab gives advertisers a clear view of every active and past order: placement size, run dates, current status (Pending, Approved, Running), and a direct link to any proof awaiting their review. Orders with a proof pending are highlighted in amber with the issue deadline surfaced prominently — advertisers should not have to hunt for a deadline.</p>
+<p>The Place Order tab walks through a short form: channel (print or digital), size and placement, start date, and duration. A live rate card updates in real time as the advertiser changes their selections — Quarter Page at $480 for four weeks, Half Page at $1,120, Full Page at $1,920. An availability calendar shows which dates have open inventory before the advertiser commits.</p>
+<p>The Creative Library tab holds all of the advertiser's uploaded ad files, each showing file name, dimensions, resolution, upload date, and approval status. The upload zone accepts PDF or high-resolution JPG and validates dimensions and DPI on drop — a green confirmation appears immediately for files that meet spec, and a clear error message with correction guidance appears for those that don't.</p>
+<p>The Proofs tab shows any ads awaiting advertiser approval before an issue closes. A deadline warning banner appears prominently when a proof is due within 72 hours. The Approve button transitions to a confirmed state immediately on click and simultaneously updates the Ad Ops Dashboard queue for staff — no phone call or email needed to confirm approval.</p>
+      <button class="pill-nav-btn" onclick="closePillAndNav('advertiser')">Open prototype →</button>
+    </div>
+  </div>
+  <div class="cover-pill-wrap">
+    <span class="cover-pill" onclick="togglePillDesc('adops', this)">08 Ad Ops Dashboard <span class="pill-arrow">▾</span></span>
+    <div class="cover-pill-desc" id="pilldesc-adops">
+      <h4>08 Ad Ops Dashboard</h4>
+      <p>The Ad Ops Dashboard is the staff-side view of advertising operations for each print issue. It gives the advertising team a single surface to track fill rate, proof status, order completion, and issue revenue — replacing the spreadsheets and email chains that currently coordinate this work.</p>
+<p>Four KPI cards run across the top: Fill Rate (78% for the September 18 issue, up 6 points from the prior issue), Orders This Issue (12 total, 8 approved), Proofs Pending (3, highlighted amber with the September 15 deadline visible), and Issue Revenue ($4,320 booked against a $5,500 target). Every card is clickable and drills into the backing data.</p>
+<p>The orders table below the KPI strip lists all 12 orders for the current issue: advertiser name, placement, size, rate, status badge, and a View button. Orders with a proof pending are highlighted in amber so they stand out immediately in the list — no status column scanning needed.</p>
+<p>The right panel holds three tools in a compact column. The proof queue shows each pending proof with the advertiser name, placement, and deadline, plus a Send Proof button that dispatches the proof link by email and transitions to a Sent confirmation state. Below that, per-page fill bars show inventory utilization for each of the eight pages at a glance — green for full, amber for partial, gray for zero. The inventory mini-calendar shows fill rate for the next four upcoming issues.</p>
+<p>The Export Invoices button at the top right produces a CSV of all billable orders for the current issue in two seconds, ready for the accounting workflow. The GPS proof archive records every approval event with an immutable timestamp for compliance.</p>
+      <button class="pill-nav-btn" onclick="closePillAndNav('adops')">Open prototype →</button>
+    </div>
+  </div>
+  <div class="cover-pill-wrap">
+    <span class="cover-pill" onclick="togglePillDesc('subscriber', this)">09 Subscriber Portal <span class="pill-arrow">▾</span></span>
+    <div class="cover-pill-desc" id="pilldesc-subscriber">
+      <h4>09 Subscriber Portal</h4>
+      <p>The Subscriber Account Portal is the self-service interface for readers who have a paid subscription to TheDerrick.com. It lives at thederrick.com/account and is designed to let subscribers manage every aspect of their account without contacting staff — billing, plan changes, print delivery address, and email alert preferences all handled in one place.</p>
+<p>The Account Overview tab opens with the subscriber's plan badge (Print + Digital, or Digital), a reading meter showing current usage against the monthly article limit (green and full for unlimited-access plans), the current billing amount and next billing date, payment method on file, and three action buttons: Pause, Cancel, and Gift a Subscription.</p>
+<p>The recent invoices section shows the last twelve months of billing records, each with date, description, amount, a Paid status badge, and a PDF download button. Clicking View All History opens a drill-down modal with the complete billing record since the subscriber joined.</p>
+<p>The Plan & Billing tab lets subscribers switch between Digital ($8/month) and Print + Digital ($20/month) plans, update their payment method, and see their billing history in one place. The current plan is highlighted with a blue border so the subscriber always knows where they stand.</p>
+<p>The Print Delivery tab captures the subscriber's delivery address and route assignment, with a vacation hold control that flags their address on the carrier manifest for the specified dates — carriers automatically skip the address, and delivery resumes without any staff intervention required. The Email Alerts tab shows all four alert types with on/off toggles that persist across sessions.</p>
+      <button class="pill-nav-btn" onclick="closePillAndNav('subscriber')">Open prototype →</button>
+    </div>
+  </div>
+  <div class="cover-pill-wrap">
+    <span class="cover-pill" onclick="togglePillDesc('proofviewer', this)">10 Proof Viewer <span class="pill-arrow">▾</span></span>
+    <div class="cover-pill-desc" id="pilldesc-proofviewer">
+      <h4>10 Proof Viewer</h4>
+      <p>The Proof Viewer is the in-browser ad approval surface used by both staff and advertisers. Staff access it directly from the CMS; advertisers reach it through a time-limited signed URL emailed to them when a proof is ready — no CMS login required on the advertiser side.</p>
+<p>The proof page renders in the center of the screen as it will appear in print: story blocks showing the surrounding editorial context, the ad block with an annotation pin indicating any flagged areas, and legal notice blocks with their Title 45 Pa.C.S.A. labeling. This gives the advertiser a realistic sense of placement within the actual issue rather than an isolated asset view.</p>
+<p>The annotation thread on the right panel creates a shared conversation between Ad Ops staff and the advertiser. Staff can add notes explaining what needs review; advertisers can reply with specific change requests, annotate by clicking on the ad block, or ask questions. Every entry shows the author's initials, name, and a relative timestamp.</p>
+<p>Three action buttons give the advertiser clear, unambiguous choices: Approve Proof (green, transitions to a confirmed state and notifies Ad Ops immediately), Request Changes (amber, opens a text field for the advertiser to describe what needs fixing), and Reject (red, requires confirmation and notifies staff). Once approved, no further changes can be made from the portal — the record is final.</p>
+<p>Every approval event writes an immutable record to the GPS CRM archive: proof ID, advertiser, placement, sent date, approval date, and the approving user. This chain of custody satisfies any future dispute about whether an advertiser approved a particular creative before publication. The GPS archive panel on the right side of the screen shows the current record status — Awaiting Approval or Archived — and updates in real time when the approval button is clicked.</p>
+      <button class="pill-nav-btn" onclick="closePillAndNav('proofviewer')">Open prototype →</button>
+    </div>
+  </div>
+  <div class="cover-pill-wrap">
+    <span class="cover-pill" onclick="togglePillDesc('pdfpreview', this)">11 PDF Preview <span class="pill-arrow">▾</span></span>
+    <div class="cover-pill-desc" id="pilldesc-pdfpreview">
+      <h4>11 PDF Preview</h4>
+      <p>The PDF Preview surface is the final production checkpoint before the issue file goes to the print vendor. It renders the complete newspaper layout — masthead, stories, ads, and legal notices — in a browser-native view generated deterministically from the same canonical blocks that built the Issue Builder canvas, via Puppeteer.</p>
+<p>The newspaper masthead renders with its full typographic identity: The Derrick in Georgia serif at 700 weight, the subtitle line showing volume, issue number, date, and price, and the two-column editorial grid below. Staff can verify that the layout, column breaks, and typographic hierarchy look exactly as intended before committing to print.</p>
+<p>Zoom controls let staff examine the layout at 50% for a full-page overview or zoom in to 150% to check body type size, photo captions, and legal notice text at near-print resolution. Zoom adjusts the CSS transform without reloading — the transition is immediate. Eight page thumbnails in the right sidebar let staff jump to any page in the issue without scrolling.</p>
+<p>The issue checklist panel on the right tracks six preflight conditions: all ads placed, all proofs approved, legal notices confirmed, crop marks included, bleed warnings, and DPI verification. Items pass with a green checkmark; any item that needs attention shows an amber warning with a specific page reference — Page A3 bleed in the current issue, for example — so staff can address it before sending.</p>
+<p>The Send to Vendor button dispatches the print-ready PDF to the production vendor. It transitions through a 1.5-second Sending state with a loading indicator before confirming with a green Sent to Vendor success state. The GPS archive records the vendor handoff timestamp, creating an auditable production record alongside the proof approval chain.</p>
+      <button class="pill-nav-btn" onclick="closePillAndNav('pdfpreview')">Open prototype →</button>
+    </div>
+  </div>
+  <div class="cover-pill-wrap">
+    <span class="cover-pill" onclick="togglePillDesc('adminsettings', this)">12 Admin Settings <span class="pill-arrow">▾</span></span>
+    <div class="cover-pill-desc" id="pilldesc-adminsettings">
+      <h4>12 Admin Settings</h4>
+      <p>Admin Settings is the system configuration surface for TheDerrick CMS, accessible only to staff with the Admin or CRM Admin role. All configuration changes take effect without a code deploy — rates, plan prices, paywall thresholds, user roles, and integration credentials are all managed here and applied immediately across the platform.</p>
+<p>The Subscription Plans section shows all active plans in an editable grid: Digital ($8/month, $80/year, 842 active subscribers), Print + Digital ($20/month, $200/year, 442 subscribers), Print-only ($152/year, 36 subscribers), Student/Senior ($5/month, $50/year, 87 subscribers), and Gift ($20/month, 14 subscribers). Monthly price, annual price, and the active/inactive toggle are all editable inline — Save Changes applies them to Stripe immediately.</p>
+<p>The Paywall Settings section controls the metered access behavior: the number of free articles per 30-day window (currently 5), how many blocks readers see before the gate appears (currently 2), and the meter reset cadence (billing date, 1st of month, or rolling 30 days). Two critical toggles — Public Safety Content Exempt and Legal Notices Always Accessible — govern content categories that must remain freely available; the Legal Notices toggle is locked on to enforce Title 45 Pa.C.S.A. compliance and cannot be disabled.</p>
+<p>The Users & Roles section lists every staff member with their name, email, last login, and role dropdown. Available roles are Reporter, Editor, Production, Ad Ops, and Admin. Role changes take effect immediately — no re-login required. The Ad Rates section provides an editable rate card for print and digital placements, so rate changes appear immediately in the Advertiser Portal's live rate calculator without any developer involvement.</p>
+<p>The Integrations section shows the live health of all three external connections: GPS CRM sync (subscription events, donation events, proof archive, and entitlement sync — each with a status indicator and last-sync timestamp), Stripe (webhook endpoint health and last successful event), and Postmark (email delivery status and last successful send). A Trigger Manual Sync button on the GPS panel forces an immediate sync for any event type showing a delay or error.</p>
+      <button class="pill-nav-btn" onclick="closePillAndNav('adminsettings')">Open prototype →</button>
+    </div>
+  </div>
+  <div class="cover-pill-wrap">
+    <span class="cover-pill" onclick="togglePillDesc('printsubs', this)">13 Roundup Analytics <span class="pill-arrow">▾</span></span>
+    <div class="cover-pill-desc" id="pilldesc-printsubs">
+      <h4>13 Roundup Analytics</h4>
+      <p>Roundup Analytics is the staff-facing management and intelligence surface for The Derrick's weekly Thursday print edition — the Roundup. The Print Edition and the Roundup are the same product: one paper, published every Thursday, built from the week's top online stories. This surface tracks every dimension of that business separately from the digital subscription stack.</p>
+<p>The Overview tab opens with five clickable KPI cards covering the complete state of the print business: Total Print Subscribers (418), Active This Week (402, reflecting vacation holds and address issues), New This Month (12, up 50% over the prior month), Cancellations (3), and Print MRR ($8,360, up $240 from the prior month). Every card drills into backing data — the New This Month card, for example, shows each new subscriber by name, plan, delivery type, and sign-up source.</p>
+<p>A 12-month subscriber growth chart and a plan breakdown panel run side by side below the KPI strip. The growth chart shows the print subscription base building from 374 in October through 418 in September. The breakdown shows the mix: Print + Digital plan subscribers, Print-only annual plan at $152/year, institutional accounts (libraries, civic organizations), carrier-route delivery, mail delivery, and estimated newsstand copies.</p>
+<p>The Subscribers tab provides a searchable, filterable table of all 418 print subscribers with name, plan, delivery type, mailing address, start date, account status (Active, Past Due, On Hold, Complimentary), and next billing date. Staff can filter by status or delivery type, search by name or address, and edit any subscriber record inline. Pagination handles the full list in groups of 15.</p>
+<p>The Analytics tab adds a period selector (4 weeks, 13 weeks, 1 year, all time) and renders six panels: weekly net subscriber growth as a stacked bar chart, monthly print revenue as a line chart, sign-up source breakdown (68% of new subscribers come from digital plan upgrades), issue performance table showing e-reads, shares, and QR code scans per recent issue, cancellation reasons, and geographic distribution by ZIP code.</p>
+<p>The Delivery Routes tab shows the five carrier routes that serve print subscribers every Thursday morning, each with the carrier's name, subscriber count, vacation holds for the current week, coverage area, and departure time. A Print Manifest button generates the carrier's delivery list for that week, with vacation holds automatically flagged so no manual cross-referencing is needed. The New Subscriber tab provides a full intake form: contact details, delivery address, route assignment, plan selection, billing method, and internal notes — all wiring directly to GPS CRM on submission.</p>
+      <button class="pill-nav-btn" onclick="closePillAndNav('printsubs')">Open prototype →</button>
+    </div>
+  </div>
+  <div class="cover-pill-wrap">
+    <span class="cover-pill" onclick="togglePillDesc('roundupbuilder', this)">14 Roundup Builder <span class="pill-arrow">▾</span></span>
+    <div class="cover-pill-desc" id="pilldesc-roundupbuilder">
+      <h4>14 Roundup Builder</h4>
+      <p>The Roundup Builder is the layout tool for producing the Thursday print edition. It is a purpose-built surface separate from the general Issue Builder — scoped entirely to the Roundup's fixed eight-page format and designed around one specific editorial workflow: pulling the week's best online stories into print.</p>
+<p>The left panel is a live browser of every article published on TheDerrick.com during the current week, sorted by digital pageviews by default. Each story card shows the headline, a color-coded views badge (green above 3,000, blue above 1,500, gray otherwise), section label, estimated read time, share count, and publish date. Editors can re-sort by read time, shares, or most recent — seeing immediately which stories held reader attention the longest, which spread most virally on social, and which are freshest.</p>
+<p>Stories move from the browser to the page canvas by dragging onto a slot, clicking the quick-add arrow to place in the first open slot, or pressing Auto-select to fill all eight slots with the week's highest-performing stories in one click. Auto-select advances the workflow status pill from Selecting Stories to In Layout automatically. Every placement decision can be undone with the × button on any filled slot, which returns the story to the browser queue.</p>
+<p>The center canvas renders the Roundup's fixed eight-page template: the lead story spans the full width of the front page for maximum visual weight, stories two and three sit in a two-column grid below it, pages two through six each hold one main story, page seven carries a half-page print ad slot, and page eight holds legal notices and classifieds. The template is locked — editors fill slots, they do not design pages. Each placed story shows its digital performance badge alongside the headline, and every story receives an auto-generated QR code in the PDF that links readers back to the full article on TheDerrick.com.</p>
+<p>The right panel tracks three things simultaneously: layout progress (stories placed and ads filled, with a progress bar that turns green when all eight slots are filled), coverage balance (a live bar chart showing how many placed stories fall in each section — Local News, Government, Sports, Community — updating on every drag and drop), and this week's digital performance summary (total stories published, total pageviews, average read time, and the top story's view count).</p>
+<p>When the layout is complete, Send Proofs dispatches ad proof links to any advertiser whose creative needs approval before the issue closes. Generate PDF renders the print-ready file through Puppeteer, advancing the status pill to Ready to Print and making the file available in the PDF Preview surface for final preflight. QR scan data from previous issues flows back into the Roundup Analytics dashboard — showing which print stories drove readers back online and how many converted to digital subscribers — closing the print-to-digital acquisition loop.</p>
+      <button class="pill-nav-btn" onclick="closePillAndNav('roundupbuilder')">Open prototype →</button>
+    </div>
+  </div>
+</div>
 </div>
 </div>
 
@@ -4390,6 +4587,52 @@ rbRenderCanvas();
 rbRenderArticleList();
 rbUpdateProgress();
 rbUpdateCoverage();
+
+// ── Cover pill descriptions ───────────────────────────────────────────────────
+function togglePillDesc(section, pillEl) {
+  const desc = document.getElementById('pilldesc-' + section);
+  const isOpen = desc.classList.contains('open');
+  // Close all open pills first
+  document.querySelectorAll('.cover-pill-desc.open').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.cover-pill.open').forEach(p => p.classList.remove('open'));
+  if (!isOpen) {
+    desc.classList.add('open');
+    pillEl.classList.add('open');
+    // Position: if pill is in the right half of the viewport, open left instead
+    const rect = pillEl.getBoundingClientRect();
+    if (rect.left > window.innerWidth / 2) {
+      desc.style.left = 'auto';
+      desc.style.right = '0';
+    } else {
+      desc.style.left = '0';
+      desc.style.right = 'auto';
+    }
+  }
+}
+function closePillAndNav(section) {
+  document.querySelectorAll('.cover-pill-desc.open').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.cover-pill.open').forEach(p => p.classList.remove('open'));
+  // Find and click the matching nav tab
+  const tabs = document.querySelectorAll('.nav-tab');
+  const sectionEl = document.getElementById('s-' + section);
+  if (sectionEl) {
+    // Find the tab that shows this section
+    tabs.forEach(tab => {
+      if (tab.getAttribute('onclick') && tab.getAttribute('onclick').includes("'" + section + "'")) {
+        tab.click();
+      }
+    });
+    sectionEl.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+// Close pill desc on click outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.cover-pill-wrap')) {
+    document.querySelectorAll('.cover-pill-desc.open').forEach(d => d.classList.remove('open'));
+    document.querySelectorAll('.cover-pill.open').forEach(p => p.classList.remove('open'));
+  }
+});
+
 </script>
 </body>
 </html>
